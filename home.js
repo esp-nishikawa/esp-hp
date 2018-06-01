@@ -14,8 +14,6 @@ Vue.component('home', {
             :style="$vuetify.breakpoint.xs ? {'transform':'scale(0.8)'} : {}"
             v-ripple
             @click="isTransition1 = !isTransition1"
-            @mouseenter="isTransition1 = true"
-            @mouseleave="isTransition1 = false"
           >
             <transition name="transition-fade" mode="out-in">
               <div v-if="isTransition1" key="on">
@@ -33,8 +31,6 @@ Vue.component('home', {
             :style="$vuetify.breakpoint.xs ? {'transform':'scale(0.8)'} : {}"
             v-ripple
             @click="isTransition2 = !isTransition2"
-            @mouseenter="isTransition2 = true"
-            @mouseleave="isTransition2 = false"
           >
             <transition name="transition-fade" mode="out-in">
               <div v-if="isTransition2" key="on">
@@ -52,8 +48,6 @@ Vue.component('home', {
             :style="$vuetify.breakpoint.xs ? {'transform':'scale(0.8)'} : {}"
             v-ripple
             @click="isTransition3 = !isTransition3"
-            @mouseenter="isTransition3 = true"
-            @mouseleave="isTransition3 = false"
           >
             <transition name="transition-fade" mode="out-in">
               <div v-if="isTransition3" key="on">
@@ -67,12 +61,18 @@ Vue.component('home', {
         </v-flex>
       </v-layout>
       <v-layout row wrap align-center justify-center>
-        <div
-          class="white--text display-4 text-xs-center"
-          style="opacity:0.7"
+        <transition
+          name="transition-fade"
+          appear
+          @after-appear="afterAppear"
         >
-          eSoft<br>Powers
-        </div>
+          <div
+            class="white--text display-4 text-xs-center"
+            style="opacity:0.7"
+          >
+            eSoft<br>Powers
+          </div>
+        </transition>
       </v-layout>
       <v-layout row wrap>
         <v-flex xs4 text-xs-center>
@@ -81,8 +81,6 @@ Vue.component('home', {
             :style="$vuetify.breakpoint.xs ? {'transform':'scale(0.8)'} : {}"
             v-ripple
             @click="isTransition4 = !isTransition4"
-            @mouseenter="isTransition4 = true"
-            @mouseleave="isTransition4 = false"
           >
             <transition name="transition-fade" mode="out-in">
               <div v-if="isTransition4" key="on">
@@ -100,8 +98,6 @@ Vue.component('home', {
             :style="$vuetify.breakpoint.xs ? {'transform':'scale(0.8)'} : {}"
             v-ripple
             @click="isTransition5 = !isTransition5"
-            @mouseenter="isTransition5 = true"
-            @mouseleave="isTransition5 = false"
           >
             <transition name="transition-fade" mode="out-in">
               <div v-if="isTransition5" key="on">
@@ -119,8 +115,6 @@ Vue.component('home', {
             :style="$vuetify.breakpoint.xs ? {'transform':'scale(0.8)'} : {}"
             v-ripple
             @click="isTransition6 = !isTransition6"
-            @mouseenter="isTransition6 = true"
-            @mouseleave="isTransition6 = false"
           >
             <transition name="transition-fade" mode="out-in">
               <div v-if="isTransition6" key="on">
@@ -147,8 +141,8 @@ Vue.component('home', {
 
   <section>
     <v-container grid-list-xl>
-      <v-layout row wrap justify-center class="mt-5">
-        <v-flex xs12 sm4 lg3 xl2>
+      <v-layout row wrap justify-space-around class="mt-5">
+        <v-flex xs12 sm4 lg3>
           <v-card
             raised hover ripple
             class="hover-card"
@@ -168,7 +162,7 @@ Vue.component('home', {
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm4 lg3 xl2>
+        <v-flex xs12 sm4 lg3>
           <v-card
             raised hover ripple
             class="hover-card"
@@ -188,7 +182,7 @@ Vue.component('home', {
             </v-card-title>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm4 lg3 xl2>
+        <v-flex xs12 sm4 lg3>
           <v-card
             raised hover ripple
             class="hover-card"
@@ -214,7 +208,7 @@ Vue.component('home', {
 
   <section>
     <v-layout row wrap class="my-5" align-right>
-      <v-flex xs12 offset-sm1 offset-lg2 offset-xl3>
+      <v-flex xs12 offset-sm1>
         <v-card flat class="transparent">
           <v-card-title primary-title>
             <v-icon medium class="blue--text text--lighten-2" style="margin-right:10px">thumb_up</v-icon>
@@ -263,5 +257,17 @@ Vue.component('home', {
         },
       ],
     }
+  },
+  methods: {
+    afterAppear(el) {
+      new Promise((resolve, reject) => {
+        setTimeout(() => { this.isTransition1 = true; }, 2000);
+        setTimeout(() => { this.isTransition2 = true; }, 2200);
+        setTimeout(() => { this.isTransition3 = true; }, 2400);
+        setTimeout(() => { this.isTransition4 = true; }, 2600);
+        setTimeout(() => { this.isTransition5 = true; }, 2800);
+        setTimeout(() => { this.isTransition6 = true; }, 3000);
+      });
+    },
   },
 })

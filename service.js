@@ -99,7 +99,7 @@ Vue.component('service', {
                   v-for="(item, i) in items"
                   :key="i"
                 >
-                  <v-carousel interval="60000">
+                  <v-carousel interval="60000" @input="item.page = $event+1">
                     <v-carousel-item v-for="(content, c) in item.contents" :key="c">
                       <v-card flat height="100%">
                         <v-card-title primary-title>
@@ -123,6 +123,8 @@ Vue.component('service', {
                             <span>{{ tech }}を検索</span>
                           </v-tooltip>
                         </a>
+                        <v-spacer></v-spacer>
+                        <div class="page-info subheading text-bold">{{ item.page }} / {{ item.contents.length }}</div>
                       </v-card>
                     </v-carousel-item>
                   </v-carousel>
@@ -142,6 +144,7 @@ Vue.component('service', {
       items: [
         {
           tab: '社会インフラ1',
+          page: 1,
           contents: [
             {
               title: '大規模施設向けデジタルサイネージシステムの表示品質の向上',
@@ -179,6 +182,7 @@ Vue.component('service', {
         },
         {
           tab: '社会インフラ2',
+          page: 1,
           contents: [
             {
               title: 'Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています',
@@ -220,6 +224,7 @@ Vue.component('service', {
         },
         {
           tab: 'エンタメシステム',
+          page: 1,
           contents: [
             {
               title: '現行及び次世代ゲーム機のプラットフォームの開発。',
@@ -233,6 +238,7 @@ Vue.component('service', {
         },
         {
           tab: '物販/物流システム',
+          page: 1,
           contents: [
             {
               title: 'ECサイトの保守・開発',
