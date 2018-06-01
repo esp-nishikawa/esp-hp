@@ -185,13 +185,12 @@ table th {
   text-decoration: underline;
 }
 
-.hover-card .hover-media .card__media__background {
-  transition: opacity 0.3s, transform 0.5s;
+.hover-card .hover-media {
+  transition: opacity 0.4s;
 }
 
-.hover-card:hover .hover-media .card__media__background {
+.hover-card:hover .hover-media {
   opacity: 0.8;
-  transform: scale3d(1.1, 1.1, 1);
 }
 
 .hover-card .hover-title {
