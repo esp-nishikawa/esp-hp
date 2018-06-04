@@ -208,7 +208,7 @@ Vue.component('home', {
 
   <section>
     <v-layout row wrap class="my-5" align-right>
-      <v-flex xs12 offset-sm1>
+      <v-flex xs12 sm10 offset-sm1>
         <v-card flat class="transparent">
           <v-card-title primary-title>
             <v-icon medium class="blue--text text--lighten-2" style="margin-right:10px">thumb_up</v-icon>
