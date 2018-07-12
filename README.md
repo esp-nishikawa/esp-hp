@@ -1,18 +1,53 @@
-HP確認用
-====
+# esp-hp
+***
 
-* 確認用URL（Forkした場合は`esp-nishikawa`部分が自分のユーザ名になる）<br>
-https://esp-nishikawa.github.io/esp-hp/
-* ここでは「.htaccess」が効かないのでトップページ以外でリロードすると404になります
-* GitHub Pagesで表示するためにベースURLを指定しているので必要に応じて書き換えが必要（最終的には削除）
+## 構成
+
+- [VueCLI](https://jp.vuejs.org/v2/guide/installation.html#CLI)を使った`SPA（シングルページアプリケーション）`の構成
 ```
-index.html
-<base href="https://esp-nishikawa.github.io/esp-hp/">
+リポジトリTOP
+│
+├ build ... Webpackビルド用フォルダ（さわる必要なし）
+│　├ build.js
+│　│　～
+│　└ webpack.prod.conf.js
+│
+├ config ... Webpack設定用フォルダ（さわる必要なし）
+│　├ dev.env.js
+│　├ index.js
+│　└ prod.env.js
+│
+├ dist ... 出力先フォルダ（ビルド後この配下をアップロード）
+│　└ .htaccess
+│
+├ src ... ソース（この配下を修正）
+│　│
+│　├ assets ... 画像用フォルダ
+│　│　├ ○○.gif
+│　│　│　～
+│　│　└ ○○.jpg
+│　│
+│　├ components ... 各ページのコンポーネント
+│　│　├ Corporate.vue
+│　│　├ Home.vue
+│　│　├ Recruit.vue
+│　│　└ Service.vue
+│　│
+│　├ router ... ルーティング（各ページのパスやタイトルなど）
+│　│　└ index.js
+│　│
+│　├ App.vue ... 共通部分のコンポーネント（ナビゲーションメニューや全体にかかるスタイルなど）
+│　└ main.js ... Vueメイン（外部モジュールのインポートなど）
+│
+├ Dockerfile
+├ index.html
+├ package.json
+├ package-lock.json
+└ README.md
 ```
-* 確認用のためnoindexしてるのでForkしても以下は消さないでください
-```
-index.html
-<meta name="robots" content="noindex">
-```
-* マテリアルデザインのFWは以下を使用（FWは色々あるけど個人的にvue.jsができるので）<br>
-https://vuetifyjs.com
+- マテリアルデザインのFWは[Vuetify.js](https://vuetifyjs.com)を使用
+
+## ビルド
+- ビルド環境のDockerイメージは[こちら](https://hub.docker.com/r/espnishikawa/esp-hp-build/)に登録
+- ビルド手順は[こちら](https://github.com/esp-nishikawa/esp-hp/wiki/build)を参照
+
