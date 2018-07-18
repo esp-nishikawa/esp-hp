@@ -148,7 +148,7 @@ export default {
   <div class="bg_main3"></div>
   <div class="bg_main4"></div>
   <section>
-    <v-container grid-list-xl>
+    <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-5">
         <v-flex xs12 sm8 md7 lg6 xl5>
           <v-card raised>
@@ -165,7 +165,7 @@ export default {
       </v-layout>
 
       <v-layout row wrap justify-center class="mt-5">
-        <v-flex xs12 sm4 xl3>
+        <v-flex xs12 sm4 xl3 :class="{'px-3': $vuetify.breakpoint.mdAndUp}">
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
               <h2>Business系</h2>
@@ -182,7 +182,7 @@ export default {
             </v-card-text>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm4 xl3>
+        <v-flex xs12 sm4 xl3 :class="{'px-3': $vuetify.breakpoint.mdAndUp}">
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
               <h2>Embedded系</h2>
@@ -198,7 +198,7 @@ export default {
             </v-card-text>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm4 xl3>
+        <v-flex xs12 sm4 xl3 :class="{'px-3': $vuetify.breakpoint.mdAndUp}">
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
               <h2>Web系</h2>

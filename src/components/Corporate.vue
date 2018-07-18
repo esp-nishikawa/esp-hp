@@ -1,8 +1,9 @@
 <script>
+import AccessDialog from './AccessDialog.vue'
+
 export default {
   data () {
     return {
-      isDialog: false,
       profile: {
         founding: '平成19年9月',
         capital: '９７０万円',
@@ -85,6 +86,9 @@ export default {
       ],
     }
   },
+  components: {
+    AccessDialog,
+  },
 }
 </script>
 
@@ -93,7 +97,7 @@ export default {
   <div class="bg_main1"></div>
   <div class="bg_main2"></div>
   <section>
-    <v-container grid-list-xl>
+    <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-5">
         <v-flex xs12 sm8 md7 lg6 xl5>
           <v-card raised>
@@ -161,48 +165,33 @@ export default {
               <h2>CONTACT</h2>
             </v-card-title>
             <v-card-text>
-              <h3>本社</h3>
-              <div>
-                〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ
-              </div>
-              <div>
-                <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
-              </div>
-              <div>
-                <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
-              </div>
-              <h3>お問い合わせ</h3>
-              <div>
-                <v-icon class="blue--text text--lighten-2">email</v-icon>
-                <a href="mailto:info@esoftpowers.com">info@esoftpowers.com</a>
-              </div>
+              <v-layout row wrap>
+                <v-flex xs12>
+                  <h3>本社</h3>
+                  <div>
+                    〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ
+                  </div>
+                  <div>
+                    <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
+                  </div>
+                  <div>
+                    <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
+                  </div>
+                </v-flex>
+              </v-layout>
+              <v-layout row wrap>
+                <v-flex xs12>
+                  <h3>お問い合わせ</h3>
+                  <div>
+                    <v-icon class="blue--text text--lighten-2">email</v-icon>
+                    <a href="mailto:info@esoftpowers.com">info@esoftpowers.com</a>
+                  </div>
+                </v-flex>
+              </v-layout>
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-dialog v-model="isDialog" max-width="720" :fullscreen="$vuetify.breakpoint.xs">
-                <v-btn flat color="blue darken-2" slot="activator">＜＜＜交通アクセス 地図＞＞＞</v-btn>
-                <v-card>
-                  <v-layout>
-                    <v-spacer></v-spacer>
-                    <v-btn icon @click="isDialog = false">
-                      <v-icon>close</v-icon>
-                    </v-btn>
-                  </v-layout>
-                  <v-card-title primary-title class="layout justify-center pt-0">
-                    <h2>ACCESS</h2>
-                  </v-card-title>
-                  <v-layout row wrap justify-center>
-                    <v-flex xs10>
-                      <h3>本社</h3>
-                      <div>・東京メトロ千代田線「二重橋前」駅4番出口徒歩2分</div>
-                      <div>・東京メトロ丸の内線「東京」駅から東京メトロ千代田線「二重橋前」駅方面4番出口徒歩2分</div>
-                      <div>・東京メトロ各線・都営三田線「大手町」駅から東京メトロ千代田線「二重橋前」駅方面4番出口徒歩2分</div>
-                      <div>・JR「東京」駅丸の内南口徒歩5分</div>
-                      <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?ll=35.6804534,139.7625194&q=東京都千代田区丸の内２丁目２−１+岸本ビルヂング&output=embed&t=m&z=17"></iframe>
-                    </v-flex>
-                  </v-layout>
-                </v-card>
-              </v-dialog>
+              <access-dialog btn-label="＜＜＜交通アクセス 地図＞＞＞"></access-dialog>
             </v-card-actions>
           </v-card>
         </v-flex>
