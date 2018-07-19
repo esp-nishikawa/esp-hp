@@ -12,11 +12,15 @@ export default {
 </script>
 
 <template>
-<v-dialog v-model="isDialog" max-width="600" :fullscreen="$vuetify.breakpoint.xs">
+<v-dialog v-model="isDialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
   <v-btn flat color="blue darken-2" slot="activator">{{ btnLabel }}</v-btn>
   <v-card>
-    <v-layout>
-      <v-spacer></v-spacer>
+    <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
+      <v-btn icon @click="isDialog = false">
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+    </v-layout>
+    <v-layout v-else justify-end>
       <v-btn icon @click="isDialog = false">
         <v-icon>close</v-icon>
       </v-btn>
@@ -36,6 +40,10 @@ export default {
       <div>・各種保険：健康保険、厚生年金保険、雇用保険、労災保険等完備</div>
       <div>・健保組合提携の宿泊・スポーツ施設を利用可</div>
     </v-card-text>
+    <v-card-actions v-if="$vuetify.breakpoint.smAndDown">
+      <v-spacer></v-spacer>
+      <v-btn flat color="blue darken-2" @click="isDialog = false">BACK</v-btn>
+    </v-card-actions>
   </v-card>
 </v-dialog>
 </template>

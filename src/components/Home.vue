@@ -382,7 +382,5 @@ export default {
 
 .text-sub {
   color: rgba(0,0,0,.54);
-  font-size: 14px;
-  font-weight: 400;
 }
 </style>

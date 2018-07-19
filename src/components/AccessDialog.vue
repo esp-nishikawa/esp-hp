@@ -12,11 +12,15 @@ export default {
 </script>
 
 <template>
-<v-dialog v-model="isDialog" max-width="720" :fullscreen="$vuetify.breakpoint.xs">
+<v-dialog v-model="isDialog" max-width="720" :fullscreen="$vuetify.breakpoint.smAndDown">
   <v-btn flat color="blue darken-2" slot="activator">{{ btnLabel }}</v-btn>
   <v-card>
-    <v-layout>
-      <v-spacer></v-spacer>
+    <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
+      <v-btn icon @click="isDialog = false">
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+    </v-layout>
+    <v-layout v-else justify-end>
       <v-btn icon @click="isDialog = false">
         <v-icon>close</v-icon>
       </v-btn>
@@ -32,6 +36,10 @@ export default {
       <div>・JR「東京」駅丸の内南口徒歩5分</div>
       <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.jp/maps?ll=35.6804534,139.7625194&q=東京都千代田区丸の内２丁目２−１+岸本ビルヂング&output=embed&t=m&z=17"></iframe>
     </v-card-text>
+    <v-card-actions v-if="$vuetify.breakpoint.smAndDown">
+      <v-spacer></v-spacer>
+      <v-btn flat color="blue darken-2" @click="isDialog = false">BACK</v-btn>
+    </v-card-actions>
   </v-card>
 </v-dialog>
 </template>

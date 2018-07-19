@@ -52,11 +52,15 @@ export default {
 </script>
 
 <template>
-<v-dialog v-model="isDialog" max-width="600" :fullscreen="$vuetify.breakpoint.xs">
+<v-dialog v-model="isDialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
   <v-btn flat color="blue darken-2" slot="activator">{{ btnLabel }}</v-btn>
   <v-card>
-    <v-layout>
-      <v-spacer></v-spacer>
+    <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
+      <v-btn icon @click="isDialog = false">
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+    </v-layout>
+    <v-layout v-else justify-end>
       <v-btn icon @click="isDialog = false">
         <v-icon>close</v-icon>
       </v-btn>
@@ -112,6 +116,10 @@ export default {
       <div>年２回（６月、１２月）</div>
       <div>※年間平均４.０カ月＋α（平成２９年度実績）</div>
     </v-card-text>
+    <v-card-actions v-if="$vuetify.breakpoint.smAndDown">
+      <v-spacer></v-spacer>
+      <v-btn flat color="blue darken-2" @click="isDialog = false">BACK</v-btn>
+    </v-card-actions>
   </v-card>
 </v-dialog>
 </template>
