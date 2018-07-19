@@ -7,16 +7,6 @@
 ```
 リポジトリTOP
 │
-├ build ... Webpackビルド用フォルダ（さわる必要なし）
-│　├ build.js
-│　│　～
-│　└ webpack.prod.conf.js
-│
-├ config ... Webpack設定用フォルダ（さわる必要なし）
-│　├ dev.env.js
-│　├ index.js
-│　└ prod.env.js
-│
 ├ dist ... 出力先フォルダ（ビルド後この配下をアップロード）
 │　└ .htaccess
 │
@@ -41,8 +31,6 @@
 │
 ├ Dockerfile
 ├ index.html
-├ package.json
-├ package-lock.json
 └ README.md
 ```
 - マテリアルデザインのFWは[Vuetify.js](https://vuetifyjs.com)を使用
