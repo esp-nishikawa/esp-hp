@@ -176,9 +176,9 @@ export default {
               </div>
               <h3>Key Technology</h3>
               <div>C/S,Web,制御システム開発</div>
-              <div>OS  :Windows</div>
-              <div>言語:VC++,C#, Java, VB, VB.NET</div>
-              <div>DB  :Oracle, SQLServer</div>
+              <div>OS: Windows</div>
+              <div>言語: VC++, C#, Java, VB, VB.NET</div>
+              <div>DB: Oracle, SQLServer</div>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -193,8 +193,8 @@ export default {
               </div>
               <h3>Key Technology</h3>
               <div>携帯電話、家電、事務機器等の組込システム開発</div>
-              <div>OS  :Linux, ITRON</div>
-              <div>言語:C, C++, C#,Python,Java</div>
+              <div>OS: Linux, ITRON</div>
+              <div>言語: C, C++, C#, Python, Java</div>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -210,8 +210,8 @@ export default {
               <h3>Key Technology</h3>
               <div>ECサイト開発、SEO対策、導入コンサル</div>
               <div>OS: Linux</div>
-              <div>言語: Java,JavaScript,JSP,HTML</div>
-              <div>DB :Oracle</div>
+              <div>言語: Java, JavaScript, JSP, PHP, HTML</div>
+              <div>DB: Oracle, PostgreSQL, MySQL</div>
             </v-card-text>
           </v-card>
         </v-flex>

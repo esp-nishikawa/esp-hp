@@ -337,6 +337,7 @@ export default {
 
 .hover-card .hover-title {
   position: relative;
+  font-size: 14px;
 }
 
 .hover-card .hover-title::before {
@@ -382,5 +383,7 @@ export default {
 
 .text-sub {
   color: rgba(0,0,0,.54);
+  font-size: 14px;
+  font-weight: 400;
 }
 </style>

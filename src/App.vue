@@ -18,7 +18,7 @@ export default {
       this.offsetTop = window.pageYOffset || document.documentElement.offsetTop || 0;
     },
     onEnter(el, done) {
-      TweenMax.fromTo(el, 0.3, {
+      TweenLite.fromTo(el, 0.3, {
         autoAlpha: 0,
         scale: 0.5,
       }, {
@@ -26,16 +26,16 @@ export default {
         scale: 1,
         transformOrigin: '50% 50%',
         ease: Power4.easeOut,
-        onComplete: done
+        onComplete: done,
       });
     },
     onLeave(el, done) {
-      TweenMax.fromTo(el, 0.2, {
+      TweenLite.fromTo(el, 0.2, {
         autoAlpha: 1,
       }, {
         autoAlpha: 0,
-          ease: Power4.easeOut,
-          onComplete: done
+        ease: Power4.easeOut,
+        onComplete: done,
       });
     }
   },
@@ -104,7 +104,7 @@ export default {
         color="purple"
         v-scroll="onScroll"
         v-show="offsetTop > 60"
-        @click.stop="$vuetify.goTo('#app')"
+        @click.native.stop="$vuetify.goTo(0)"
       >
         <v-icon v-html="'keyboard_arrow_up'"></v-icon>
       </v-btn>
