@@ -8,20 +8,24 @@
 リポジトリTOP
 │
 ├ dist ... 出力先フォルダ（ビルド後この配下をアップロード）
-│　└ .htaccess
+│　├ .htaccess
+│　├ favicon.ico
+│　├ robots.txt
+│　└ sitemap.xml
 │
 ├ src ... ソース（この配下を修正）
 │　│
 │　├ assets ... 画像用フォルダ
 │　│　├ ○○.gif
-│　│　│　～
-│　│　└ ○○.jpg
+│　│　├ ○○.jpg
+│　│　└ ～
 │　│
 │　├ components ... 各ページのコンポーネント
 │　│　├ Corporate.vue
 │　│　├ Home.vue
 │　│　├ Recruit.vue
-│　│　└ Service.vue
+│　│　├ Service.vue
+│　│　└ ～
 │　│
 │　├ router ... ルーティング（各ページのパスやタイトルなど）
 │　│　└ index.js
