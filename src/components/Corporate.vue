@@ -99,22 +99,6 @@ export default {
   <section>
     <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-5">
-        <v-flex xs12 sm8 md7 lg6 xl5>
-          <v-card raised>
-            <v-card-title primary-title class="layout justify-center">
-              <h2 :class="$vuetify.breakpoint.xs ? 'long-xs' : 'long-sm'">
-                株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
-              </h2>
-            </v-card-title>
-            <v-card-text>
-              Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。<br>
-              我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
-            </v-card-text>
-          </v-card>
-        </v-flex>
-      </v-layout>
-
-      <v-layout row wrap justify-center class="mt-5">
         <v-flex xs12 sm11 md10 lg9 xl8>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -201,7 +185,7 @@ export default {
         <v-flex xs12 sm10 md9 lg8 xl7>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
-              <h2 class="medium-xs">業績ハイライト</h2>
+              <h2 class="medium-size">業績ハイライト</h2>
             </v-card-title>
             <v-data-table
               :headers="performanceHeaders"

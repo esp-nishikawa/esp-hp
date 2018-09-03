@@ -220,7 +220,7 @@ export default {
         <v-flex xs12 sm10 md9 lg8 xl7>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
-              <h2 class="medium-xs">こんなことをしています</h2>
+              <h2 class="medium-size">こんなことをしています</h2>
             </v-card-title>
             <v-tabs
               v-model="activeTab"
@@ -241,9 +241,9 @@ export default {
                   v-for="(item, i) in items"
                   :key="i"
                 >
-                  <v-carousel interval="60000" @input="item.page = $event+1">
+                  <v-carousel dark interval="60000" @input="item.page = $event+1">
                     <v-carousel-item v-for="(content, c) in item.contents" :key="c">
-                      <v-card flat height="100%">
+                      <v-card light flat height="100%">
                         <v-card-title primary-title>
                           <div class="title">{{ content.title }}</div>
                         </v-card-title>
@@ -283,7 +283,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.chip:hover {
+.v-chip:hover {
   text-decoration: underline;
 }
 

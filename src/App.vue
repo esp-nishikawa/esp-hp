@@ -2,8 +2,8 @@
 export default {
   data () {
     return {
+      scrollTop: 0,
       isNavigation: false,
-      offsetTop: 0,
       items: [
         { icon: 'home', title: 'ホーム', path: '/' },
         { icon: 'flag', title: '会社概要', path: '/corporate' },
@@ -14,8 +14,7 @@ export default {
   },
   methods: {
     onScroll() {
-      if (!window) return;
-      this.offsetTop = window.pageYOffset || document.documentElement.offsetTop || 0;
+      this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     },
     onEnter(el, done) {
       TweenLite.fromTo(el, 0.3, {
@@ -103,7 +102,7 @@ export default {
         style="opacity:0.8"
         color="purple"
         v-scroll="onScroll"
-        v-show="offsetTop > 60"
+        v-show="scrollTop > 60"
         @click.native.stop="$vuetify.goTo(0)"
       >
         <v-icon v-html="'keyboard_arrow_up'"></v-icon>
@@ -201,21 +200,9 @@ h2 {
   letter-spacing: .2em;
 }
 
-h2.medium-xs {
+h2.medium-size {
   font-size: 25px;
   letter-spacing: .02em;
-}
-
-h2.long-xs {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: normal;
-}
-
-h2.long-sm {
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: normal;
 }
 
 h3 {
@@ -249,25 +236,25 @@ table th {
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
 }
 
-.tabs__bar {
+.v-tabs__bar {
   background: -webkit-linear-gradient(top, rgba(30,136,229,0.7), rgba(30,136,229,0.9));
   background: linear-gradient(to bottom, rgba(30,136,229,0.7), rgba(30,136,229,0.9));
   text-shadow: 0 -1px 0 rgba(30,136,229,0.9);
 }
 
-.tabs__div {
+.v-tabs__div {
   font-size: 15px!important;
   font-weight: 500!important;
   max-width: 160px!important;
 }
 
-.carousel__left, .carousel__right {
+.v-carousel__prev, .v-carousel__next {
   top: 100%!important;
   padding-bottom: 50px!important;
   z-index: 2!important;
 }
 
-.chip .chip__content {
+.v-chip .v-chip__content {
   cursor: inherit!important;
   user-select: none!important;
 }
