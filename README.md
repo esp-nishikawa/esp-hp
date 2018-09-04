@@ -27,6 +27,10 @@
 │　│　├ Service.vue
 │　│　└ ～
 │　│
+│　├ directives ... カスタムディレクティブ
+│　│　├ vpshow.js
+│　│　└ ～
+│　│
 │　├ router ... ルーティング（各ページのパスやタイトルなど）
 │　│　└ index.js
 │　│
