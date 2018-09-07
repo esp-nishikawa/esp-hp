@@ -149,15 +149,21 @@ export default {
   <section>
     <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-5">
-        <v-flex xs12 sm8 md7 lg6 xl5>
+        <v-flex xs12 sm9 md8 lg7 xl6>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
               <h2>MISSION</h2>
             </v-card-title>
             <v-card-text>
-              当社は若い会社ですが、経験豊富な精鋭を集め、適材適所に配置する事により、顧客満足度向上、かつ高効率な経営を実現します。
-              技術者不足の中、当社はPGから上流設計者を配置し、Embedded系、Business系を中心に、幅広く対応可能とします。
-              常駐型での対応を始め、継続受注し一括請負を行う事を目指します。
+              <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
+                <v-layout row wrap class="pt-3">
+                  <v-flex xs12>
+                    <div>当社は若い会社ですが、経験豊富な精鋭を集め、適材適所に配置する事により、顧客満足度向上、かつ高効率な経営を実現します。</div>
+                    <div>技術者不足の中、当社はPGから上流設計者を配置し、Embedded系、Business系を中心に、幅広く対応可能とします。</div>
+                    <div>常駐型での対応を始め、継続受注し一括請負を行う事を目指します。</div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -220,8 +226,11 @@ export default {
         <v-flex xs12 sm10 md9 lg8 xl7>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
-              <h2 class="medium-size">こんなことをしています</h2>
+              <h2>WORKS</h2>
             </v-card-title>
+            <v-card-text>
+              <h3>こんなことをしています</h3>
+            </v-card-text>
             <v-tabs
               v-model="activeTab"
               color="transparent"

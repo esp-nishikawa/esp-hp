@@ -205,7 +205,7 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="会社概要">会社概要</div>
+                <div class="text-main hover-text" data-hover="企業情報">企業情報</div>
                 <span class="text-sub hover-text" data-hover="About Us">About Us</span>
               </div>
             </v-card-title>
@@ -262,10 +262,10 @@ export default {
           <div v-vpshow="{ duration:2.0 }" class="title white--text my-3">
             株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
           </div>
-          <div v-vpshow="{ duration:3.0, delay:0.5 }" class="subheading white--text">
+          <div v-vpshow="{ duration:2.5, delay:0.5 }" class="subheading white--text">
             Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。
           </div>
-          <div v-vpshow="{ duration:3.0, delay:1.0 }" class="subheading white--text">
+          <div v-vpshow="{ duration:2.5, delay:1.0 }" class="subheading white--text">
             我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
           </div>
         </v-flex>

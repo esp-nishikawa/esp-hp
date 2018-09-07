@@ -4,12 +4,6 @@ export default {
     return {
       scrollTop: 0,
       isNavigation: false,
-      items: [
-        { icon: 'home', title: 'ホーム', path: '/' },
-        { icon: 'flag', title: '会社概要', path: '/corporate' },
-        { icon: 'work', title: '事業分野', path: '/service' },
-        { icon: 'face', title: '採用情報', path: '/recruit' },
-      ],
     }
   },
   methods: {
@@ -36,6 +30,35 @@ export default {
         ease: Power4.easeOut,
         onComplete: done,
       });
+    },
+    onBeforeEnter(el) {
+      this.$nextTick(() => {
+        this.$root.$emit('before-enter');
+      });
+    },
+    onAfterEnter(el) {
+      this.$nextTick(() => {
+        this.$root.$emit('after-enter');
+      });
+    },
+  },
+  watch: {
+    '$route'(to, from) {
+      if (to.hash) {
+        if (to.path === from.path) {
+          const anchor = document.querySelector(to.hash);
+          if (anchor) {
+            this.$vuetify.goTo(anchor.offsetTop);
+          }
+        } else {
+          this.$root.$once('after-enter', () => {
+            const anchor = document.querySelector(to.hash);
+            if (anchor) {
+              this.$vuetify.goTo(anchor.offsetTop);
+            }
+          });
+        }
+      }
     }
   },
   name: 'App'
@@ -51,19 +74,59 @@ export default {
       v-model="isNavigation"
     >
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.path"
-          ripple
-        >
+        <v-list-tile to="/" ripple>
           <v-list-tile-action>
-            <v-icon light v-html="item.icon"></v-icon>
+            <v-icon light>home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            <v-list-tile-title>ホーム</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-group prepend-icon="flag">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>企業情報</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile to="/corporate#company" ripple>
+            <v-list-tile-action></v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>会社概要</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile to="/corporate#office" ripple>
+            <v-list-tile-action></v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>オフィス環境</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
+
+        <v-list-tile to="/service" ripple>
+          <v-list-tile-action>
+            <v-icon light>work</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>事業分野</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-group prepend-icon="face">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>採用情報</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile to="/recruit#new-graduate" ripple>
+            <v-list-tile-action></v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>新卒採用</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile to="/recruit#mid-career" ripple>
+            <v-list-tile-action></v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>中途採用</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -83,7 +146,13 @@ export default {
       </v-toolbar-title>
     </v-toolbar>
 
-    <transition @enter="onEnter" @leave="onLeave" mode="out-in">
+    <transition
+      @enter="onEnter"
+      @leave="onLeave"
+      @before-enter="onBeforeEnter"
+      @after-enter="onAfterEnter"
+      mode="out-in"
+    >
       <router-view/>
     </transition>
 
@@ -105,7 +174,7 @@ export default {
         v-show="scrollTop > 60"
         @click.native.stop="$vuetify.goTo(0)"
       >
-        <v-icon v-html="'keyboard_arrow_up'"></v-icon>
+        <v-icon>keyboard_arrow_up</v-icon>
       </v-btn>
     </v-fab-transition>
   </v-app>
@@ -198,11 +267,6 @@ h2 {
   font-size: 30px;
   font-weight: 700;
   letter-spacing: .2em;
-}
-
-h2.medium-size {
-  font-size: 25px;
-  letter-spacing: .02em;
 }
 
 h3 {
