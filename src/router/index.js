@@ -20,7 +20,7 @@ const router = new Router({
       path: '/corporate',
       name: 'Corporate',
       component: Corporate,
-      meta: {title: '企業情報'}
+      meta: {title: '会社案内'}
     },
     {
       path: '/service',

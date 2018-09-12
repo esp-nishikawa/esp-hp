@@ -12,6 +12,11 @@ export default {
       isTransition6: false,
       informations: [
         {
+          date: '2018-9-12',
+          title: 'サイト更新 オフィス画像を掲載しました。',
+          description: `オフィス環境ページは<a href='http://esoftpowers.com/corporate#office'>こちら</a>`,
+        },
+        {
           date: '2018-7-12',
           title: 'サイトリニューアルしました。',
           description: `・２０１９年度新卒採用情報を掲載しました。<br>
@@ -205,7 +210,7 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="企業情報">企業情報</div>
+                <div class="text-main hover-text" data-hover="会社案内">会社案内</div>
                 <span class="text-sub hover-text" data-hover="About Us">About Us</span>
               </div>
             </v-card-title>

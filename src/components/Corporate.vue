@@ -1,5 +1,6 @@
 <script>
 import AccessDialog from './AccessDialog.vue'
+import OfficeImage from './OfficeImage.vue'
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
@@ -89,6 +90,7 @@ export default {
   },
   components: {
     AccessDialog,
+    OfficeImage,
   },
   directives: {
     Vpshow,
@@ -101,7 +103,7 @@ export default {
   <div class="bg_main1"></div>
   <div class="bg_main2"></div>
 
-  <section id="company">
+  <section id="profile">
     <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-5">
         <v-flex xs12 sm11 md10 lg9 xl8>
@@ -243,50 +245,20 @@ export default {
           </v-card-text>
           <v-container grid-list-md fluid>
             <v-layout row wrap>
-              <v-flex v-vpshow="{ duration:2.0 }" xs12 sm6>
-                <v-img
-                  :src="require('@/assets/office_entrance.jpg')"
-                >
-                  <v-layout fill-height align-end justify-end>
-                    <div v-vpshow="{ duration:2.0, y:-100 }" class="body-2 white--text mb-1 mr-3">エントランス</div>
-                  </v-layout>
-                </v-img>
+              <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4 offset-xl2>
+                <office-image :item-index="0"></office-image>
               </v-flex>
-              <v-flex v-vpshow="{ duration:3.0 }" xs12 sm6>
-                <v-img
-                  :src="require('@/assets/office_lounge.jpg')"
-                >
-                  <v-layout fill-height align-end justify-end>
-                    <div v-vpshow="{ duration:2.0, y:-100 }" class="body-2 white--text mb-1 mr-3">ラウンジ</div>
-                  </v-layout>
-                </v-img>
+              <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
+                <office-image :item-index="1"></office-image>
               </v-flex>
-              <v-flex v-vpshow="{ duration:2.5 }" xs12 sm8 offset-sm2>
-                <v-img
-                  :src="require('@/assets/office_workspace.jpg')"
-                >
-                  <v-layout fill-height align-end justify-end>
-                    <div v-vpshow="{ duration:2.0, y:-100 }" class="body-2 white--text mb-1 mr-3">ワークスペース</div>
-                  </v-layout>
-                </v-img>
+              <v-flex v-vpshow="{ duration:2.5 }" xs12 md8 offset-md2 xl4 offset-xl0>
+                <office-image :item-index="2"></office-image>
               </v-flex>
-              <v-flex v-vpshow="{ duration:2.0 }" xs12 sm6>
-                <v-img
-                  :src="require('@/assets/office_boardroom.jpg')"
-                >
-                  <v-layout fill-height align-end justify-end>
-                    <div v-vpshow="{ duration:2.0, y:-100 }" class="body-2 white--text mb-1 mr-3">会議室</div>
-                  </v-layout>
-                </v-img>
+              <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4>
+                <office-image :item-index="3"></office-image>
               </v-flex>
-              <v-flex v-vpshow="{ duration:3.0 }" xs12 sm6>
-                <v-img
-                  :src="require('@/assets/office_library.jpg')"
-                >
-                  <v-layout fill-height align-end justify-end>
-                    <div v-vpshow="{ duration:2.0, y:-100 }" class="body-2 white--text mb-1 mr-3">ライブラリー</div>
-                  </v-layout>
-                </v-img>
+              <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
+                <office-image :item-index="4"></office-image>
               </v-flex>
             </v-layout>
           </v-container>
@@ -295,6 +267,5 @@ export default {
     </v-layout>
     </v-container>
   </section>
-
 </v-content>
 </template>
