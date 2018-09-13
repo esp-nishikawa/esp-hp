@@ -12,7 +12,7 @@ export default {
       isTransition6: false,
       informations: [
         {
-          date: '2018-9-12',
+          date: '2018-9-18',
           title: 'サイト更新 オフィス画像を掲載しました。',
           description: `オフィス環境ページは<a href='http://esoftpowers.com/corporate#office'>こちら</a>`,
         },

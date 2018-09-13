@@ -251,7 +251,7 @@ export default {
               <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
                 <office-image :item-index="1"></office-image>
               </v-flex>
-              <v-flex v-vpshow="{ duration:2.5 }" xs12 md8 offset-md2 xl4 offset-xl0>
+              <v-flex v-vpshow="{ duration:2.5 }" xs12 md6 offset-md3 xl4 offset-xl0>
                 <office-image :item-index="2"></office-image>
               </v-flex>
               <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4>

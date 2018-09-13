@@ -59,7 +59,7 @@ export default {
     </v-layout>
   </v-img>
 
-  <v-dialog v-model="isDialog" max-width="2000">
+  <v-dialog v-model="isDialog" max-width="960">
     <v-card>
       <v-layout>
         <v-fade-transition leave-absolute>
