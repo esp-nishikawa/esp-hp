@@ -2,20 +2,13 @@
 export default {
   data () {
     return {
+      scrollTop: 0,
       isNavigation: false,
-      offsetTop: 0,
-      items: [
-        { icon: 'home', title: 'ホーム', path: '/' },
-        { icon: 'flag', title: '会社概要', path: '/corporate' },
-        { icon: 'work', title: '事業分野', path: '/service' },
-        { icon: 'face', title: '採用情報', path: '/recruit' },
-      ],
     }
   },
   methods: {
     onScroll() {
-      if (!window) return;
-      this.offsetTop = window.pageYOffset || document.documentElement.offsetTop || 0;
+      this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     },
     onEnter(el, done) {
       TweenLite.fromTo(el, 0.3, {
@@ -37,6 +30,35 @@ export default {
         ease: Power4.easeOut,
         onComplete: done,
       });
+    },
+    onBeforeEnter(el) {
+      this.$nextTick(() => {
+        this.$root.$emit('before-enter');
+      });
+    },
+    onAfterEnter(el) {
+      this.$nextTick(() => {
+        this.$root.$emit('after-enter');
+      });
+    },
+  },
+  watch: {
+    '$route'(to, from) {
+      if (to.hash) {
+        if (to.path === from.path) {
+          const anchor = document.querySelector(to.hash);
+          if (anchor) {
+            this.$vuetify.goTo(anchor.offsetTop);
+          }
+        } else {
+          this.$root.$once('after-enter', () => {
+            const anchor = document.querySelector(to.hash);
+            if (anchor) {
+              this.$vuetify.goTo(anchor.offsetTop);
+            }
+          });
+        }
+      }
     }
   },
   name: 'App'
@@ -52,19 +74,67 @@ export default {
       v-model="isNavigation"
     >
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.path"
-          ripple
-        >
+        <v-list-tile to="/" ripple>
           <v-list-tile-action>
-            <v-icon light v-html="item.icon"></v-icon>
+            <v-icon light>home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            <v-list-tile-title>ホーム</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-group prepend-icon="flag">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>会社案内</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile to="/corporate#profile" ripple>
+            <v-list-tile-action>
+              <div></div>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>会社概要</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile to="/corporate#office" ripple>
+            <v-list-tile-action>
+              <div></div>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>オフィス環境</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
+
+        <v-list-tile to="/service" ripple>
+          <v-list-tile-action>
+            <v-icon light>work</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>事業分野</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-group prepend-icon="face">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>採用情報</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile to="/recruit#new-graduate" ripple>
+            <v-list-tile-action>
+              <div></div>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>新卒採用</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile to="/recruit#mid-career" ripple>
+            <v-list-tile-action>
+              <div></div>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>中途採用</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -84,7 +154,13 @@ export default {
       </v-toolbar-title>
     </v-toolbar>
 
-    <transition @enter="onEnter" @leave="onLeave" mode="out-in">
+    <transition
+      @enter="onEnter"
+      @leave="onLeave"
+      @before-enter="onBeforeEnter"
+      @after-enter="onAfterEnter"
+      mode="out-in"
+    >
       <router-view/>
     </transition>
 
@@ -103,10 +179,10 @@ export default {
         style="opacity:0.8"
         color="purple"
         v-scroll="onScroll"
-        v-show="offsetTop > 60"
+        v-show="scrollTop > 60"
         @click.native.stop="$vuetify.goTo(0)"
       >
-        <v-icon v-html="'keyboard_arrow_up'"></v-icon>
+        <v-icon>keyboard_arrow_up</v-icon>
       </v-btn>
     </v-fab-transition>
   </v-app>
@@ -201,23 +277,6 @@ h2 {
   letter-spacing: .2em;
 }
 
-h2.medium-xs {
-  font-size: 25px;
-  letter-spacing: .02em;
-}
-
-h2.long-xs {
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: normal;
-}
-
-h2.long-sm {
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: normal;
-}
-
 h3 {
   position: relative;
   margin: 16px 0 2px 0;
@@ -249,25 +308,25 @@ table th {
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
 }
 
-.tabs__bar {
+.v-tabs__bar {
   background: -webkit-linear-gradient(top, rgba(30,136,229,0.7), rgba(30,136,229,0.9));
   background: linear-gradient(to bottom, rgba(30,136,229,0.7), rgba(30,136,229,0.9));
   text-shadow: 0 -1px 0 rgba(30,136,229,0.9);
 }
 
-.tabs__div {
+.v-tabs__div {
   font-size: 15px!important;
   font-weight: 500!important;
   max-width: 160px!important;
 }
 
-.carousel__left, .carousel__right {
+.v-carousel__prev, .v-carousel__next {
   top: 100%!important;
   padding-bottom: 50px!important;
   z-index: 2!important;
 }
 
-.chip .chip__content {
+.v-chip .v-chip__content {
   cursor: inherit!important;
   user-select: none!important;
 }

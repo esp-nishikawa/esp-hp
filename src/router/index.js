@@ -20,7 +20,7 @@ const router = new Router({
       path: '/corporate',
       name: 'Corporate',
       component: Corporate,
-      meta: {title: '会社概要'}
+      meta: {title: '会社案内'}
     },
     {
       path: '/service',
@@ -36,14 +36,22 @@ const router = new Router({
     },
   ],
   scrollBehavior (to, from, savedPosition) {
-    let position = { x: 0, y: 0 };
-    //if (savedPosition) {
-    //  position = savedPosition;
-    //}
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
+      router.app.$root.$once('before-enter', () => {
+        let position = { x: 0, y: 0 };
+        if (to.hash) {
+          const anchor = document.querySelector(to.hash);
+          if (anchor) {
+            position = { x: anchor.offsetLeft, y: anchor.offsetTop };
+          } else {
+            position = { selector: to.hash };
+          }
+        }
+        //if (savedPosition) {
+        //  position = savedPosition;
+        //}
         resolve(position);
-      }, 200)
+      });
     });
   },
 });

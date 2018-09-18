@@ -1,5 +1,7 @@
 <script>
 import AccessDialog from './AccessDialog.vue'
+import OfficeImage from './OfficeImage.vue'
+import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
   data () {
@@ -88,6 +90,10 @@ export default {
   },
   components: {
     AccessDialog,
+    OfficeImage,
+  },
+  directives: {
+    Vpshow,
   },
 }
 </script>
@@ -96,24 +102,9 @@ export default {
 <v-content class="bg_main">
   <div class="bg_main1"></div>
   <div class="bg_main2"></div>
-  <section>
-    <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-5">
-        <v-flex xs12 sm8 md7 lg6 xl5>
-          <v-card raised>
-            <v-card-title primary-title class="layout justify-center">
-              <h2 :class="$vuetify.breakpoint.xs ? 'long-xs' : 'long-sm'">
-                株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
-              </h2>
-            </v-card-title>
-            <v-card-text>
-              Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。<br>
-              我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
-            </v-card-text>
-          </v-card>
-        </v-flex>
-      </v-layout>
 
+  <section id="profile">
+    <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-5">
         <v-flex xs12 sm11 md10 lg9 xl8>
           <v-card raised>
@@ -121,38 +112,40 @@ export default {
               <h2>PROFILE</h2>
             </v-card-title>
             <v-card-text>
-              <v-layout row wrap>
-                <v-flex xs6>
-                  <h3>創立</h3>
-                  <div>{{ profile.founding }}</div>
-                </v-flex>
-                <v-flex xs6>
-                  <h3>資本金</h3>
-                  <div>{{ profile.capital }}</div>
-                </v-flex>
-              </v-layout>
-              <v-layout row wrap>
-                <v-flex xs6>
-                  <h3>代表取締役</h3>
-                  <div>{{ profile.ceo }}</div>
-                </v-flex>
-                <v-flex xs6>
-                  <h3>取締役</h3>
-                  <div v-for="(director, d) in profile.directors" :key="d">{{ director }}</div>
-                </v-flex>
-              </v-layout>
-              <v-layout row wrap>
-                <v-flex xs12 sm6>
-                  <h3>取引銀行</h3>
-                  <div v-for="(bank, b) in profile.banks" :key="b">{{ bank }}</div>
-                </v-flex>
-                <v-flex xs12 sm6>
-                  <h3>主要取引先</h3>
-                  <div v-for="(customer, c) in profile.customers" :key="c">{{ customer }}</div>
-                  <div>他</div>
-                  <div>（敬称略、50音順）</div>
-                </v-flex>
-              </v-layout>
+              <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
+                <v-layout row wrap>
+                  <v-flex xs6>
+                    <h3>創立</h3>
+                    <div>{{ profile.founding }}</div>
+                  </v-flex>
+                  <v-flex xs6>
+                    <h3>資本金</h3>
+                    <div>{{ profile.capital }}</div>
+                  </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                  <v-flex xs6>
+                    <h3>代表取締役</h3>
+                    <div>{{ profile.ceo }}</div>
+                  </v-flex>
+                  <v-flex xs6>
+                    <h3>取締役</h3>
+                    <div v-for="(director, d) in profile.directors" :key="d">{{ director }}</div>
+                  </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                  <v-flex xs12 sm6>
+                    <h3>取引銀行</h3>
+                    <div v-for="(bank, b) in profile.banks" :key="b">{{ bank }}</div>
+                  </v-flex>
+                  <v-flex xs12 sm6>
+                    <h3>主要取引先</h3>
+                    <div v-for="(customer, c) in profile.customers" :key="c">{{ customer }}</div>
+                    <div>他</div>
+                    <div>（敬称略、50音順）</div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -165,29 +158,31 @@ export default {
               <h2>CONTACT</h2>
             </v-card-title>
             <v-card-text>
-              <v-layout row wrap>
-                <v-flex xs12>
-                  <h3>本社</h3>
-                  <div>
-                    〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ
-                  </div>
-                  <div>
-                    <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
-                  </div>
-                  <div>
-                    <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
-                  </div>
-                </v-flex>
-              </v-layout>
-              <v-layout row wrap>
-                <v-flex xs12>
-                  <h3>お問い合わせ</h3>
-                  <div>
-                    <v-icon class="blue--text text--lighten-2">email</v-icon>
-                    <a href="mailto:info@esoftpowers.com">info@esoftpowers.com</a>
-                  </div>
-                </v-flex>
-              </v-layout>
+              <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'py-0'">
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <h3>本社</h3>
+                    <div>
+                      〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ
+                    </div>
+                    <div>
+                      <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
+                    </div>
+                    <div>
+                      <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
+                    </div>
+                  </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <h3>お問い合わせ</h3>
+                    <div>
+                      <v-icon class="blue--text text--lighten-2">email</v-icon>
+                      <a href="mailto:info@esoftpowers.com">info@esoftpowers.com</a>
+                    </div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -201,8 +196,11 @@ export default {
         <v-flex xs12 sm10 md9 lg8 xl7>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
-              <h2 class="medium-xs">業績ハイライト</h2>
+              <h2>HISTORY</h2>
             </v-card-title>
+            <v-card-text>
+              <h3>業績ハイライト</h3>
+            </v-card-text>
             <v-data-table
               :headers="performanceHeaders"
               :items="performanceItems"
@@ -218,6 +216,55 @@ export default {
           </v-card>
         </v-flex>
       </v-layout>
+    </v-container>
+  </section>
+
+  <section id="office">
+    <v-container grid-list-md>
+    <v-layout row wrap justify-center class="mt-5">
+      <v-flex xs12>
+        <v-card raised>
+          <v-card-title primary-title class="layout justify-center">
+            <h2>OFFICE</h2>
+          </v-card-title>
+          <v-card-text>
+            <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
+              <v-layout row wrap class="py-3">
+                <v-flex xs12>
+                  <div>当社は、ビジネスの中心地にある「ビジネスエアポート丸の内」のレンタルオフィスを拠点としてます。</div>
+                  <div>完全個室のプライベートなオフィスの他、シェアワークプレイスを利用してます。</div>
+                </v-flex>
+              </v-layout>
+              <v-layout row wrap>
+                <v-flex xs12>
+                  <h3>シェアワークプレイス</h3>
+                  <div>皇居のお堀に面したシェアワークプレイス。</div>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-text>
+          <v-container grid-list-md fluid>
+            <v-layout row wrap>
+              <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4 offset-xl2>
+                <office-image :item-index="0"></office-image>
+              </v-flex>
+              <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
+                <office-image :item-index="1"></office-image>
+              </v-flex>
+              <v-flex v-vpshow="{ duration:2.5 }" xs12 md6 offset-md3 xl4 offset-xl0>
+                <office-image :item-index="2"></office-image>
+              </v-flex>
+              <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4>
+                <office-image :item-index="3"></office-image>
+              </v-flex>
+              <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
+                <office-image :item-index="4"></office-image>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
     </v-container>
   </section>
 </v-content>

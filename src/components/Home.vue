@@ -1,4 +1,6 @@
 <script>
+import { Vpshow } from '@/directives/vpshow.js';
+
 export default {
   data () {
     return {
@@ -9,6 +11,11 @@ export default {
       isTransition5: false,
       isTransition6: false,
       informations: [
+        {
+          date: '2018-9-18',
+          title: 'サイト更新 オフィス画像を掲載しました。',
+          description: `オフィス環境ページは<a href='http://esoftpowers.com/corporate#office'>こちら</a>`,
+        },
         {
           date: '2018-7-12',
           title: 'サイトリニューアルしました。',
@@ -40,6 +47,9 @@ export default {
         setTimeout(() => { this.isTransition6 = true; }, 3000);
       });
     },
+  },
+  directives: {
+    Vpshow,
   },
 }
 </script>
@@ -177,7 +187,7 @@ export default {
   <section>
     <v-layout row wrap justify-center class="mt-5">
       <div class="text-xs-center">
-        <div class="headline">株式会社 イーソフトパワーズ （ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
+        <div class="headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
         <span class="title">ご用命は<a href="mailto:info@esoftpowers.com">こちら</a>まで！</span>
       </div>
     </v-layout>
@@ -185,22 +195,22 @@ export default {
 
   <section>
     <v-container grid-list-xl>
-      <v-layout row wrap justify-space-around class="mt-5">
+      <v-layout row wrap justify-space-around class="my-5">
         <v-flex xs12 sm4 xl3>
           <v-card
             raised hover ripple
             class="hover-card"
             @click.native="$router.push('/corporate')"
           >
-            <v-card-media
+            <v-img
               class="hover-media"
               :src="require('@/assets/media_corporate.jpg')"
               :height="$vuetify.breakpoint.xs ? 128 : 200"
             >
-            </v-card-media>
+            </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="会社概要">会社概要</div>
+                <div class="text-main hover-text" data-hover="会社案内">会社案内</div>
                 <span class="text-sub hover-text" data-hover="About Us">About Us</span>
               </div>
             </v-card-title>
@@ -212,12 +222,12 @@ export default {
             class="hover-card"
             @click.native="$router.push('/service')"
           >
-            <v-card-media
+            <v-img
               class="hover-media"
               :src="require('@/assets/media_service.jpg')"
               :height="$vuetify.breakpoint.xs ? 128 : 200"
             >
-            </v-card-media>
+            </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
                 <div class="text-main hover-text" data-hover="事業分野">事業分野</div>
@@ -232,12 +242,12 @@ export default {
             class="hover-card"
             @click.native="$router.push('/recruit')"
           >
-            <v-card-media
+            <v-img
               class="hover-media"
               :src="require('@/assets/media_recruit.jpg')"
               :height="$vuetify.breakpoint.xs ? 128 : 200"
             >
-            </v-card-media>
+            </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
                 <div class="text-main hover-text" data-hover="採用情報">採用情報</div>
@@ -248,6 +258,24 @@ export default {
         </v-flex>
       </v-layout>
     </v-container>
+  </section>
+
+  <section>
+    <v-parallax :src="require('@/assets/parallax_home2.jpg')" height="380" class="mt-5">
+      <v-layout row wrap align-center justify-center>
+        <v-flex xs10 text-xs-center>
+          <div v-vpshow="{ duration:2.0 }" class="title white--text my-3">
+            株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
+          </div>
+          <div v-vpshow="{ duration:2.5, delay:0.5 }" class="subheading white--text">
+            Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。
+          </div>
+          <div v-vpshow="{ duration:2.5, delay:1.0 }" class="subheading white--text">
+            我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
+          </div>
+        </v-flex>
+      </v-layout>
+    </v-parallax>
   </section>
 
   <section>
