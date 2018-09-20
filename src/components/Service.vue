@@ -148,7 +148,7 @@ export default {
   <div class="bg_main4"></div>
   <section>
     <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-5">
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm9 md8 lg7 xl6>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -168,8 +168,10 @@ export default {
           </v-card>
         </v-flex>
       </v-layout>
+    </v-container>
 
-      <v-layout row wrap justify-center class="mt-5">
+    <v-container grid-list-md>
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm4 xl3 :class="{'px-3': $vuetify.breakpoint.mdAndUp}">
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -221,8 +223,10 @@ export default {
           </v-card>
         </v-flex>
       </v-layout>
+    </v-container>
 
-      <v-layout row wrap justify-center class="mt-5">
+    <v-container grid-list-md>
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm10 md9 lg8 xl7>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">

@@ -48,16 +48,24 @@ export default {
 </script>
 
 <template>
-<div>
+<v-card
+  :hover="$vuetify.breakpoint.mdAndUp"
+  :ripple="$vuetify.breakpoint.mdAndUp"
+  :style="$vuetify.breakpoint.mdAndUp ? {'cursor': 'pointer'} : {'cursor': 'default'}"
+  class="image-card"
+  @click.native="onImageClick"
+>
   <v-img
     :src="items[itemIndex].src"
-    :style="$vuetify.breakpoint.mdAndUp ? {'cursor': 'pointer'} : {'cursor': 'default'}"
-    @click.native="onImageClick"
+    :class="{'hover-image': $vuetify.breakpoint.mdAndUp}"
   >
-    <v-layout fill-height align-end justify-end>
-      <div v-vpshow="{ duration:2.0, y:-100 }" class="body-2 white--text mb-1 mr-3">{{ items[itemIndex].title }}</div>
-    </v-layout>
   </v-img>
+  <div
+    v-vpshow="{ duration:2.0, y:-50 }"
+    class="image-title body-2 white--text mb-1 mr-3"
+  >
+    {{ items[itemIndex].title }}
+  </div>
 
   <v-dialog v-model="isDialog" max-width="960">
     <v-card>
@@ -80,5 +88,27 @@ export default {
       </v-carousel>
     </v-card>
   </v-dialog>
-</div>
+</v-card>
 </template>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.image-card {
+  position:relative;
+  overflow: hidden;
+}
+
+.image-card .hover-image {
+  transition: transform 0.8s;
+}
+
+.image-card:hover .hover-image {
+  transform: scale(1.05);
+}
+
+.image-card .image-title {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+</style>

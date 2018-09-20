@@ -17,7 +17,7 @@ export default {
 
   <section id="new-graduate">
     <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-5">
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm11 md10 lg9 xl8>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -87,7 +87,7 @@ export default {
 
   <section id="mid-career">
     <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-5">
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm11 md10 lg9 xl8>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">

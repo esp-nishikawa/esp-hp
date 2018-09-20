@@ -105,7 +105,7 @@ export default {
 
   <section id="profile">
     <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-5">
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm11 md10 lg9 xl8>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -150,8 +150,10 @@ export default {
           </v-card>
         </v-flex>
       </v-layout>
+    </v-container>
 
-      <v-layout row wrap justify-center class="mt-5">
+    <v-container grid-list-md>
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm7 md6 lg5 xl4>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -191,8 +193,10 @@ export default {
           </v-card>
         </v-flex>
       </v-layout>
+    </v-container>
 
-      <v-layout row wrap justify-center class="mt-5">
+    <v-container grid-list-md>
+      <v-layout row wrap justify-center class="mt-3">
         <v-flex xs12 sm10 md9 lg8 xl7>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
@@ -221,50 +225,50 @@ export default {
 
   <section id="office">
     <v-container grid-list-md>
-    <v-layout row wrap justify-center class="mt-5">
-      <v-flex xs12>
-        <v-card raised>
-          <v-card-title primary-title class="layout justify-center">
-            <h2>OFFICE</h2>
-          </v-card-title>
-          <v-card-text>
-            <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
-              <v-layout row wrap class="py-3">
-                <v-flex xs12>
-                  <div>当社は、ビジネスの中心地にある「ビジネスエアポート丸の内」のレンタルオフィスを拠点としてます。</div>
-                  <div>完全個室のプライベートなオフィスの他、シェアワークプレイスを利用してます。</div>
-                </v-flex>
-              </v-layout>
+      <v-layout row wrap justify-center class="mt-3">
+        <v-flex xs12>
+          <v-card raised>
+            <v-card-title primary-title class="layout justify-center">
+              <h2>OFFICE</h2>
+            </v-card-title>
+            <v-card-text>
+              <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
+                <v-layout row wrap class="py-3">
+                  <v-flex xs12>
+                    <div>当社は、ビジネスの中心地にある「ビジネスエアポート丸の内」のレンタルオフィスを拠点としてます。</div>
+                    <div>完全個室のプライベートなオフィスの他、シェアワークプレイスを利用してます。</div>
+                  </v-flex>
+                </v-layout>
+                <v-layout row wrap>
+                  <v-flex xs12>
+                    <h3>シェアワークプレイス</h3>
+                    <div>皇居のお堀に面したシェアワークプレイス。</div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-text>
+            <v-container grid-list-md fluid>
               <v-layout row wrap>
-                <v-flex xs12>
-                  <h3>シェアワークプレイス</h3>
-                  <div>皇居のお堀に面したシェアワークプレイス。</div>
+                <v-flex v-vpshow="{ duration:2.0, y:100 }" xs12 md6 xl4 offset-xl2>
+                  <office-image :item-index="0"></office-image>
+                </v-flex>
+                <v-flex v-vpshow="{ duration:3.0, y:100 }" xs12 md6 xl4>
+                  <office-image :item-index="1"></office-image>
+                </v-flex>
+                <v-flex v-vpshow="{ duration:2.5, y:100 }" xs12 md6 offset-md3 xl4 offset-xl0>
+                  <office-image :item-index="2"></office-image>
+                </v-flex>
+                <v-flex v-vpshow="{ duration:2.0, y:100 }" xs12 md6 xl4>
+                  <office-image :item-index="3"></office-image>
+                </v-flex>
+                <v-flex v-vpshow="{ duration:3.0, y:100 }" xs12 md6 xl4>
+                  <office-image :item-index="4"></office-image>
                 </v-flex>
               </v-layout>
             </v-container>
-          </v-card-text>
-          <v-container grid-list-md fluid>
-            <v-layout row wrap>
-              <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4 offset-xl2>
-                <office-image :item-index="0"></office-image>
-              </v-flex>
-              <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
-                <office-image :item-index="1"></office-image>
-              </v-flex>
-              <v-flex v-vpshow="{ duration:2.5 }" xs12 md6 offset-md3 xl4 offset-xl0>
-                <office-image :item-index="2"></office-image>
-              </v-flex>
-              <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4>
-                <office-image :item-index="3"></office-image>
-              </v-flex>
-              <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
-                <office-image :item-index="4"></office-image>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card>
-      </v-flex>
-    </v-layout>
+          </v-card>
+        </v-flex>
+      </v-layout>
     </v-container>
   </section>
 </v-content>

@@ -185,17 +185,19 @@ export default {
   </section>
 
   <section>
-    <v-layout row wrap justify-center class="mt-5">
-      <div class="text-xs-center">
-        <div class="headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
-        <span class="title">ご用命は<a href="mailto:info@esoftpowers.com">こちら</a>まで！</span>
-      </div>
-    </v-layout>
+    <v-container grid-list-md>
+      <v-layout row wrap justify-center class="mt-3">
+        <div class="text-xs-center">
+          <div class="headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
+          <span class="title">ご用命は<a href="mailto:info@esoftpowers.com">こちら</a>まで！</span>
+        </div>
+      </v-layout>
+    </v-container>
   </section>
 
   <section>
     <v-container grid-list-xl>
-      <v-layout row wrap justify-space-around class="my-5">
+      <v-layout row wrap justify-space-around class="mt-3">
         <v-flex xs12 sm4 xl3>
           <v-card
             raised hover ripple
@@ -261,7 +263,7 @@ export default {
   </section>
 
   <section>
-    <v-parallax :src="require('@/assets/parallax_home2.jpg')" height="380" class="mt-5">
+    <v-parallax :src="require('@/assets/parallax_home2.jpg')" height="400" class="mt-5">
       <v-layout row wrap align-center justify-center>
         <v-flex xs10 text-xs-center>
           <div v-vpshow="{ duration:2.0 }" class="title white--text my-3">
