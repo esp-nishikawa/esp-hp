@@ -1,27 +1,28 @@
 <script>
+import DialogControllable from '@/mixins/dialog-controllable.js';
+
 export default {
-  data () {
-    return {
-      isDialog: false,
-    }
-  },
+  mixins: [
+    DialogControllable,
+  ],
   props: {
     btnLabel: String,
+    btnClass: String,
   },
 }
 </script>
 
 <template>
-<v-dialog v-model="isDialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
-  <v-btn flat color="blue darken-2" slot="activator">{{ btnLabel }}</v-btn>
+<v-dialog v-model="showDialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
+  <v-btn flat color="blue darken-2" slot="activator" :class="btnClass">{{ btnLabel }}</v-btn>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
-      <v-btn icon @click="isDialog = false">
+      <v-btn icon @click="showDialog = false">
         <v-icon>arrow_back</v-icon>
       </v-btn>
     </v-layout>
     <v-layout v-else justify-end>
-      <v-btn icon @click="isDialog = false">
+      <v-btn icon @click="showDialog = false">
         <v-icon>close</v-icon>
       </v-btn>
     </v-layout>
@@ -48,7 +49,7 @@ export default {
     </v-card-text>
     <v-card-actions v-if="$vuetify.breakpoint.smAndDown">
       <v-spacer></v-spacer>
-      <v-btn flat color="blue darken-2" @click="isDialog = false">BACK</v-btn>
+      <v-btn flat color="blue darken-2" @click="showDialog = false">BACK</v-btn>
     </v-card-actions>
   </v-card>
 </v-dialog>

@@ -1,10 +1,13 @@
 <script>
+import DialogControllable from '@/mixins/dialog-controllable.js';
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
+  mixins: [
+    DialogControllable,
+  ],
   data () {
     return {
-      isDialog: false,
       carouselValue: 0,
       items: [
         {
@@ -37,7 +40,7 @@ export default {
     onImageClick() {
       if (this.$vuetify.breakpoint.mdAndUp) {
         this.carouselValue=this.itemIndex;
-        this.isDialog = true;
+        this.showDialog = true;
       }
     },
   },
@@ -67,14 +70,14 @@ export default {
     {{ items[itemIndex].title }}
   </div>
 
-  <v-dialog v-model="isDialog" max-width="960">
+  <v-dialog v-model="showDialog" max-width="960">
     <v-card>
       <v-layout>
         <v-fade-transition leave-absolute>
           <div :key="carouselValue" class="title ma-3">{{ items[carouselValue].title }}</div>
         </v-fade-transition>
         <v-spacer></v-spacer>
-        <v-btn icon @click="isDialog = false">
+        <v-btn icon @click="showDialog = false">
           <v-icon>close</v-icon>
         </v-btn>
       </v-layout>
