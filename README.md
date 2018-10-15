@@ -31,6 +31,10 @@
 │　│　├ vpshow.js
 │　│　└ ～
 │　│
+│　├ mixins ... ミックスイン
+│　│　├ dialog-controllable.js
+│　│　└ ～
+│　│
 │　├ router ... ルーティング（各ページのパスやタイトルなど）
 │　│　└ index.js
 │　│
