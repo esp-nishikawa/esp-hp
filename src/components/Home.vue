@@ -1,4 +1,5 @@
 <script>
+import ContactDialog from './ContactDialog.vue'
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
@@ -47,6 +48,9 @@ export default {
         setTimeout(() => { this.isTransition6 = true; }, 3000);
       });
     },
+  },
+  components: {
+    ContactDialog,
   },
   directives: {
     Vpshow,
@@ -185,12 +189,18 @@ export default {
   </section>
 
   <section>
-    <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-3">
-        <div class="text-xs-center">
-          <div class="headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
-          <span class="title">ご用命は<a href="mailto:info@esoftpowers.com">こちら</a>まで！</span>
-        </div>
+    <v-container>
+      <v-layout row justify-center class="mt-5">
+        <div class="text-xs-center headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
+      </v-layout>
+      <v-layout row justify-center class="mt-1">
+        <div class="title d-flex align-center">ご用命は</div>
+        <contact-dialog
+          v-if="$route.query['contact'] === 'form'"
+          btn-label="こちら" btn-class="title ma-0 pa-0"
+        ></contact-dialog>
+        <a v-else class="title" href="mailto:info@esoftpowers.com">こちら</a>
+        <div class="title d-flex align-center">まで！</div>
       </v-layout>
     </v-container>
   </section>

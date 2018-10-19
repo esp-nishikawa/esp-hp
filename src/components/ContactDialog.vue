@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import DialogControllable from '@/mixins/dialog-controllable.js';
 
 export default {
@@ -10,6 +11,7 @@ export default {
       step: 1,
       loading: false,
       valid: false,
+      status: 0,
       registration: {
         name: '',
         company: '',
@@ -25,22 +27,37 @@ export default {
       },
     }
   },
+  computed: {
+    validateStatus() {
+      return this.status >= 200 && this.status < 300;
+    }
+  },
   methods: {
-    async submit() {
+    submit() {
       if (this.loading) return;
       this.loading = true;
-      //await axios.post('/api/contact', registration);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      this.$refs.form.reset();
-      this.loading = false;
-      this.changeStep(3);
+      axios.post('/api/contact.php', this.registration)
+        .then((response) => {
+          this.status = response.status;
+          this.loading = false;
+          this.changeStep(3);
+        })
+        .catch((error) => {
+          this.status = error.response ? error.response.status : 400;
+          this.loading = false;
+          this.changeStep(3);
+        });
     },
     changeStep(step) {
       this.step = step;
       this.resetScroll();
     },
     close() {
+      if (this.validateStatus) {
+        this.$refs.form.reset();
+      }
       this.showDialog = false;
+      this.status = 0;
       this.loading = false;
       this.step = 1;
     }
@@ -53,8 +70,8 @@ export default {
 </script>
 
 <template>
-<v-dialog v-model="showDialog" max-width="800" :fullscreen="$vuetify.breakpoint.smAndDown">
-  <v-btn flat color="blue darken-2" slot="activator" :class="btnClass">{{ btnLabel }}</v-btn>
+<v-dialog v-model="showDialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
+  <v-btn flat color="blue darken-2" slot="activator" style="min-width:0" :class="btnClass">{{ btnLabel }}</v-btn>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
       <v-btn icon @click="close">
@@ -75,14 +92,21 @@ export default {
         <v-divider></v-divider>
         <v-stepper-step step="2" :complete="step > 2">Check</v-stepper-step>
         <v-divider></v-divider>
-        <v-stepper-step step="3">Send</v-stepper-step>
+        <v-stepper-step step="3" :rules="[() => status < 300]">Send</v-stepper-step>
       </v-stepper-header>
       <v-stepper-items>
         <v-stepper-content step="1">
           <v-layout column class="mb-3">
-            <div>下記フォームに必要事項をご入力いただき、確認ボタンを押してください。</div>
-            <div>お急ぎの方はお電話(03-6273-4837)にてお問い合わせください。</div>
-            <div>また、入力いただいた連絡先に誤りがありますとご連絡が取れませんのでご注意ください。</div>
+            <div>下記フォームに必要事項をご入力いただき、「確認」ボタンを押してください。</div>
+          </v-layout>
+          <v-layout column class="mb-3 body-2">
+            <div>【お問い合わせいただく前の注意事項】</div>
+            <ul>
+              <li>お客様からいただく個人情報は、お問い合わせ・ご質問への回答、情報提供のために使用させていただきます。</li>
+              <li>メールによる回答は「@esoftpowers.com」のドメインよりお送りいたします。受信できるよう設定をお願いします。</li>
+              <li>ご回答までに数日要する場合や、ご質問によってはお応えできかねる場合もございます。あらかじめご了承ください。</li>
+              <li>お急ぎの方はお電話(03-6273-4837)にてお問い合わせください。</li>
+            </ul>
           </v-layout>
           <v-form ref="form" v-model="valid">
             <v-text-field
@@ -102,6 +126,7 @@ export default {
               label="メールアドレス（必須）"
               v-model="registration.email"
               :rules="[rules.required, rules.email, rules.max256]"
+              hint="ご連絡先として使用いただけるメールアドレスの記入をお願いいたします。"
               validate-on-blur
               clearable
               required
@@ -115,19 +140,22 @@ export default {
             ></v-textarea>
           </v-form>
           <v-layout justify-end>
-            <v-btn v-if="$vuetify.breakpoint.smAndDown" flat color="blue darken-2" @click="close">BACK</v-btn>
+            <v-btn flat color="primary" @click="close">CANCEL</v-btn>
             <v-btn :disabled="!valid" color="primary" @click.native="changeStep(2)">確認</v-btn>
           </v-layout>
         </v-stepper-content>
         <v-stepper-content step="2">
           <v-layout column class="mb-3">
-            <div>入力内容をご確認いただき、よろしければ送信ボタンを押してください。</div>
+            <div>入力内容をご確認いただき、よろしければ「送信」ボタンを押してください。</div>
+            <div>修正する場合は、「入力に戻る」ボタンを押してください。</div>
+            <div>※ブラウザの「戻る」ボタンは使用しないでください。</div>
           </v-layout>
           <v-form>
             <v-text-field
               label="お名前"
               :value="registration.name"
               placeholder="未入力"
+              color="black"
               outline
               readonly
             ></v-text-field>
@@ -135,6 +163,7 @@ export default {
               label="会社名"
               :value="registration.company"
               placeholder="未入力"
+              color="black"
               outline
               readonly
             ></v-text-field>
@@ -142,6 +171,7 @@ export default {
               label="メールアドレス"
               :value="registration.email"
               placeholder="未入力"
+              color="black"
               outline
               readonly
             ></v-text-field>
@@ -149,23 +179,32 @@ export default {
               label="お問い合わせ内容"
               :value="registration.inquiry"
               placeholder="未入力"
+              color="black"
               outline
               readonly
             ></v-textarea>
           </v-form>
           <v-layout justify-end>
-            <v-btn flat color="blue darken-2" @click.native="changeStep(1)">入力に戻る</v-btn>
+            <v-btn flat color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>
             <v-btn color="primary" :loading="loading" @click.prevent="submit">送信</v-btn>
           </v-layout>
         </v-stepper-content>
         <v-stepper-content step="3">
-          <v-layout column class="mb-3">
+          <v-layout v-if="validateStatus" column class="mb-3">
             <div>お問い合わせありがとうございます。</div>
-            <div>お送りいただきました内容を確認の上、折り返しご連絡させていただきます。</div>
+            <div>お送りいただきました内容を確認の上、ご連絡させていただきますので、少々お待ちください。</div>
+            <div class="mt-3">なお、ご入力いただいたメールアドレス宛てに自動返信メールをお送りしております。</div>
+            <div>しばらく経っても自動返信メールが届かない場合にはお問い合わせが受け付けられていない可能性がございます。</div>
+            <div>ご入力いただいたメールアドレスに誤りがあることも考えられますので、数日中に弊社からの連絡がない場合、</div>
+            <div>大変お手数ですが再度お問い合わせいただくか、お電話(03-6273-4837)にてご連絡ください。</div>
+          </v-layout>
+          <v-layout v-else column class="mb-3">
+            <div>メッセージの送信に失敗しました。</div>
+            <div>申し訳ありませんが、しばらく時間を置いてからもう一度お試しください。</div>
             <div>お急ぎの場合はお電話(03-6273-4837)にてご連絡ください。</div>
           </v-layout>
           <v-layout justify-end>
-            <v-btn flat color="blue darken-2" @click.native="close">CLOSE</v-btn>
+            <v-btn flat color="primary" @click.native="close">CLOSE</v-btn>
           </v-layout>
         </v-stepper-content>
       </v-stepper-items>
