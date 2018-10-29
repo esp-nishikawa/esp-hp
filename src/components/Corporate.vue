@@ -1,6 +1,6 @@
 <script>
-import AccessDialog from './AccessDialog.vue'
-import OfficeImage from './OfficeImage.vue'
+import AccessDialog from './AccessDialog.vue';
+import OfficeImage from './OfficeImage.vue';
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
@@ -157,7 +157,7 @@ export default {
         <v-flex xs12 sm7 md6 lg5 xl4>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
-              <h2>CONTACT</h2>
+              <h2>LOCATIONS</h2>
             </v-card-title>
             <v-card-text>
               <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'py-0'">
@@ -172,15 +172,6 @@ export default {
                     </div>
                     <div>
                       <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
-                    </div>
-                  </v-flex>
-                </v-layout>
-                <v-layout row wrap>
-                  <v-flex xs12>
-                    <h3>お問い合わせ</h3>
-                    <div>
-                      <v-icon class="blue--text text--lighten-2">email</v-icon>
-                      <a href="mailto:info@esoftpowers.com">info@esoftpowers.com</a>
                     </div>
                   </v-flex>
                 </v-layout>

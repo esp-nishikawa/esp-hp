@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import Corporate from '@/components/Corporate'
-import Service from '@/components/Service'
-import Recruit from '@/components/Recruit'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '@/components/Home';
+import Corporate from '@/components/Corporate';
+import Service from '@/components/Service';
+import Recruit from '@/components/Recruit';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode: 'history',

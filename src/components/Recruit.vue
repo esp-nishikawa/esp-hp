@@ -1,6 +1,6 @@
 <script>
-import CompensationDialog from './CompensationDialog.vue'
-import ConditionsDialog from './ConditionsDialog.vue'
+import CompensationDialog from './CompensationDialog.vue';
+import ConditionsDialog from './ConditionsDialog.vue';
 
 export default {
   components: {

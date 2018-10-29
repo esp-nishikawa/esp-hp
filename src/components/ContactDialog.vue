@@ -65,13 +65,22 @@ export default {
   props: {
     btnLabel: String,
     btnClass: String,
+    btnStyle: { type: String, default: 'min-width:0' },
+    btnColor: { type: String, default: 'blue darken-2' },
   },
 }
 </script>
 
 <template>
 <v-dialog v-model="showDialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
-  <v-btn flat color="blue darken-2" slot="activator" style="min-width:0" :class="btnClass">{{ btnLabel }}</v-btn>
+  <v-btn
+    v-if="$route.query['contact'] === 'form'"
+    flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
+  >{{ btnLabel }}</v-btn>
+  <v-btn
+    v-else flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
+    href="mailto:info@esoftpowers.com" @click.stop=""
+  >{{ btnLabel }}</v-btn>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
       <v-btn icon @click="close">
@@ -140,8 +149,8 @@ export default {
             ></v-textarea>
           </v-form>
           <v-layout justify-end>
-            <v-btn flat color="primary" @click="close">CANCEL</v-btn>
-            <v-btn :disabled="!valid" color="primary" @click.native="changeStep(2)">確認</v-btn>
+            <v-btn flat round color="primary" @click="close">CANCEL</v-btn>
+            <v-btn :disabled="!valid" round color="primary" @click.native="changeStep(2)">確認</v-btn>
           </v-layout>
         </v-stepper-content>
         <v-stepper-content step="2">
@@ -185,8 +194,8 @@ export default {
             ></v-textarea>
           </v-form>
           <v-layout justify-end>
-            <v-btn flat color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>
-            <v-btn color="primary" :loading="loading" @click.prevent="submit">送信</v-btn>
+            <v-btn flat round color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>
+            <v-btn round color="primary" :loading="loading" @click.prevent="submit">送信</v-btn>
           </v-layout>
         </v-stepper-content>
         <v-stepper-content step="3">
@@ -204,7 +213,7 @@ export default {
             <div>お急ぎの場合はお電話(03-6273-4837)にてご連絡ください。</div>
           </v-layout>
           <v-layout justify-end>
-            <v-btn flat color="primary" @click.native="close">CLOSE</v-btn>
+            <v-btn flat round color="primary" @click.native="close">CLOSE</v-btn>
           </v-layout>
         </v-stepper-content>
       </v-stepper-items>

@@ -1,5 +1,5 @@
 <script>
-import ContactDialog from './ContactDialog.vue'
+import ContactDialog from './ContactDialog.vue';
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
@@ -195,11 +195,7 @@ export default {
       </v-layout>
       <v-layout row justify-center class="mt-1">
         <div class="title d-flex align-center">ご用命は</div>
-        <contact-dialog
-          v-if="$route.query['contact'] === 'form'"
-          btn-label="こちら" btn-class="title ma-0 pa-0"
-        ></contact-dialog>
-        <a v-else class="title" href="mailto:info@esoftpowers.com">こちら</a>
+        <contact-dialog btn-label="こちら" btn-class="title ma-0 pa-0"></contact-dialog>
         <div class="title d-flex align-center">まで！</div>
       </v-layout>
     </v-container>
@@ -222,8 +218,8 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="会社案内">会社案内</div>
-                <span class="text-sub hover-text" data-hover="About Us">About Us</span>
+                <div class="headline font-weight-medium text-shadow hover-text" style="line-height:1.2" data-hover="会社案内">会社案内</div>
+                <span class="body-1 text-sub hover-text" data-hover="About Us">About Us</span>
               </div>
             </v-card-title>
           </v-card>
@@ -242,8 +238,8 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="事業分野">事業分野</div>
-                <span class="text-sub hover-text" data-hover="Our Business">Our Business</span>
+                <div class="headline font-weight-medium text-shadow hover-text" style="line-height:1.2" data-hover="事業分野">事業分野</div>
+                <span class="body-1 text-sub hover-text" data-hover="Our Business">Our Business</span>
               </div>
             </v-card-title>
           </v-card>
@@ -262,8 +258,8 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="採用情報">採用情報</div>
-                <span class="text-sub hover-text" data-hover="Recruit">Recruit</span>
+                <div class="headline font-weight-medium text-shadow hover-text" style="line-height:1.2" data-hover="採用情報">採用情報</div>
+                <span class="body-1 text-sub hover-text" data-hover="Recruit">Recruit</span>
               </div>
             </v-card-title>
           </v-card>
@@ -296,7 +292,7 @@ export default {
         <v-card flat class="transparent">
           <v-card-title primary-title>
             <v-icon medium class="blue--text text--lighten-2" style="margin-right:10px">thumb_up</v-icon>
-            <div class="text-main">INFORMATION</div>
+            <div class="headline font-weight-medium text-shadow">INFORMATION</div>
           </v-card-title>
           <v-divider></v-divider>
           <v-expansion-panel popout>
@@ -306,7 +302,7 @@ export default {
               :hide-actions="!information.description"
             >
               <div slot="header">
-                <span class="text-sub">{{ information.date }}</span>
+                <span class="body-1 text-sub">{{ information.date }}</span>
                 <div>{{ information.title }}</div>
               </div>
               <v-card v-if="information.description">
@@ -412,18 +408,5 @@ export default {
 .hover-card:hover .hover-text::before {
   transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
   opacity: 1;
-}
-
-.text-main {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.2;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
-}
-
-.text-sub {
-  color: rgba(0,0,0,.54);
-  font-size: 14px;
-  font-weight: 400;
 }
 </style>

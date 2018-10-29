@@ -1,4 +1,7 @@
 <script>
+import AccessDialog from '@/components/AccessDialog.vue';
+import ContactDialog from '@/components/ContactDialog.vue';
+
 export default {
   data () {
     return {
@@ -60,6 +63,10 @@ export default {
         }
       }
     }
+  },
+  components: {
+    AccessDialog,
+    ContactDialog,
   },
   name: 'App'
 }
@@ -165,10 +172,17 @@ export default {
     </transition>
 
     <v-footer height="auto" class="blue darken-1">
-      <v-spacer></v-spacer>
-      <div class="white--text ma-3">
-        Copyright &copy; {{ new Date().getFullYear() }} eSoftPowers.co.ltd All Rights Reserved.
-      </div>
+      <v-container>
+        <v-layout row wrap justify-end>
+          <access-dialog btn-label="アクセス" btn-color="white"></access-dialog>
+          <contact-dialog btn-label="お問い合わせ" btn-color="white"></contact-dialog>
+        </v-layout>
+        <v-layout row wrap justify-center>
+          <div class="white--text ma-3">
+            Copyright &copy; {{ new Date().getFullYear() }} eSoftPowers.co.ltd All Rights Reserved.
+          </div>
+        </v-layout>
+      </v-container>
     </v-footer>
 
     <v-fab-transition>
@@ -320,12 +334,6 @@ table th {
   max-width: 160px!important;
 }
 
-.v-carousel__prev, .v-carousel__next {
-  top: 100%!important;
-  padding-bottom: 50px!important;
-  z-index: 2!important;
-}
-
 .v-chip .v-chip__content {
   cursor: inherit!important;
   user-select: none!important;
@@ -369,5 +377,13 @@ table th {
 .hover-link:hover::after {
   transform-origin: left top;
   transform: scale(1, 1);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.2)!important;
+}
+
+.text-sub {
+  color: rgba(0,0,0,.54)!important;
 }
 </style>
