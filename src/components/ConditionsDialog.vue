@@ -19,12 +19,12 @@ export default {
   <v-btn flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor">{{ btnLabel }}</v-btn>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
-      <v-btn icon @click="showDialog = false">
+      <v-btn icon @click="close">
         <v-icon>arrow_back</v-icon>
       </v-btn>
     </v-layout>
     <v-layout v-else justify-end>
-      <v-btn icon @click="showDialog = false">
+      <v-btn icon @click="close">
         <v-icon>close</v-icon>
       </v-btn>
     </v-layout>
@@ -51,7 +51,7 @@ export default {
     </v-card-text>
     <v-card-actions v-if="$vuetify.breakpoint.smAndDown">
       <v-spacer></v-spacer>
-      <v-btn flat round color="primary" @click="showDialog = false">BACK</v-btn>
+      <v-btn flat round color="primary" @click="close">BACK</v-btn>
     </v-card-actions>
   </v-card>
 </v-dialog>

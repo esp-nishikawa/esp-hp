@@ -77,7 +77,7 @@ export default {
           <div :key="carouselValue" class="title ma-3">{{ items[carouselValue].title }}</div>
         </v-fade-transition>
         <v-spacer></v-spacer>
-        <v-btn icon @click="showDialog = false">
+        <v-btn icon @click="close">
           <v-icon>close</v-icon>
         </v-btn>
       </v-layout>

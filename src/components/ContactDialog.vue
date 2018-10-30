@@ -13,10 +13,11 @@ export default {
       valid: false,
       status: 0,
       registration: {
+        type: Number(this.selectedType),
         name: '',
-        company: '',
+        affiliation: '',
         email: '',
-        inquiry: '',
+        contents: '',
       },
       rules: {
         required: v => !!v || 'この項目は必須です。',
@@ -25,6 +26,12 @@ export default {
         max256: v => !v || v.length <= 256 || '256文字以内で入力してください。',
         max2000: v => !v || v.length <= 2000 || '2000文字以内で入力してください。',
       },
+      types: [
+        { value: 1, text: '採用についてのお問い合わせ' },
+        { value: 2, text: 'お仕事のご依頼やご相談' },
+        { value: 3, text: 'パートナーシップに関するお問い合わせ' },
+        { value: 4, text: 'その他' },
+      ],
     }
   },
   computed: {
@@ -33,7 +40,12 @@ export default {
     }
   },
   methods: {
-    submit() {
+    confirm() {
+      if (this.$refs.form.validate()) {
+        this.changeStep(2);
+      }
+    },
+    send() {
       if (this.loading) return;
       this.loading = true;
       axios.post('/api/contact.php', this.registration)
@@ -67,6 +79,7 @@ export default {
     btnClass: String,
     btnStyle: { type: String, default: 'min-width:0' },
     btnColor: { type: String, default: 'blue darken-2' },
+    selectedType: { type: [String, Number], default: 0 },
   },
 }
 </script>
@@ -99,7 +112,7 @@ export default {
       <v-stepper-header>
         <v-stepper-step step="1" editable :complete="step > 1">Input</v-stepper-step>
         <v-divider></v-divider>
-        <v-stepper-step step="2" :complete="step > 2">Check</v-stepper-step>
+        <v-stepper-step step="2" :complete="step > 2">Confirm</v-stepper-step>
         <v-divider></v-divider>
         <v-stepper-step step="3" :rules="[() => status < 300]">Send</v-stepper-step>
       </v-stepper-header>
@@ -118,39 +131,55 @@ export default {
             </ul>
           </v-layout>
           <v-form ref="form" v-model="valid">
+            <v-select
+              label="お問い合わせ種類"
+              :items="types"
+              item-value="value"
+              item-text="text"
+              v-model="registration.type"
+              :rules="[rules.required]"
+            >
+              <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+            </v-select>
             <v-text-field
-              label="お名前（必須）"
+              label="お名前"
               v-model="registration.name"
               :rules="[rules.required, rules.max60]"
               clearable
-              required
-            ></v-text-field>
+            >
+              <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+            </v-text-field>
             <v-text-field
-              label="会社名"
-              v-model="registration.company"
+              label="ご所属"
+              v-model="registration.affiliation"
               :rules="[rules.max60]"
               clearable
-            ></v-text-field>
+            >
+              <v-chip slot="prepend" small color="blue lighten-2" text-color="white">任意</v-chip>
+            </v-text-field>
             <v-text-field
-              label="メールアドレス（必須）"
+              label="メールアドレス"
               v-model="registration.email"
               :rules="[rules.required, rules.email, rules.max256]"
               hint="ご連絡先として使用いただけるメールアドレスの記入をお願いいたします。"
               validate-on-blur
               clearable
-              required
-            ></v-text-field>
+            >
+              <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+            </v-text-field>
             <v-textarea
-              label="お問い合わせ内容（必須）"
-              v-model="registration.inquiry"
+              label="お問い合わせ内容"
+              v-model="registration.contents"
               :rules="[rules.required, rules.max2000]"
               auto-grow
               clearable
-            ></v-textarea>
+            >
+              <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+            </v-textarea>
           </v-form>
           <v-layout justify-end>
             <v-btn flat round color="primary" @click="close">CANCEL</v-btn>
-            <v-btn :disabled="!valid" round color="primary" @click.native="changeStep(2)">確認</v-btn>
+            <v-btn round color="primary" @click.native="confirm">確認</v-btn>
           </v-layout>
         </v-stepper-content>
         <v-stepper-content step="2">
@@ -160,6 +189,16 @@ export default {
             <div>※ブラウザの「戻る」ボタンは使用しないでください。</div>
           </v-layout>
           <v-form>
+            <v-select
+              label="お問い合わせ種類"
+              :items="types"
+              item-value="value"
+              item-text="text"
+              :value="registration.type"
+              color="black"
+              outline
+              readonly
+            ></v-select>
             <v-text-field
               label="お名前"
               :value="registration.name"
@@ -169,8 +208,8 @@ export default {
               readonly
             ></v-text-field>
             <v-text-field
-              label="会社名"
-              :value="registration.company"
+              label="ご所属"
+              :value="registration.affiliation"
               placeholder="未入力"
               color="black"
               outline
@@ -186,7 +225,7 @@ export default {
             ></v-text-field>
             <v-textarea
               label="お問い合わせ内容"
-              :value="registration.inquiry"
+              :value="registration.contents"
               placeholder="未入力"
               color="black"
               outline
@@ -195,7 +234,7 @@ export default {
           </v-form>
           <v-layout justify-end>
             <v-btn flat round color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>
-            <v-btn round color="primary" :loading="loading" @click.prevent="submit">送信</v-btn>
+            <v-btn round color="primary" :loading="loading" @click.prevent="send">送信</v-btn>
           </v-layout>
         </v-stepper-content>
         <v-stepper-content step="3">

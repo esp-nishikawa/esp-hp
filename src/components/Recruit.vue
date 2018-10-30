@@ -1,11 +1,13 @@
 <script>
 import CompensationDialog from './CompensationDialog.vue';
 import ConditionsDialog from './ConditionsDialog.vue';
+import ContactDialog from './ContactDialog.vue';
 
 export default {
   components: {
     CompensationDialog,
     ConditionsDialog,
+    ContactDialog,
   },
 }
 </script>
@@ -73,7 +75,7 @@ export default {
                     </div>
                     <div>
                       <v-icon class="blue--text text--lighten-2">email</v-icon>
-                      <a href="mailto:saiyou@esoftpowers.com">採用担当：saiyou@esoftpowers.com</a>
+                      <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0"></contact-dialog>
                     </div>
                   </v-flex>
                 </v-layout>
@@ -136,7 +138,7 @@ export default {
                     </div>
                     <div>
                       <v-icon class="blue--text text--lighten-2">email</v-icon>
-                      <a href="mailto:saiyou@esoftpowers.com">採用担当：saiyou@esoftpowers.com</a>
+                      <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0"></contact-dialog>
                     </div>
                   </v-flex>
                 </v-layout>
