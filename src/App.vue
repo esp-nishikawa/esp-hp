@@ -174,8 +174,8 @@ export default {
     <v-footer height="auto" class="blue darken-1">
       <v-container>
         <v-layout row wrap justify-end>
-          <access-dialog btn-label="アクセス" btn-color="white"></access-dialog>
-          <contact-dialog btn-label="お問い合わせ" btn-color="white"></contact-dialog>
+          <access-dialog btn-label="アクセス" btn-color="white" btn-icon="map"></access-dialog>
+          <contact-dialog btn-label="お問い合わせ" btn-color="white" btn-icon="email"></contact-dialog>
         </v-layout>
         <v-layout row wrap justify-center>
           <div class="white--text ma-3">

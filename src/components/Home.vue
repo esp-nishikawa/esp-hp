@@ -291,7 +291,7 @@ export default {
       <v-flex xs12 sm10 offset-sm1>
         <v-card flat class="transparent">
           <v-card-title primary-title>
-            <v-icon medium class="blue--text text--lighten-2" style="margin-right:10px">thumb_up</v-icon>
+            <v-icon medium color="blue lighten-2" class="mr-2">thumb_up</v-icon>
             <div class="headline font-weight-medium text-shadow">INFORMATION</div>
           </v-card-title>
           <v-divider></v-divider>

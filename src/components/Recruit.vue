@@ -71,12 +71,9 @@ export default {
                     <h3>連絡先</h3>
                     <div>お電話またはメールにてご連絡下さい</div>
                     <div>
-                      <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
+                      <v-icon color="blue lighten-2">phone</v-icon>TEL:03-6273-4837
                     </div>
-                    <div>
-                      <v-icon class="blue--text text--lighten-2">email</v-icon>
-                      <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0"></contact-dialog>
-                    </div>
+                    <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -134,12 +131,9 @@ export default {
                     <h3>連絡先</h3>
                     <div>お電話またはメールにてご連絡下さい</div>
                     <div>
-                      <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
+                      <v-icon color="blue lighten-2">phone</v-icon>TEL:03-6273-4837
                     </div>
-                    <div>
-                      <v-icon class="blue--text text--lighten-2">email</v-icon>
-                      <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0"></contact-dialog>
-                    </div>
+                    <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>

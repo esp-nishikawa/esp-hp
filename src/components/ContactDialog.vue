@@ -79,6 +79,8 @@ export default {
     btnClass: String,
     btnStyle: { type: String, default: 'min-width:0' },
     btnColor: { type: String, default: 'blue darken-2' },
+    btnIcon: String,
+    iconColor: String,
     selectedType: { type: [String, Number], default: 0 },
   },
 }
@@ -89,11 +91,15 @@ export default {
   <v-btn
     v-if="$route.query['contact'] === 'form'"
     flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
-  >{{ btnLabel }}</v-btn>
+  >
+    <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
+  </v-btn>
   <v-btn
     v-else flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
     href="mailto:info@esoftpowers.com" @click.stop=""
-  >{{ btnLabel }}</v-btn>
+  >
+    <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
+  </v-btn>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
       <v-btn icon @click="close">
@@ -171,7 +177,6 @@ export default {
               label="お問い合わせ内容"
               v-model="registration.contents"
               :rules="[rules.required, rules.max2000]"
-              auto-grow
               clearable
             >
               <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>

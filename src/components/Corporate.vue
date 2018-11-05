@@ -168,10 +168,10 @@ export default {
                       〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ
                     </div>
                     <div>
-                      <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
+                      <v-icon color="blue lighten-2">phone</v-icon>TEL:03-6273-4837
                     </div>
                     <div>
-                      <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
+                      <v-icon color="blue lighten-2">print</v-icon>FAX:03-6273-4838
                     </div>
                   </v-flex>
                 </v-layout>

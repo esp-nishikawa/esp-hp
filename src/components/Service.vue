@@ -30,8 +30,9 @@ export default {
               techs: ['Java', 'Oracle', 'bash', 'bat', 'ps', 'C++', 'C#'],
             },
             {
-              title: 'Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています',
-              text: `EoEはまだ一般的に普及しているものでは無く、参考文献が限られているため、
+              title: 'Ether over Etherに対応したルータの開発',
+              text: `Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています。
+                     EoEはまだ一般的に普及しているものでは無く、参考文献が限られているため、
                      trial and errorで作業しています。`,
               techs: ['linux kernel', 'VLAN', 'Ether over Ether', 'C'],
             },
@@ -64,16 +65,18 @@ export default {
               techs: ['C++', 'SQLServer', 'WindowsServer'],
             },
             {
-              title: '携帯、スマートフォンを利用したIC出改札システムの開発、運用保守',
-              text: `外部サーバとTCP/IPを使用したソケット通信を行う機能、
+              title: 'IC出改札システムの開発、運用保守',
+              text: `携帯、スマートフォンを利用したIC出改札システムの開発、運用保守を行っています。
+                     外部サーバとTCP/IPを使用したソケット通信を行う機能、
                      汎用的にテーブルデータを更新する仕組み、
                      またコールセンターのような後方業務の画面やエンドユーザーが使用する画面まで、
                      幅広い領域を担当しています。`,
               techs: ['C#', 'C++', 'ASP.NET', 'SQLServer', 'JP1'],
             },
             {
-              title: '携帯電話を利用したIC乗車カードシステム内の、サーバ内通信と上位サーバ間通信部分を担当。',
-              text: `その他に、業務の一部も担当しており、ユーザからの要望に応え、利便性の向上を図るため、
+              title: 'IC乗車カードシステムの開発',
+              text: `携帯電話を利用したIC乗車カードシステム内の、サーバ内通信と上位サーバ間通信部分を担当しています。
+                     その他に、業務の一部も担当しており、ユーザからの要望に応え、利便性の向上を図るため、
                      UI変更や新規機能追加などを行っています。
                      数千万人が利用する交通インフラの一翼を担うシステムのため、品質に関しては厳しいですが、
                      反面、無理のないスケジュールが組まれているため、マイペースで仕事が出来る環境です。`,
@@ -254,8 +257,51 @@ export default {
                   v-for="(item, i) in items"
                   :key="i"
                 >
-                  <v-layout align-center :column="$vuetify.breakpoint.smAndDown">
-                    <v-flex order-md2>
+                  <v-layout row align-center>
+                    <v-flex v-if="$vuetify.breakpoint.mdAndUp">
+                      <v-btn
+                        icon
+                        style="position:absolute; top:16px; left:8px; z-index:100;"
+                        @click="item.page = item.page - 1 < 0 ? item.contents.length - 1 : item.page - 1"
+                      >
+                        <v-icon x-large class="text-sub">keyboard_arrow_up</v-icon>
+                      </v-btn>
+                      <v-item-group
+                        v-model="item.page"
+                        class="shrink ma-2"
+                      >
+                        <v-layout column align-center>
+                          <v-item
+                            v-for="(content, c) in item.contents"
+                            :key="c"
+                          >
+                            <div slot-scope="{ active, toggle }">
+                              <v-btn
+                                :input-value="active"
+                                icon
+                                @click="toggle"
+                              >
+                                <v-icon>fiber_manual_record</v-icon>
+                              </v-btn>
+                            </div>
+                          </v-item>
+                        </v-layout>
+                      </v-item-group>
+                      <v-btn
+                        icon
+                        style="position:absolute; bottom:16px; left:8px; z-index:100;"
+                        @click="item.page = item.page + 1 >= item.contents.length ? 0 : item.page + 1"
+                      >
+                        <v-icon x-large class="text-sub">keyboard_arrow_down</v-icon>
+                      </v-btn>
+                      <div
+                        class="subheading font-weight-bold text-sub"
+                        style="position:absolute; bottom:16px; right:16px; z-index:100;"
+                      >
+                        {{ item.page + 1 }} / {{ item.contents.length }}
+                      </div>
+                    </v-flex>
+                    <v-flex>
                       <v-window
                         v-model="item.page"
                         :vertical="$vuetify.breakpoint.mdAndUp"
@@ -290,55 +336,9 @@ export default {
                         </v-window-item>
                       </v-window>
                     </v-flex>
-                    <v-flex>
-                      <v-btn
-                        icon
-                        style="position:absolute; z-index:101;"
-                        :style="$vuetify.breakpoint.mdAndUp ? 'top:16px; left:8px;' : 'bottom:16px; left:8px;'"
-                        @click="item.page = item.page - 1 < 0 ? item.contents.length - 1 : item.page - 1"
-                      >
-                        <v-icon v-if="$vuetify.breakpoint.mdAndUp" x-large class="text-sub">keyboard_arrow_up</v-icon>
-                        <v-icon v-else x-large class="text-sub">keyboard_arrow_left</v-icon>
-                      </v-btn>
-                      <v-item-group
-                        v-show="$vuetify.breakpoint.mdAndUp"
-                        v-model="item.page"
-                        class="shrink ma-2"
-                      >
-                        <v-layout align-center :column="$vuetify.breakpoint.mdAndUp">
-                          <v-item
-                            v-for="(content, c) in item.contents"
-                            :key="c"
-                          >
-                            <div slot-scope="{ active, toggle }">
-                              <v-btn
-                                :input-value="active"
-                                icon
-                                @click="toggle"
-                              >
-                                <v-icon>fiber_manual_record</v-icon>
-                              </v-btn>
-                            </div>
-                          </v-item>
-                        </v-layout>
-                      </v-item-group>
-                      <v-btn
-                        icon
-                        style="position:absolute; z-index:101;"
-                        :style="$vuetify.breakpoint.mdAndUp ? 'bottom:16px; left:8px;' : 'bottom:16px; right:8px;'"
-                        @click="item.page = item.page + 1 >= item.contents.length ? 0 : item.page + 1"
-                      >
-                        <v-icon v-if="$vuetify.breakpoint.mdAndUp" x-large class="text-sub">keyboard_arrow_down</v-icon>
-                        <v-icon v-else x-large class="text-sub">keyboard_arrow_right</v-icon>
-                      </v-btn>
-                      <div
-                        class="subheading font-weight-bold text-sub"
-                        style="position:absolute; z-index:100;"
-                        :style="$vuetify.breakpoint.mdAndUp ? 'bottom:16px; right:16px;' : 'bottom:16px'"
-                      >
-                        {{ item.page + 1 }} / {{ item.contents.length }}
-                      </div>
-                    </v-flex>
+                  </v-layout>
+                  <v-layout v-if="$vuetify.breakpoint.smAndDown" row justify-center class="pb-2">
+                    <v-pagination :value="item.page+1" @input="item.page=$event-1" :length="item.contents.length" :total-visible="5" circle></v-pagination>
                   </v-layout>
                 </v-tab-item>
               </v-tabs-items>
