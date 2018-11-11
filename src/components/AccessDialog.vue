@@ -5,6 +5,11 @@ export default {
   mixins: [
     DialogControllable,
   ],
+  data () {
+    return {
+      name: 'access-dialog',
+    }
+  },
   props: {
     btnLabel: String,
     btnClass: String,
@@ -17,7 +22,7 @@ export default {
 </script>
 
 <template>
-<v-dialog v-model="showDialog" max-width="720" :fullscreen="$vuetify.breakpoint.smAndDown">
+<v-dialog v-model="showDialog" ref="dialog" max-width="720" :fullscreen="$vuetify.breakpoint.smAndDown">
   <v-btn flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor">
     <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
   </v-btn>

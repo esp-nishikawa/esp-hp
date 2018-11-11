@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-<v-dialog v-model="showDialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
+<v-dialog v-model="showDialog" ref="dialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
   <v-btn flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor">{{ btnLabel }}</v-btn>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>

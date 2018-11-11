@@ -13,6 +13,11 @@ export default {
       isTransition6: false,
       informations: [
         {
+          date: '2018-11-20',
+          title: 'サイト更新 メールフォームを設置しました。',
+          description: `ページ下部「お問い合わせ」のボタンより、お気軽にお問い合わせ下さい。`,
+        },
+        {
           date: '2018-9-18',
           title: 'サイト更新 オフィス画像を掲載しました。',
           description: `オフィス環境ページは<a href='http://esoftpowers.com/corporate#office'>こちら</a>`,

@@ -338,7 +338,13 @@ export default {
                     </v-flex>
                   </v-layout>
                   <v-layout v-if="$vuetify.breakpoint.smAndDown" row justify-center class="pb-2">
-                    <v-pagination :value="item.page+1" @input="item.page=$event-1" :length="item.contents.length" :total-visible="5" circle></v-pagination>
+                    <v-pagination
+                      :value="item.page+1"
+                      @input="item.page=$event-1"
+                      :length="item.contents.length"
+                      :total-visible="5"
+                      circle
+                    ></v-pagination>
                   </v-layout>
                 </v-tab-item>
               </v-tabs-items>

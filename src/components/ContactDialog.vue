@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import DialogControllable from '@/mixins/dialog-controllable.js';
+import PrivacyDialog from '@/components/PrivacyDialog.vue';
 
 export default {
   mixins: [
@@ -18,6 +19,7 @@ export default {
         affiliation: '',
         email: '',
         contents: '',
+        privacy: false,
       },
       rules: {
         required: v => !!v || 'この項目は必須です。',
@@ -25,6 +27,7 @@ export default {
         max60: v => !v || v.length <= 60 || '60文字以内で入力してください。',
         max256: v => !v || v.length <= 256 || '256文字以内で入力してください。',
         max2000: v => !v || v.length <= 2000 || '2000文字以内で入力してください。',
+        privacy: v => v || '個人情報の取り扱いについて同意をお願いします。',
       },
       types: [
         { value: 1, text: '採用についてのお問い合わせ' },
@@ -32,6 +35,7 @@ export default {
         { value: 3, text: 'パートナーシップに関するお問い合わせ' },
         { value: 4, text: 'その他' },
       ],
+      name: 'contact-dialog',
     }
   },
   computed: {
@@ -83,11 +87,14 @@ export default {
     iconColor: String,
     selectedType: { type: [String, Number], default: 0 },
   },
+  components: {
+    PrivacyDialog,
+  },
 }
 </script>
 
 <template>
-<v-dialog v-model="showDialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
+<v-dialog v-model="showDialog" ref="dialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
   <v-btn
     v-if="$route.query['contact'] === 'form'"
     flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
@@ -181,6 +188,17 @@ export default {
             >
               <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
             </v-textarea>
+            <v-checkbox
+              color="primary"
+              v-model="registration.privacy"
+              :rules="[rules.privacy]"
+              class="ml-3"
+            >
+              <v-layout slot="label">
+                <privacy-dialog btn-label="個人情報の取り扱い" btn-class="subheading ma-0 pa-0"></privacy-dialog>
+                <div class="text-main d-flex align-center">について同意する</div>
+              </v-layout>
+            </v-checkbox>
           </v-form>
           <v-layout justify-end>
             <v-btn flat round color="primary" @click="close">CANCEL</v-btn>
@@ -236,6 +254,13 @@ export default {
               outline
               readonly
             ></v-textarea>
+            <v-checkbox
+              label="個人情報の取り扱いについて同意する"
+              color="rgba(0,0,0,0.54)"
+              :value="registration.privacy"
+              class="ml-3"
+              readonly
+            ></v-checkbox>
           </v-form>
           <v-layout justify-end>
             <v-btn flat round color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>

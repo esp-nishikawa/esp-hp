@@ -70,7 +70,7 @@ export default {
     {{ items[itemIndex].title }}
   </div>
 
-  <v-dialog v-model="showDialog" max-width="960">
+  <v-dialog v-model="showDialog" ref="dialog" max-width="960">
     <v-card>
       <v-layout>
         <v-fade-transition leave-absolute>

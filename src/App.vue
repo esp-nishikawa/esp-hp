@@ -1,4 +1,5 @@
 <script>
+import PrivacyDialog from '@/components/PrivacyDialog.vue';
 import AccessDialog from '@/components/AccessDialog.vue';
 import ContactDialog from '@/components/ContactDialog.vue';
 
@@ -65,6 +66,7 @@ export default {
     }
   },
   components: {
+    PrivacyDialog,
     AccessDialog,
     ContactDialog,
   },
@@ -174,7 +176,8 @@ export default {
     <v-footer height="auto" class="blue darken-1">
       <v-container>
         <v-layout row wrap justify-end>
-          <access-dialog btn-label="アクセス" btn-color="white" btn-icon="map"></access-dialog>
+          <privacy-dialog btn-label="プライバシーポリシー" btn-color="white" btn-icon="lock"></privacy-dialog>
+          <access-dialog btn-label="アクセスマップ" btn-color="white" btn-icon="map"></access-dialog>
           <contact-dialog btn-label="お問い合わせ" btn-color="white" btn-icon="email"></contact-dialog>
         </v-layout>
         <v-layout row wrap justify-center>
@@ -381,6 +384,10 @@ table th {
 
 .text-shadow {
   text-shadow: 2px 2px 2px rgba(0,0,0,0.2)!important;
+}
+
+.text-main {
+  color: rgba(0,0,0,.87)!important;
 }
 
 .text-sub {
