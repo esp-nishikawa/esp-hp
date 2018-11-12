@@ -276,7 +276,7 @@ export default {
   <section>
     <v-parallax :src="require('@/assets/parallax_home2.jpg')" height="400" class="mt-5">
       <v-layout row wrap align-center justify-center>
-        <v-flex xs10 text-xs-center>
+        <v-flex xs11 sm10 lg9 xl8 text-xs-center>
           <div v-vpshow="{ duration:2.0 }" class="title white--text my-3">
             株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
           </div>

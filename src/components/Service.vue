@@ -258,17 +258,17 @@ export default {
                   :key="i"
                 >
                   <v-layout row align-center>
-                    <v-flex v-if="$vuetify.breakpoint.mdAndUp">
+                    <v-flex v-if="$vuetify.breakpoint.mdAndUp" xs1>
                       <v-btn
                         icon
-                        style="position:absolute; top:16px; left:8px; z-index:100;"
+                        style="position:absolute; top:16px; left:4px; z-index:100;"
                         @click="item.page = item.page - 1 < 0 ? item.contents.length - 1 : item.page - 1"
                       >
                         <v-icon x-large class="text-sub">keyboard_arrow_up</v-icon>
                       </v-btn>
                       <v-item-group
                         v-model="item.page"
-                        class="shrink ma-2"
+                        style="width:60px"
                       >
                         <v-layout column align-center>
                           <v-item
@@ -289,7 +289,7 @@ export default {
                       </v-item-group>
                       <v-btn
                         icon
-                        style="position:absolute; bottom:16px; left:8px; z-index:100;"
+                        style="position:absolute; bottom:16px; left:4px; z-index:100;"
                         @click="item.page = item.page + 1 >= item.contents.length ? 0 : item.page + 1"
                       >
                         <v-icon x-large class="text-sub">keyboard_arrow_down</v-icon>
