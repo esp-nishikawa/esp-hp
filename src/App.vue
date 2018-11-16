@@ -1,7 +1,11 @@
 <script>
-import PrivacyDialog from '@/components/PrivacyDialog.vue';
-import AccessDialog from '@/components/AccessDialog.vue';
 import ContactDialog from '@/components/ContactDialog.vue';
+import PrivacyDialog from '@/components/PrivacyDialog.vue';
+import TweenLite from 'gsap/TweenLite';
+import {Power4} from 'gsap/EasePack';
+import CSSPlugin from 'gsap/CSSPlugin';
+// without this line, CSSPlugin may get dropped by your bundler...
+const plugins = [ CSSPlugin ]; // eslint-disable-line no-unused-vars
 
 export default {
   data () {
@@ -35,12 +39,12 @@ export default {
         onComplete: done,
       });
     },
-    onBeforeEnter(el) {
+    onBeforeEnter() {
       this.$nextTick(() => {
         this.$root.$emit('before-enter');
       });
     },
-    onAfterEnter(el) {
+    onAfterEnter() {
       this.$nextTick(() => {
         this.$root.$emit('after-enter');
       });
@@ -66,9 +70,8 @@ export default {
     }
   },
   components: {
-    PrivacyDialog,
-    AccessDialog,
     ContactDialog,
+    PrivacyDialog,
   },
   name: 'App'
 }
@@ -176,13 +179,12 @@ export default {
     <v-footer height="auto" class="blue darken-1">
       <v-container>
         <v-layout row wrap justify-end>
-          <privacy-dialog btn-label="プライバシーポリシー" btn-color="white" btn-icon="lock"></privacy-dialog>
-          <access-dialog btn-label="アクセスマップ" btn-color="white" btn-icon="map"></access-dialog>
           <contact-dialog btn-label="お問い合わせ" btn-color="white" btn-icon="email"></contact-dialog>
+          <privacy-dialog btn-label="プライバシーポリシー" btn-color="white" btn-icon="lock"></privacy-dialog>
         </v-layout>
         <v-layout row wrap justify-center>
           <div class="white--text ma-3">
-            Copyright &copy; {{ new Date().getFullYear() }} eSoftPowers.co.ltd All Rights Reserved.
+            &copy; 2013-{{ new Date().getFullYear() }} eSoftPowers.Co.,Ltd.
           </div>
         </v-layout>
       </v-container>

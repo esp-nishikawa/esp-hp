@@ -69,11 +69,11 @@ export default {
                 <v-layout row wrap>
                   <v-flex xs12>
                     <h3>連絡先</h3>
-                    <div>お電話またはメールにてご連絡下さい</div>
-                    <div>
-                      <v-icon color="blue lighten-2">phone</v-icon>TEL:03-6273-4837
-                    </div>
-                    <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
+                    <div>お電話またはメールフォームよりご連絡ください</div>
+                    <v-layout class="align-center ml-0 mt-1">
+                      <v-icon color="blue lighten-2" class="mr-1">phone</v-icon>TEL:03-6273-4837
+                    </v-layout>
+                    <contact-dialog selected-type="1" btn-label="メールフォーム" btn-class="ma-0 pl-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -129,11 +129,11 @@ export default {
                 <v-layout row wrap>
                   <v-flex xs12>
                     <h3>連絡先</h3>
-                    <div>お電話またはメールにてご連絡下さい</div>
-                    <div>
-                      <v-icon color="blue lighten-2">phone</v-icon>TEL:03-6273-4837
-                    </div>
-                    <contact-dialog selected-type="1" btn-label="メール" btn-class="ma-0 pa-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
+                    <div>お電話またはメールフォームよりご連絡ください</div>
+                    <v-layout class="align-center ml-0 mt-1">
+                      <v-icon color="blue lighten-2" class="mr-1">phone</v-icon>TEL:03-6273-4837
+                    </v-layout>
+                    <contact-dialog selected-type="1" btn-label="メールフォーム" btn-class="ma-0 pl-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>

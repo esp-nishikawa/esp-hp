@@ -1,3 +1,9 @@
+import TweenLite from 'gsap/TweenLite';
+import {Power4} from 'gsap/EasePack';
+import CSSPlugin from 'gsap/CSSPlugin';
+// without this line, CSSPlugin may get dropped by your bundler...
+const plugins = [ CSSPlugin ]; // eslint-disable-line no-unused-vars
+
 export const Vpshow = {
   // 表示領域の判定
   inViewport(el) {
@@ -29,10 +35,12 @@ export const Vpshow = {
     document.addEventListener('scroll', el.$onScroll);
   },
 
+  // eslint-disable-next-line no-unused-vars
   inserted(el, binding) {
     el.$onScroll();
   },
 
+  // eslint-disable-next-line no-unused-vars
   unbind(el, binding) {
     document.removeEventListener('scroll', el.$onScroll);
     delete el.$onScroll;

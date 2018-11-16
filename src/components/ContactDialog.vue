@@ -23,6 +23,7 @@ export default {
         privacy: false,
       },
       rules: {
+        /* eslint-disable no-useless-escape */
         required: v => !!v || 'この項目は必須です。',
         email:  v => !v || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || 'メールアドレスの形式が正しくないようです。',
         phone:  v => !v || /^[0-9０-９\-‐－―ー\(\)（）]+$/.test(v) || '電話番号の形式が正しくないようです。',
@@ -31,6 +32,7 @@ export default {
         max256: v => !v || v.length <= 256 || '256文字以内で入力してください。',
         max2000: v => !v || v.length <= 2000 || '2000文字以内で入力してください。',
         privacy: v => v || '個人情報の取り扱いについて同意をお願いします。',
+        /* eslint-enable no-useless-escape */
       },
       types: [
         { value: 1, text: '採用についてのお問い合わせ' },
@@ -98,16 +100,7 @@ export default {
 
 <template>
 <v-dialog v-model="showDialog" ref="dialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
-  <v-btn
-    v-if="$route.query['contact'] === 'form'"
-    flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
-  >
-    <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
-  </v-btn>
-  <v-btn
-    v-else flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor"
-    href="mailto:info@esoftpowers.com" @click.stop=""
-  >
+  <v-btn flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor">
     <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
   </v-btn>
   <v-card>
@@ -140,7 +133,6 @@ export default {
           <v-layout column class="mb-3 body-2">
             <div>【お問い合わせいただく前の注意事項】</div>
             <ul>
-              <li>メールによる回答は「@esoftpowers.com」のドメインよりお送りいたします。受信できるよう設定をお願いします。</li>
               <li>ご回答までに数日要する場合や、ご質問によってはお応えできかねる場合もございます。あらかじめご了承ください。</li>
               <li>お急ぎの方はお電話(03-6273-4837)にてお問い合わせください。</li>
               <li>お客様からいただく個人情報は、お問い合わせ・ご質問への回答、情報提供のために使用させていただきます。</li>
@@ -214,7 +206,7 @@ export default {
             </v-textarea>
           </v-form>
           <v-layout justify-end>
-            <v-btn flat round color="primary" @click="close">CANCEL</v-btn>
+            <v-btn outline round color="primary" @click="close">CANCEL</v-btn>
             <v-btn round color="primary" @click.native="confirm">確認</v-btn>
           </v-layout>
         </v-stepper-content>
@@ -277,7 +269,7 @@ export default {
             ></v-textarea>
           </v-form>
           <v-layout justify-end>
-            <v-btn flat round color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>
+            <v-btn outline round color="primary" @click.native="changeStep(1)">入力に戻る</v-btn>
             <v-btn round color="primary" :loading="loading" @click.prevent="send">送信</v-btn>
           </v-layout>
         </v-stepper-content>
@@ -296,7 +288,7 @@ export default {
             <div>お急ぎの場合はお電話(03-6273-4837)にてご連絡ください。</div>
           </v-layout>
           <v-layout justify-end>
-            <v-btn flat round color="primary" @click.native="close">CLOSE</v-btn>
+            <v-btn outline round color="primary" @click.native="close">CLOSE</v-btn>
           </v-layout>
         </v-stepper-content>
       </v-stepper-items>

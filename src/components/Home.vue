@@ -15,7 +15,7 @@ export default {
         {
           date: '2018-11-20',
           title: 'サイト更新 メールフォームを設置しました。',
-          description: `ページ下部「お問い合わせ」のボタンより、お気軽にお問い合わせ下さい。`,
+          description: `ページ下部「お問い合わせ」のボタンより、お気軽にお問い合わせください。`,
         },
         {
           date: '2018-9-18',
@@ -43,8 +43,8 @@ export default {
     }
   },
   methods: {
-    afterAppear(el) {
-      new Promise((resolve, reject) => {
+    afterAppear() {
+      new Promise(() => {
         setTimeout(() => { this.isTransition1 = true; }, 2000);
         setTimeout(() => { this.isTransition2 = true; }, 2200);
         setTimeout(() => { this.isTransition3 = true; }, 2400);
@@ -195,13 +195,11 @@ export default {
 
   <section>
     <v-container>
-      <v-layout row justify-center class="mt-5">
-        <div class="text-xs-center headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
+      <v-layout justify-center align-center text-xs-center headline class="mt-5">
+        株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。
       </v-layout>
-      <v-layout row justify-center class="mt-1">
-        <div class="title d-flex align-center">ご用命は</div>
-        <contact-dialog btn-label="こちら" btn-class="title ma-0 pa-0"></contact-dialog>
-        <div class="title d-flex align-center">まで！</div>
+      <v-layout justify-center align-center text-xs-center title class="mt-1">
+        ご用命は<contact-dialog btn-label="こちら" btn-class="title ma-0 pa-0"></contact-dialog>まで！
       </v-layout>
     </v-container>
   </section>
