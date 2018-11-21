@@ -1,4 +1,12 @@
 <script>
+import ContactDialog from '@/components/ContactDialog.vue';
+import PrivacyDialog from '@/components/PrivacyDialog.vue';
+import TweenLite from 'gsap/TweenLite';
+import {Power4} from 'gsap/EasePack';
+import CSSPlugin from 'gsap/CSSPlugin';
+// without this line, CSSPlugin may get dropped by your bundler...
+const plugins = [ CSSPlugin ]; // eslint-disable-line no-unused-vars
+
 export default {
   data () {
     return {
@@ -31,12 +39,12 @@ export default {
         onComplete: done,
       });
     },
-    onBeforeEnter(el) {
+    onBeforeEnter() {
       this.$nextTick(() => {
         this.$root.$emit('before-enter');
       });
     },
-    onAfterEnter(el) {
+    onAfterEnter() {
       this.$nextTick(() => {
         this.$root.$emit('after-enter');
       });
@@ -60,6 +68,10 @@ export default {
         }
       }
     }
+  },
+  components: {
+    ContactDialog,
+    PrivacyDialog,
   },
   name: 'App'
 }
@@ -165,10 +177,17 @@ export default {
     </transition>
 
     <v-footer height="auto" class="blue darken-1">
-      <v-spacer></v-spacer>
-      <div class="white--text ma-3">
-        Copyright &copy; {{ new Date().getFullYear() }} eSoftPowers.co.ltd All Rights Reserved.
-      </div>
+      <v-container>
+        <v-layout row wrap justify-end>
+          <contact-dialog btn-label="お問い合わせ" btn-color="white" btn-icon="email"></contact-dialog>
+          <privacy-dialog btn-label="プライバシーポリシー" btn-color="white" btn-icon="lock"></privacy-dialog>
+        </v-layout>
+        <v-layout row wrap justify-center>
+          <div class="white--text ma-3">
+            &copy; 2013-{{ new Date().getFullYear() }} eSoftPowers.Co.,Ltd.
+          </div>
+        </v-layout>
+      </v-container>
     </v-footer>
 
     <v-fab-transition>
@@ -320,12 +339,6 @@ table th {
   max-width: 160px!important;
 }
 
-.v-carousel__prev, .v-carousel__next {
-  top: 100%!important;
-  padding-bottom: 50px!important;
-  z-index: 2!important;
-}
-
 .v-chip .v-chip__content {
   cursor: inherit!important;
   user-select: none!important;
@@ -369,5 +382,17 @@ table th {
 .hover-link:hover::after {
   transform-origin: left top;
   transform: scale(1, 1);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.2)!important;
+}
+
+.text-main {
+  color: rgba(0,0,0,.87)!important;
+}
+
+.text-sub {
+  color: rgba(0,0,0,.54)!important;
 }
 </style>

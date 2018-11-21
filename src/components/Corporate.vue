@@ -1,6 +1,6 @@
 <script>
-import AccessDialog from './AccessDialog.vue'
-import OfficeImage from './OfficeImage.vue'
+import AccessDialog from './AccessDialog.vue';
+import OfficeImage from './OfficeImage.vue';
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
@@ -157,7 +157,7 @@ export default {
         <v-flex xs12 sm7 md6 lg5 xl4>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
-              <h2>CONTACT</h2>
+              <h2>LOCATIONS</h2>
             </v-card-title>
             <v-card-text>
               <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'py-0'">
@@ -167,29 +167,17 @@ export default {
                     <div>
                       〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ
                     </div>
-                    <div>
-                      <v-icon class="blue--text text--lighten-2">phone</v-icon>TEL:03-6273-4837
-                    </div>
-                    <div>
-                      <v-icon class="blue--text text--lighten-2">print</v-icon>FAX:03-6273-4838
-                    </div>
-                  </v-flex>
-                </v-layout>
-                <v-layout row wrap>
-                  <v-flex xs12>
-                    <h3>お問い合わせ</h3>
-                    <div>
-                      <v-icon class="blue--text text--lighten-2">email</v-icon>
-                      <a href="mailto:info@esoftpowers.com">info@esoftpowers.com</a>
-                    </div>
+                    <v-layout class="align-center ml-0 mt-1">
+                      <v-icon color="blue lighten-2" class="mr-1">phone</v-icon>TEL:03-6273-4837
+                    </v-layout>
+                    <v-layout class="align-center ml-0 mt-1">
+                      <v-icon color="blue lighten-2" class="mr-1">print</v-icon>FAX:03-6273-4838
+                    </v-layout>
+                    <access-dialog btn-label="交通アクセス・地図" btn-class="ma-0 pl-0" btn-icon="map" icon-color="blue lighten-2"></access-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>
             </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <access-dialog btn-label="＜＜＜交通アクセス 地図＞＞＞"></access-dialog>
-            </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>

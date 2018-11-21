@@ -1,4 +1,5 @@
 <script>
+import ContactDialog from './ContactDialog.vue';
 import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
@@ -11,6 +12,11 @@ export default {
       isTransition5: false,
       isTransition6: false,
       informations: [
+        {
+          date: '2018-11-20',
+          title: 'サイト更新 メールフォームを設置しました。',
+          description: `ページ下部「お問い合わせ」のボタンより、お気軽にお問い合わせください。`,
+        },
         {
           date: '2018-9-18',
           title: 'サイト更新 オフィス画像を掲載しました。',
@@ -37,8 +43,8 @@ export default {
     }
   },
   methods: {
-    afterAppear(el) {
-      new Promise((resolve, reject) => {
+    afterAppear() {
+      new Promise(() => {
         setTimeout(() => { this.isTransition1 = true; }, 2000);
         setTimeout(() => { this.isTransition2 = true; }, 2200);
         setTimeout(() => { this.isTransition3 = true; }, 2400);
@@ -47,6 +53,9 @@ export default {
         setTimeout(() => { this.isTransition6 = true; }, 3000);
       });
     },
+  },
+  components: {
+    ContactDialog,
   },
   directives: {
     Vpshow,
@@ -185,12 +194,12 @@ export default {
   </section>
 
   <section>
-    <v-container grid-list-md>
-      <v-layout row wrap justify-center class="mt-3">
-        <div class="text-xs-center">
-          <div class="headline">株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</div>
-          <span class="title">ご用命は<a href="mailto:info@esoftpowers.com">こちら</a>まで！</span>
-        </div>
+    <v-container>
+      <v-layout justify-center align-center text-xs-center headline class="mt-5">
+        株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。
+      </v-layout>
+      <v-layout justify-center align-center text-xs-center title class="mt-1">
+        ご用命は<contact-dialog btn-label="こちら" btn-class="title ma-0 pa-0"></contact-dialog>まで！
       </v-layout>
     </v-container>
   </section>
@@ -212,8 +221,8 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="会社案内">会社案内</div>
-                <span class="text-sub hover-text" data-hover="About Us">About Us</span>
+                <div class="headline font-weight-medium text-shadow hover-text" style="line-height:1.2" data-hover="会社案内">会社案内</div>
+                <span class="body-1 text-sub hover-text" data-hover="About Us">About Us</span>
               </div>
             </v-card-title>
           </v-card>
@@ -232,8 +241,8 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="事業分野">事業分野</div>
-                <span class="text-sub hover-text" data-hover="Our Business">Our Business</span>
+                <div class="headline font-weight-medium text-shadow hover-text" style="line-height:1.2" data-hover="事業分野">事業分野</div>
+                <span class="body-1 text-sub hover-text" data-hover="Our Business">Our Business</span>
               </div>
             </v-card-title>
           </v-card>
@@ -252,8 +261,8 @@ export default {
             </v-img>
             <v-card-title primary-title class="layout justify-center">
               <div class="hover-title">
-                <div class="text-main hover-text" data-hover="採用情報">採用情報</div>
-                <span class="text-sub hover-text" data-hover="Recruit">Recruit</span>
+                <div class="headline font-weight-medium text-shadow hover-text" style="line-height:1.2" data-hover="採用情報">採用情報</div>
+                <span class="body-1 text-sub hover-text" data-hover="Recruit">Recruit</span>
               </div>
             </v-card-title>
           </v-card>
@@ -265,7 +274,7 @@ export default {
   <section>
     <v-parallax :src="require('@/assets/parallax_home2.jpg')" height="400" class="mt-5">
       <v-layout row wrap align-center justify-center>
-        <v-flex xs10 text-xs-center>
+        <v-flex xs11 sm10 lg9 xl8 text-xs-center>
           <div v-vpshow="{ duration:2.0 }" class="title white--text my-3">
             株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
           </div>
@@ -285,8 +294,8 @@ export default {
       <v-flex xs12 sm10 offset-sm1>
         <v-card flat class="transparent">
           <v-card-title primary-title>
-            <v-icon medium class="blue--text text--lighten-2" style="margin-right:10px">thumb_up</v-icon>
-            <div class="text-main">INFORMATION</div>
+            <v-icon medium color="blue lighten-2" class="mr-2">thumb_up</v-icon>
+            <div class="headline font-weight-medium text-shadow">INFORMATION</div>
           </v-card-title>
           <v-divider></v-divider>
           <v-expansion-panel popout>
@@ -296,7 +305,7 @@ export default {
               :hide-actions="!information.description"
             >
               <div slot="header">
-                <span class="text-sub">{{ information.date }}</span>
+                <span class="body-1 text-sub">{{ information.date }}</span>
                 <div>{{ information.title }}</div>
               </div>
               <v-card v-if="information.description">
@@ -402,18 +411,5 @@ export default {
 .hover-card:hover .hover-text::before {
   transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
   opacity: 1;
-}
-
-.text-main {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.2;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
-}
-
-.text-sub {
-  color: rgba(0,0,0,.54);
-  font-size: 14px;
-  font-weight: 400;
 }
 </style>

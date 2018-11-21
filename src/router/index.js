@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import Corporate from '@/components/Corporate'
-import Service from '@/components/Service'
-import Recruit from '@/components/Recruit'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '@/components/Home';
+import Corporate from '@/components/Corporate';
+import Service from '@/components/Service';
+import Recruit from '@/components/Recruit';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
@@ -35,8 +35,9 @@ const router = new Router({
       meta: {title: '採用情報'}
     },
   ],
+  // eslint-disable-next-line no-unused-vars
   scrollBehavior (to, from, savedPosition) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       router.app.$root.$once('before-enter', () => {
         let position = { x: 0, y: 0 };
         if (to.hash) {

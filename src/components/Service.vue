@@ -6,7 +6,7 @@ export default {
       items: [
         {
           tab: '社会インフラ1',
-          page: 1,
+          page: 0,
           contents: [
             {
               title: '大規模施設向けデジタルサイネージシステムの表示品質の向上',
@@ -30,8 +30,9 @@ export default {
               techs: ['Java', 'Oracle', 'bash', 'bat', 'ps', 'C++', 'C#'],
             },
             {
-              title: 'Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています',
-              text: `EoEはまだ一般的に普及しているものでは無く、参考文献が限られているため、
+              title: 'Ether over Etherに対応したルータの開発',
+              text: `Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています。
+                     EoEはまだ一般的に普及しているものでは無く、参考文献が限られているため、
                      trial and errorで作業しています。`,
               techs: ['linux kernel', 'VLAN', 'Ether over Ether', 'C'],
             },
@@ -46,7 +47,7 @@ export default {
         },
         {
           tab: '社会インフラ2',
-          page: 1,
+          page: 0,
           contents: [
             {
               title: 'ICカードの利用情報管理用サーバのシステム切替作業',
@@ -64,16 +65,18 @@ export default {
               techs: ['C++', 'SQLServer', 'WindowsServer'],
             },
             {
-              title: '携帯、スマートフォンを利用したIC出改札システムの開発、運用保守',
-              text: `外部サーバとTCP/IPを使用したソケット通信を行う機能、
+              title: 'IC出改札システムの開発、運用保守',
+              text: `携帯、スマートフォンを利用したIC出改札システムの開発、運用保守を行っています。
+                     外部サーバとTCP/IPを使用したソケット通信を行う機能、
                      汎用的にテーブルデータを更新する仕組み、
                      またコールセンターのような後方業務の画面やエンドユーザーが使用する画面まで、
                      幅広い領域を担当しています。`,
               techs: ['C#', 'C++', 'ASP.NET', 'SQLServer', 'JP1'],
             },
             {
-              title: '携帯電話を利用したIC乗車カードシステム内の、サーバ内通信と上位サーバ間通信部分を担当。',
-              text: `その他に、業務の一部も担当しており、ユーザからの要望に応え、利便性の向上を図るため、
+              title: 'IC乗車カードシステムの開発',
+              text: `携帯電話を利用したIC乗車カードシステム内の、サーバ内通信と上位サーバ間通信部分を担当しています。
+                     その他に、業務の一部も担当しており、ユーザからの要望に応え、利便性の向上を図るため、
                      UI変更や新規機能追加などを行っています。
                      数千万人が利用する交通インフラの一翼を担うシステムのため、品質に関しては厳しいですが、
                      反面、無理のないスケジュールが組まれているため、マイペースで仕事が出来る環境です。`,
@@ -83,7 +86,7 @@ export default {
         },
         {
           tab: 'エンタメシステム',
-          page: 1,
+          page: 0,
           contents: [
             {
               title: '現行及び次世代ゲーム機のプラットフォームの開発',
@@ -104,7 +107,7 @@ export default {
         },
         {
           tab: '物販/物流システム',
-          page: 1,
+          page: 0,
           contents: [
             {
               title: 'ECサイトの保守・開発',
@@ -227,7 +230,7 @@ export default {
 
     <v-container grid-list-md>
       <v-layout row wrap justify-center class="mt-3">
-        <v-flex xs12 sm10 md9 lg8 xl7>
+        <v-flex xs12 sm11 md10 lg9 xl8>
           <v-card raised>
             <v-card-title primary-title class="layout justify-center">
               <h2>WORKS</h2>
@@ -254,35 +257,95 @@ export default {
                   v-for="(item, i) in items"
                   :key="i"
                 >
-                  <v-carousel dark interval="60000" @input="item.page = $event+1">
-                    <v-carousel-item v-for="(content, c) in item.contents" :key="c">
-                      <v-card light flat height="100%">
-                        <v-card-title primary-title>
-                          <div class="title">{{ content.title }}</div>
-                        </v-card-title>
-                        <v-divider></v-divider>
-                        <v-card-text>
-                          <div class="body-1">{{ content.text }}</div>
-                        </v-card-text>
-                        <v-subheader>関連技術</v-subheader>
-                        <a
-                          v-for="(tech, t) in content.techs"
-                          :key="t"
-                          :href="'https://www.google.co.jp/search?q=' + encodeURIComponent(tech)"
-                          target="_blank"
+                  <v-layout row align-center>
+                    <v-flex v-if="$vuetify.breakpoint.mdAndUp" xs1>
+                      <v-btn
+                        icon
+                        style="position:absolute; top:16px; left:4px; z-index:100;"
+                        @click="item.page = item.page - 1 < 0 ? item.contents.length - 1 : item.page - 1"
+                      >
+                        <v-icon x-large class="text-sub">keyboard_arrow_up</v-icon>
+                      </v-btn>
+                      <v-item-group
+                        v-model="item.page"
+                        style="width:60px"
+                      >
+                        <v-layout column align-center>
+                          <v-item
+                            v-for="(content, c) in item.contents"
+                            :key="c"
+                          >
+                            <div slot-scope="{ active, toggle }">
+                              <v-btn
+                                :input-value="active"
+                                icon
+                                @click="toggle"
+                              >
+                                <v-icon>fiber_manual_record</v-icon>
+                              </v-btn>
+                            </div>
+                          </v-item>
+                        </v-layout>
+                      </v-item-group>
+                      <v-btn
+                        icon
+                        style="position:absolute; bottom:16px; left:4px; z-index:100;"
+                        @click="item.page = item.page + 1 >= item.contents.length ? 0 : item.page + 1"
+                      >
+                        <v-icon x-large class="text-sub">keyboard_arrow_down</v-icon>
+                      </v-btn>
+                      <div
+                        class="subheading font-weight-bold text-sub"
+                        style="position:absolute; bottom:16px; right:16px; z-index:100;"
+                      >
+                        {{ item.page + 1 }} / {{ item.contents.length }}
+                      </div>
+                    </v-flex>
+                    <v-flex>
+                      <v-window
+                        v-model="item.page"
+                        :vertical="$vuetify.breakpoint.mdAndUp"
+                      >
+                        <v-window-item
+                          v-for="(content, c) in item.contents"
+                          :key="c"
                         >
-                          <v-tooltip bottom>
-                            <v-chip slot="activator" color="blue lighten-1" text-color="white">
-                              {{ tech }}
-                            </v-chip>
-                            <span>{{ tech }}を検索</span>
-                          </v-tooltip>
-                        </a>
-                        <v-spacer></v-spacer>
-                        <div class="page-info subheading">{{ item.page }} / {{ item.contents.length }}</div>
-                      </v-card>
-                    </v-carousel-item>
-                  </v-carousel>
+                          <v-card light flat :height="$vuetify.breakpoint.xs ? 500 : 400">
+                            <v-card-title primary-title>
+                              <div class="title">{{ content.title }}</div>
+                            </v-card-title>
+                            <v-divider></v-divider>
+                            <v-card-text>
+                              <div class="body-1">{{ content.text }}</div>
+                            </v-card-text>
+                            <v-subheader>関連技術</v-subheader>
+                            <a
+                              v-for="(tech, t) in content.techs"
+                              :key="t"
+                              :href="'https://www.google.co.jp/search?q=' + encodeURIComponent(tech)"
+                              target="_blank"
+                            >
+                              <v-tooltip bottom>
+                                <v-chip slot="activator" color="blue lighten-1" text-color="white">
+                                  {{ tech }}
+                                </v-chip>
+                                <span>{{ tech }}を検索</span>
+                              </v-tooltip>
+                            </a>
+                          </v-card>
+                        </v-window-item>
+                      </v-window>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout v-if="$vuetify.breakpoint.smAndDown" row justify-center class="pb-2">
+                    <v-pagination
+                      :value="item.page+1"
+                      @input="item.page=$event-1"
+                      :length="item.contents.length"
+                      :total-visible="5"
+                      circle
+                    ></v-pagination>
+                  </v-layout>
                 </v-tab-item>
               </v-tabs-items>
             </v-tabs>
@@ -298,13 +361,5 @@ export default {
 <style scoped>
 .v-chip:hover {
   text-decoration: underline;
-}
-
-.page-info {
-  position: absolute;
-  bottom: 66px;
-  right: 16px;
-  color: rgba(0,0,0,.54);
-  font-weight: bold;
 }
 </style>
