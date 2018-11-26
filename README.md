@@ -3,15 +3,16 @@
 
 ## 構成
 
-- [VueCLI](https://jp.vuejs.org/v2/guide/installation.html#CLI)を使った`SPA（シングルページアプリケーション）`の構成
+- [Vue CLI 3](https://cli.vuejs.org/)を使った`SPA（シングルページアプリケーション）`の構成
 ```
 リポジトリTOP
 │
-├ dist ... 出力先フォルダ（ビルド後この配下をアップロード）
+├ public ... 静的ファイル、index.htmlを配置
 │　├ .htaccess
 │　├ favicon.ico
 │　├ robots.txt
-│　└ sitemap.xml
+│　├ sitemap.xml
+│　└ index.html
 │
 ├ src ... ソース（この配下を修正）
 │　│
@@ -41,8 +42,9 @@
 │　├ App.vue ... 共通部分のコンポーネント（ナビゲーションメニューや全体にかかるスタイルなど）
 │　└ main.js ... Vueメイン（外部モジュールのインポートなど）
 │
+├ babel.config.js
+├ vue.config.js
 ├ Dockerfile
-├ index.html
 └ README.md
 ```
 - マテリアルデザインのFWは[Vuetify.js](https://vuetifyjs.com)を使用

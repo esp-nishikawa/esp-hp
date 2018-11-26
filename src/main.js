@@ -1,11 +1,16 @@
-import 'babel-polyfill';
 import Vue from 'vue';
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
+import Vuetify from 'vuetify/lib';
+import { Ripple, Scroll } from 'vuetify/lib/directives';
+import 'vuetify/src/stylus/app.styl';
 import App from './App';
 import router from './router';
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  directives: {
+    Ripple,
+    Scroll,
+  }
+});
 
 Vue.config.productionTip = false;
 
