@@ -6,6 +6,6 @@ COPY . /opt/esp-hp
 WORKDIR /opt/esp-hp
 RUN npm install && \
     npm run build
-CMD npm run dev
+CMD npm run serve
 
 EXPOSE 8080
