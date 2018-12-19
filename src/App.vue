@@ -179,8 +179,16 @@ export default {
     <v-footer height="auto" class="blue darken-1">
       <v-container>
         <v-layout row wrap justify-end>
-          <contact-dialog btn-label="お問い合わせ" btn-color="white" btn-icon="email"></contact-dialog>
-          <privacy-dialog btn-label="プライバシーポリシー" btn-color="white" btn-icon="lock"></privacy-dialog>
+          <contact-dialog>
+            <v-btn flat round color="white">
+              <v-icon class="mr-1">email</v-icon>お問い合わせ
+            </v-btn>
+          </contact-dialog>
+          <privacy-dialog>
+            <v-btn flat round color="white">
+              <v-icon class="mr-1">lock</v-icon>プライバシーポリシー
+            </v-btn>
+          </privacy-dialog>
         </v-layout>
         <v-layout row wrap justify-center>
           <div class="white--text ma-3">

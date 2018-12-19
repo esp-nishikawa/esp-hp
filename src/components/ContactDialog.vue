@@ -84,12 +84,6 @@ export default {
     }
   },
   props: {
-    btnLabel: String,
-    btnClass: String,
-    btnStyle: { type: String, default: 'min-width:0' },
-    btnColor: { type: String, default: 'blue darken-2' },
-    btnIcon: String,
-    iconColor: String,
     selectedType: { type: [String, Number], default: 0 },
   },
   components: {
@@ -100,9 +94,9 @@ export default {
 
 <template>
 <v-dialog v-model="showDialog" ref="dialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
-  <v-btn flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor">
-    <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
-  </v-btn>
+  <template slot="activator">
+    <slot></slot>
+  </template>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
       <v-btn icon @click="close">
@@ -138,7 +132,9 @@ export default {
               <li>お客様からいただく個人情報は、お問い合わせ・ご質問への回答、情報提供のために使用させていただきます。</li>
               <li>
                 プライバシーポリシーについては
-                <privacy-dialog btn-label="こちら" btn-class="ma-0 pa-0" btn-style="min-width:0;height:24px;"></privacy-dialog>
+                <privacy-dialog>
+                  <v-btn flat round color="blue darken-2" class="ma-0 pa-0" style="min-width:0;height:24px;">こちら</v-btn>
+                </privacy-dialog>
                 をご確認ください。
               </li>
             </ul>

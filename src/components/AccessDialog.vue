@@ -10,22 +10,14 @@ export default {
       name: 'access-dialog',
     }
   },
-  props: {
-    btnLabel: String,
-    btnClass: String,
-    btnStyle: { type: String, default: 'min-width:0' },
-    btnColor: { type: String, default: 'blue darken-2' },
-    btnIcon: String,
-    iconColor: String,
-  },
 }
 </script>
 
 <template>
 <v-dialog v-model="showDialog" ref="dialog" max-width="720" :fullscreen="$vuetify.breakpoint.smAndDown">
-  <v-btn flat round slot="activator" :class="btnClass" :style="btnStyle" :color="btnColor">
-    <v-icon v-if="btnIcon" :color="iconColor" class="mr-1">{{ btnIcon }}</v-icon>{{ btnLabel }}
-  </v-btn>
+  <template slot="activator">
+    <slot></slot>
+  </template>
   <v-card>
     <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
       <v-btn icon @click="close">

@@ -59,11 +59,15 @@ export default {
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
                     <h3>給与</h3>
-                    <compensation-dialog btn-label="こちらをご覧ください"></compensation-dialog>
+                    <compensation-dialog>
+                      <v-btn flat round color="blue darken-2">こちらをご覧ください</v-btn>
+                    </compensation-dialog>
                   </v-flex>
                   <v-flex xs12 sm6>
                     <h3>勤務条件・福利厚生など</h3>
-                    <conditions-dialog btn-label="こちらをご覧ください"></conditions-dialog>
+                    <conditions-dialog>
+                      <v-btn flat round color="blue darken-2">こちらをご覧ください</v-btn>
+                    </conditions-dialog>
                   </v-flex>
                 </v-layout>
                 <v-layout row wrap>
@@ -73,7 +77,11 @@ export default {
                     <v-layout class="align-center ml-0 mt-1">
                       <v-icon color="blue lighten-2" class="mr-1">phone</v-icon>TEL:03-6273-4837
                     </v-layout>
-                    <contact-dialog selected-type="1" btn-label="メールフォーム" btn-class="ma-0 pl-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
+                    <contact-dialog selected-type="1">
+                      <v-btn flat round color="blue darken-2" class="ma-0 pl-0">
+                        <v-icon color="blue lighten-2" class="mr-1">email</v-icon>メールフォーム
+                      </v-btn>
+                    </contact-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -119,11 +127,15 @@ export default {
                 <v-layout row wrap>
                   <v-flex xs12 sm6>
                     <h3>給与</h3>
-                    <compensation-dialog mid-career btn-label="こちらをご覧ください"></compensation-dialog>
+                    <compensation-dialog mid-career>
+                      <v-btn flat round color="blue darken-2">こちらをご覧ください</v-btn>
+                    </compensation-dialog>
                   </v-flex>
                   <v-flex xs12 sm6>
                     <h3>勤務条件・福利厚生など</h3>
-                    <conditions-dialog btn-label="こちらをご覧ください"></conditions-dialog>
+                    <conditions-dialog>
+                      <v-btn flat round color="blue darken-2">こちらをご覧ください</v-btn>
+                    </conditions-dialog>
                   </v-flex>
                 </v-layout>
                 <v-layout row wrap>
@@ -133,7 +145,11 @@ export default {
                     <v-layout class="align-center ml-0 mt-1">
                       <v-icon color="blue lighten-2" class="mr-1">phone</v-icon>TEL:03-6273-4837
                     </v-layout>
-                    <contact-dialog selected-type="1" btn-label="メールフォーム" btn-class="ma-0 pl-0" btn-icon="email" icon-color="blue lighten-2"></contact-dialog>
+                    <contact-dialog selected-type="1">
+                      <v-btn flat round color="blue darken-2" class="ma-0 pl-0">
+                        <v-icon color="blue lighten-2" class="mr-1">email</v-icon>メールフォーム
+                      </v-btn>
+                    </contact-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>

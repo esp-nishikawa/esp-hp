@@ -199,7 +199,11 @@ export default {
         株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。
       </v-layout>
       <v-layout justify-center align-center text-xs-center title class="mt-1">
-        ご用命は<contact-dialog btn-label="こちら" btn-class="title ma-0 pa-0"></contact-dialog>まで！
+        ご用命は
+        <contact-dialog>
+          <v-btn flat round color="blue darken-2" class="title ma-0 pa-0" style="min-width:0">こちら</v-btn>
+        </contact-dialog>
+        まで！
       </v-layout>
     </v-container>
   </section>

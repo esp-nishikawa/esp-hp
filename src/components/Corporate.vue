@@ -173,7 +173,11 @@ export default {
                     <v-layout class="align-center ml-0 mt-1">
                       <v-icon color="blue lighten-2" class="mr-1">print</v-icon>FAX:03-6273-4838
                     </v-layout>
-                    <access-dialog btn-label="交通アクセス・地図" btn-class="ma-0 pl-0" btn-icon="map" icon-color="blue lighten-2"></access-dialog>
+                    <access-dialog>
+                      <v-btn flat round color="blue darken-2" class="ma-0 pl-0">
+                        <v-icon color="blue lighten-2" class="mr-1">map</v-icon>交通アクセス・地図
+                      </v-btn>
+                    </access-dialog>
                   </v-flex>
                 </v-layout>
               </v-container>
