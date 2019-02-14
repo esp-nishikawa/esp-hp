@@ -1,10 +1,6 @@
 import TweenLite from 'gsap/TweenLite';
-import {Power4} from 'gsap/EasePack';
-import CSSPlugin from 'gsap/CSSPlugin';
-// without this line, CSSPlugin may get dropped by your bundler...
-const plugins = [ CSSPlugin ]; // eslint-disable-line no-unused-vars
 
-export const Vpshow = {
+export default {
   // 表示領域の判定
   inViewport(el) {
     const rect = el.getBoundingClientRect();
@@ -26,7 +22,7 @@ export const Vpshow = {
           x: 0,
           y: 0,
           transformOrigin: '50% 50%',
-          ease: Power4.easeOut,
+          ease: 'Power2.easeOut',
           delay,
         });
         binding.def.unbind(el, binding);
@@ -45,4 +41,4 @@ export const Vpshow = {
     document.removeEventListener('scroll', el.$onScroll);
     delete el.$onScroll;
   },
-}
+};

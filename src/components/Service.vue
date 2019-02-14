@@ -1,6 +1,6 @@
 <script>
 export default {
-  data () {
+  data() {
     return {
       activeTab: null,
       items: [
@@ -43,7 +43,7 @@ export default {
                      開発担当者は基本プログラミングだけに集中できる環境で、短期間で効率的に品質を上げることを優先します。`,
               techs: ['Java', 'JavaScript', 'PostgreSQL', 'Liferay'],
             },
-          ]
+          ],
         },
         {
           tab: '社会インフラ2',
@@ -82,7 +82,7 @@ export default {
                      反面、無理のないスケジュールが組まれているため、マイペースで仕事が出来る環境です。`,
               techs: ['C++', 'C#', 'SQLServer'],
             },
-          ]
+          ],
         },
         {
           tab: 'エンタメシステム',
@@ -103,7 +103,7 @@ export default {
                      それに向けた開発を進めています。`,
               techs: ['Java', 'JavaScript', 'PHP', 'MySQL', 'AWS', 'Redis', 'Spring Boot', 'MyBatis'],
             },
-          ]
+          ],
         },
         {
           tab: '物販/物流システム',
@@ -137,12 +137,17 @@ export default {
                      無駄なドキュメントはなるべく作らず、できるだけわかりやすいソースコードでモデルを表現しようとします。`,
               techs: ['Java', 'TypeScript', 'Vue.js', 'Almin.js', 'Pug', 'MySQL', 'Redis', 'Spring Boot'],
             },
-          ]
+          ],
         },
       ],
-    }
+    };
   },
-}
+  computed: {
+    verticalTabs() {
+      return this.$vuetify.breakpoint.mdAndUp;
+    },
+  },
+};
 </script>
 
 <template>
@@ -258,7 +263,7 @@ export default {
                   :key="i"
                 >
                   <v-layout row align-center>
-                    <v-flex v-if="$vuetify.breakpoint.mdAndUp" xs1>
+                    <v-flex v-if="verticalTabs" xs1>
                       <v-btn
                         icon
                         style="position:absolute; top:16px; left:4px; z-index:100;"
@@ -304,7 +309,7 @@ export default {
                     <v-flex>
                       <v-window
                         v-model="item.page"
-                        :vertical="$vuetify.breakpoint.mdAndUp"
+                        :vertical="verticalTabs"
                       >
                         <v-window-item
                           v-for="(content, c) in item.contents"
@@ -337,7 +342,7 @@ export default {
                       </v-window>
                     </v-flex>
                   </v-layout>
-                  <v-layout v-if="$vuetify.breakpoint.smAndDown" row justify-center class="pb-2">
+                  <v-layout v-if="!verticalTabs" row justify-center class="pb-2">
                     <v-pagination
                       :value="item.page+1"
                       @input="item.page=$event-1"

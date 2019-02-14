@@ -1,9 +1,8 @@
 <script>
 import ContactDialog from './ContactDialog.vue';
-import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
-  data () {
+  data() {
     return {
       isTransition1: false,
       isTransition2: false,
@@ -40,7 +39,7 @@ export default {
           description: ``,
         },
       ],
-    }
+    };
   },
   methods: {
     afterAppear() {
@@ -57,10 +56,7 @@ export default {
   components: {
     ContactDialog,
   },
-  directives: {
-    Vpshow,
-  },
-}
+};
 </script>
 
 <template>

@@ -7,7 +7,7 @@ export default {
   mixins: [
     DialogControllable,
   ],
-  data () {
+  data() {
     return {
       step: 1,
       loading: false,
@@ -41,12 +41,12 @@ export default {
         { value: 4, text: 'その他' },
       ],
       name: 'contact-dialog',
-    }
+    };
   },
   computed: {
     validateStatus() {
       return this.status >= 200 && this.status < 300;
-    }
+    },
   },
   methods: {
     confirm() {
@@ -81,7 +81,7 @@ export default {
       this.status = 0;
       this.loading = false;
       this.step = 1;
-    }
+    },
   },
   props: {
     selectedType: { type: [String, Number], default: 0 },
@@ -89,16 +89,16 @@ export default {
   components: {
     PrivacyDialog,
   },
-}
+};
 </script>
 
 <template>
-<v-dialog v-model="showDialog" ref="dialog" max-width="960" :fullscreen="$vuetify.breakpoint.smAndDown">
+<v-dialog v-model="showDialog" max-width="960" :fullscreen="fullscreen">
   <template slot="activator">
     <slot></slot>
   </template>
   <v-card>
-    <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
+    <v-layout v-if="fullscreen" justify-start>
       <v-btn icon @click="close">
         <v-icon>arrow_back</v-icon>
       </v-btn>

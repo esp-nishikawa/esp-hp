@@ -1,18 +1,14 @@
 <script>
+import TweenLite from 'gsap/TweenLite';
 import ContactDialog from '@/components/ContactDialog.vue';
 import PrivacyDialog from '@/components/PrivacyDialog.vue';
-import TweenLite from 'gsap/TweenLite';
-import {Power4} from 'gsap/EasePack';
-import CSSPlugin from 'gsap/CSSPlugin';
-// without this line, CSSPlugin may get dropped by your bundler...
-const plugins = [ CSSPlugin ]; // eslint-disable-line no-unused-vars
 
 export default {
   data () {
     return {
       scrollTop: 0,
       isNavigation: false,
-    }
+    };
   },
   methods: {
     onScroll() {
@@ -21,12 +17,12 @@ export default {
     onEnter(el, done) {
       TweenLite.fromTo(el, 0.3, {
         autoAlpha: 0,
-        scale: 0.5,
+        //scale: 0.5,
       }, {
         autoAlpha: 1,
-        scale: 1,
-        transformOrigin: '50% 50%',
-        ease: Power4.easeOut,
+        //scale: 1,
+        //transformOrigin: '50% 50%',
+        ease: 'Power2.easeInOut',
         onComplete: done,
       });
     },
@@ -35,19 +31,15 @@ export default {
         autoAlpha: 1,
       }, {
         autoAlpha: 0,
-        ease: Power4.easeOut,
+        ease: 'Power2.easeOut',
         onComplete: done,
       });
     },
     onBeforeEnter() {
-      this.$nextTick(() => {
-        this.$root.$emit('before-enter');
-      });
+      this.$root.$emit('before-enter');
     },
     onAfterEnter() {
-      this.$nextTick(() => {
-        this.$root.$emit('after-enter');
-      });
+      this.$root.$emit('after-enter');
     },
   },
   watch: {
@@ -56,25 +48,25 @@ export default {
         if (to.path === from.path) {
           const anchor = document.querySelector(to.hash);
           if (anchor) {
-            this.$vuetify.goTo(anchor.offsetTop);
+            this.goTo(anchor.offsetTop);
           }
         } else {
           this.$root.$once('after-enter', () => {
             const anchor = document.querySelector(to.hash);
             if (anchor) {
-              this.$vuetify.goTo(anchor.offsetTop);
+              this.goTo(anchor.offsetTop);
             }
           });
         }
       }
-    }
+    },
   },
   components: {
     ContactDialog,
     PrivacyDialog,
   },
-  name: 'App'
-}
+  name: 'App',
+};
 </script>
 
 <template>
@@ -207,7 +199,7 @@ export default {
         color="purple"
         v-scroll="onScroll"
         v-show="scrollTop > 60"
-        @click.native.stop="$vuetify.goTo(0)"
+        @click.native.stop="goTo(0)"
       >
         <v-icon>keyboard_arrow_up</v-icon>
       </v-btn>
@@ -307,7 +299,7 @@ h2 {
 h3 {
   position: relative;
   margin: 16px 0 2px 0;
-  padding: 0 0 3px 4px;
+  padding: 0 0 3px 6px;
   border-left: 5px solid #42A5F5;
   font-size: 16px;
   font-weight: 700;

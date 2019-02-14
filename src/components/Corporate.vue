@@ -1,10 +1,9 @@
 <script>
 import AccessDialog from './AccessDialog.vue';
 import OfficeImage from './OfficeImage.vue';
-import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
-  data () {
+  data() {
     return {
       profile: {
         founding: '平成19年9月',
@@ -86,16 +85,13 @@ export default {
           engineers: '8名',
         },
       ],
-    }
+    };
   },
   components: {
     AccessDialog,
     OfficeImage,
   },
-  directives: {
-    Vpshow,
-  },
-}
+};
 </script>
 
 <template>

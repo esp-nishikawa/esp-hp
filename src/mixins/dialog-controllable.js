@@ -1,19 +1,24 @@
 export default {
-  data () {
+  data() {
     return {
       name: 'dialog',
       showDialog: false,
-    }
+    };
+  },
+  computed: {
+    fullscreen() {
+      return this.$vuetify.breakpoint.smAndDown;
+    },
   },
   methods: {
-    onPopstate(el) {
+    onPopstate(event) {
       // 最前面のダイアログ以外はクローズしない
-      const dialog = this.$refs['dialog'];
-      if (dialog && dialog.activeZIndex != dialog.getMaxZIndex()) {
+      const container = this.$refs['container'] || this.$children[0];
+      if (container && container.activeZIndex != container.getMaxZIndex()) {
         return;
       }
       // 履歴上で表示状態ならクローズしない
-      if (el.state['name'] === this.name) {
+      if (event.state['name'] === this.name) {
         return;
       }
       this.close();
@@ -22,21 +27,27 @@ export default {
       this.showDialog = false;
     },
     resetScroll() {
-      const elements = document.getElementsByClassName('v-dialog v-dialog--active');
-      if (elements && elements.length > 0) {
-        elements[elements.length - 1].scrollTop = 0;
+      const container = this.$refs['container'] || this.$children[0];
+      if (container) {
+        const dialog = container.$refs['dialog'];
+        if (dialog) {
+          dialog.scrollTop = 0;
+        }
       }
     },
   },
   watch: {
     showDialog(val) {
+      // スクロール位置をリセット
       if (!val) {
-        this.resetScroll();
+        this.$nextTick(() => {
+          this.resetScroll();
+        });
       }
 
       // ブラウザの「戻る」ボタンでダイアログを閉じる
       if (val) {
-        window.history.pushState({name: this.name}, this.name);
+        window.history.pushState({ name: this.name }, this.name);
         window.addEventListener('popstate', this.onPopstate);
       } else {
         if (window.history.state['name'] === this.name) {
@@ -46,4 +57,4 @@ export default {
       }
     },
   },
-}
+};

@@ -1,12 +1,11 @@
 <script>
 import DialogControllable from '@/mixins/dialog-controllable.js';
-import { Vpshow } from '@/directives/vpshow.js';
 
 export default {
   mixins: [
     DialogControllable,
   ],
-  data () {
+  data() {
     return {
       carouselValue: 0,
       items: [
@@ -31,36 +30,38 @@ export default {
           title: 'ライブラリー',
         },
       ],
-    }
+    };
   },
   props: {
     itemIndex: Number,
   },
+  computed: {
+    clickable() {
+      return this.$vuetify.breakpoint.mdAndUp;
+    },
+  },
   methods: {
     onImageClick() {
-      if (this.$vuetify.breakpoint.mdAndUp) {
-        this.carouselValue=this.itemIndex;
+      if (this.clickable) {
+        this.carouselValue = this.itemIndex;
         this.showDialog = true;
       }
     },
   },
-  directives: {
-    Vpshow,
-  },
-}
+};
 </script>
 
 <template>
 <v-card
-  :hover="$vuetify.breakpoint.mdAndUp"
-  :ripple="$vuetify.breakpoint.mdAndUp"
-  :style="$vuetify.breakpoint.mdAndUp ? {'cursor': 'pointer'} : {'cursor': 'default'}"
+  :hover="clickable"
+  :ripple="clickable"
+  :style="clickable ? {'cursor': 'pointer'} : {'cursor': 'default'}"
   class="image-card"
   @click.native="onImageClick"
 >
   <v-img
     :src="items[itemIndex].src"
-    :class="{'hover-image': $vuetify.breakpoint.mdAndUp}"
+    :class="{'hover-image': clickable}"
   >
   </v-img>
   <div
@@ -70,7 +71,7 @@ export default {
     {{ items[itemIndex].title }}
   </div>
 
-  <v-dialog v-model="showDialog" ref="dialog" max-width="960">
+  <v-dialog v-model="showDialog" ref="container" max-width="960">
     <v-card>
       <v-layout>
         <v-fade-transition leave-absolute>

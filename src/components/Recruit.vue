@@ -9,7 +9,7 @@ export default {
     ConditionsDialog,
     ContactDialog,
   },
-}
+};
 </script>
 
 <template>

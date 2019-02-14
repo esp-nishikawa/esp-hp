@@ -5,7 +5,7 @@ export default {
   mixins: [
     DialogControllable,
   ],
-  data () {
+  data() {
     return {
       initialItems: [
         {
@@ -46,21 +46,21 @@ export default {
           salary: '４６１万',
         },
       ],
-    }
+    };
   },
   props: {
     midCareer: Boolean,
   },
-}
+};
 </script>
 
 <template>
-<v-dialog v-model="showDialog" ref="dialog" max-width="600" :fullscreen="$vuetify.breakpoint.smAndDown">
+<v-dialog v-model="showDialog" max-width="600" :fullscreen="fullscreen">
   <template slot="activator">
     <slot></slot>
   </template>
   <v-card>
-    <v-layout v-if="$vuetify.breakpoint.smAndDown" justify-start>
+    <v-layout v-if="fullscreen" justify-start>
       <v-btn icon @click="close">
         <v-icon>arrow_back</v-icon>
       </v-btn>
@@ -123,7 +123,7 @@ export default {
         </v-layout>
       </v-container>
     </v-card-text>
-    <v-card-actions v-if="$vuetify.breakpoint.smAndDown">
+    <v-card-actions v-if="fullscreen">
       <v-spacer></v-spacer>
       <v-btn flat round color="primary" @click="close">BACK</v-btn>
     </v-card-actions>
