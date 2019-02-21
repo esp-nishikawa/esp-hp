@@ -1,4 +1,5 @@
 <script>
+import { Ripple } from 'vuetify/lib/directives';
 import ContactDialog from './ContactDialog.vue';
 
 export default {
@@ -43,18 +44,19 @@ export default {
   },
   methods: {
     afterAppear() {
-      new Promise(() => {
-        setTimeout(() => { this.isTransition1 = true; }, 2000);
-        setTimeout(() => { this.isTransition2 = true; }, 2200);
-        setTimeout(() => { this.isTransition3 = true; }, 2400);
-        setTimeout(() => { this.isTransition4 = true; }, 2600);
-        setTimeout(() => { this.isTransition5 = true; }, 2800);
-        setTimeout(() => { this.isTransition6 = true; }, 3000);
-      });
+      setTimeout(() => { this.isTransition1 = true; }, 2000);
+      setTimeout(() => { this.isTransition2 = true; }, 2200);
+      setTimeout(() => { this.isTransition3 = true; }, 2400);
+      setTimeout(() => { this.isTransition4 = true; }, 2600);
+      setTimeout(() => { this.isTransition5 = true; }, 2800);
+      setTimeout(() => { this.isTransition6 = true; }, 3000);
     },
   },
   components: {
     ContactDialog,
+  },
+  directives: {
+    Ripple,
   },
 };
 </script>

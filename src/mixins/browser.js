@@ -18,7 +18,7 @@ const getBrowser = () => {
 
 export default {
   computed: {
-    browser() {
+    $browser() {
       const name = getBrowser();
       const ie = name === 'ie';
       const edge = name === 'edge';

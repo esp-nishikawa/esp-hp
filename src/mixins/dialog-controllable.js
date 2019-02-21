@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      name: 'dialog',
+      name: null,
       showDialog: false,
     };
   },
@@ -12,16 +12,19 @@ export default {
   },
   methods: {
     onPopstate(event) {
-      // 最前面のダイアログ以外はクローズしない
-      const container = this.$refs['container'] || this.$children[0];
-      if (container && container.activeZIndex != container.getMaxZIndex()) {
-        return;
-      }
-      // 履歴上で表示状態ならクローズしない
       if (event.state['name'] === this.name) {
-        return;
+        this.open();
+      } else {
+        // 最前面のダイアログ以外はクローズしない
+        const container = this.$refs['container'] || this.$children[0];
+        if (container && container.activeZIndex != container.getMaxZIndex()) {
+          return;
+        }
+        this.close();
       }
-      this.close();
+    },
+    open() {
+      this.showDialog = true;
     },
     close() {
       this.showDialog = false;
@@ -45,16 +48,27 @@ export default {
         });
       }
 
-      // ブラウザの「戻る」ボタンでダイアログを閉じる
+      // ブラウザ履歴への追加／削除
       if (val) {
-        window.history.pushState({ name: this.name }, this.name);
-        window.addEventListener('popstate', this.onPopstate);
+        if (window.history.state['name'] != this.name) {
+          window.history.pushState({ name: this.name }, this.name);
+        }
       } else {
         if (window.history.state['name'] === this.name) {
           window.history.back();
         }
-        window.removeEventListener('popstate', this.onPopstate);
       }
     },
+  },
+  created() {
+    if (!this.name) {
+      this.name = this.$common.getUniqueString();
+    }
+  },
+  mounted() {
+    window.addEventListener('popstate', this.onPopstate);
+  },
+  beforeDestroy() {
+    window.removeEventListener('popstate', this.onPopstate);
   },
 };

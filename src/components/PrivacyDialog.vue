@@ -5,11 +5,6 @@ export default {
   mixins: [
     DialogControllable,
   ],
-  data() {
-    return {
-      name: 'privacy-dialog',
-    };
-  },
 };
 </script>
 

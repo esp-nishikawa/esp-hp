@@ -40,7 +40,6 @@ export default {
         { value: 3, text: 'パートナーシップに関するお問い合わせ' },
         { value: 4, text: 'その他' },
       ],
-      name: 'contact-dialog',
     };
   },
   computed: {

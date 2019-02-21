@@ -1,19 +1,16 @@
 <script>
 import TweenLite from 'gsap/TweenLite';
+import ScrollControllable from '@/mixins/scroll-controllable.js';
 import ContactDialog from '@/components/ContactDialog.vue';
 import PrivacyDialog from '@/components/PrivacyDialog.vue';
 
 export default {
   data () {
     return {
-      scrollTop: 0,
       isNavigation: false,
     };
   },
   methods: {
-    onScroll() {
-      this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    },
     onEnter(el, done) {
       TweenLite.fromTo(el, 0.3, {
         autoAlpha: 0,
@@ -61,6 +58,9 @@ export default {
       }
     },
   },
+  mixins: [
+    ScrollControllable,
+  ],
   components: {
     ContactDialog,
     PrivacyDialog,
