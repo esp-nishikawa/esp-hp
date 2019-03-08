@@ -1,10 +1,14 @@
 <script>
-import DialogControllable from '@/mixins/dialog-controllable.js';
+import DialogWrapper from '@/components/DialogWrapper';
 
+// 給与ダイアログ
 export default {
-  mixins: [
-    DialogControllable,
-  ],
+  components: {
+    DialogWrapper,
+  },
+  props: {
+    midCareer: Boolean,
+  },
   data() {
     return {
       initialItems: [
@@ -48,32 +52,18 @@ export default {
       ],
     };
   },
-  props: {
-    midCareer: Boolean,
-  },
 };
 </script>
 
 <template>
-<v-dialog v-model="showDialog" max-width="600" :fullscreen="fullscreen">
-  <template slot="activator">
-    <slot></slot>
-  </template>
-  <v-card>
-    <v-layout v-if="fullscreen" justify-start>
-      <v-btn icon @click="close">
-        <v-icon>arrow_back</v-icon>
-      </v-btn>
-    </v-layout>
-    <v-layout v-else justify-end>
-      <v-btn icon @click="close">
-        <v-icon>close</v-icon>
-      </v-btn>
-    </v-layout>
-    <v-card-title primary-title class="layout justify-center py-0">
-      <h2>COMPENSATION</h2>
-    </v-card-title>
-    <v-card-text>
+  <dialog-wrapper :dialog-key="midCareer ? 'compensation_dialog_mid' : 'compensation_dialog_new'" max-width="600">
+    <template #activator>
+      <slot/>
+    </template>
+    <template #title>
+      <base-headline>COMPENSATION</base-headline>
+    </template>
+    <template #content>
       <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
         <v-layout v-if="midCareer" row wrap class="py-3">
           <v-flex xs12>
@@ -82,7 +72,7 @@ export default {
         </v-layout>
         <v-layout v-else row wrap>
           <v-flex xs12>
-            <h3>初任給（平成２９年度実績）</h3>
+            <base-subheading>初任給（平成２９年度実績）</base-subheading>
             <v-data-table
               :items="initialItems"
               hide-actions
@@ -99,7 +89,7 @@ export default {
         </v-layout>
         <v-layout row wrap>
           <v-flex xs12>
-            <h3>年収モデル</h3>
+            <base-subheading>年収モデル</base-subheading>
             <v-data-table
               :items="annualItems"
               hide-actions
@@ -112,21 +102,16 @@ export default {
               </template>
             </v-data-table>
             <div>※年間賞与4ヶ月、1ヶ月の残業20Hとした場合。</div>
-            <h3>諸手当</h3>
+            <base-subheading>諸手当</base-subheading>
             <div>通勤手当（全額）、家族手当、時間外手当、役職手当</div>
-            <h3>昇給</h3>
+            <base-subheading>昇給</base-subheading>
             <div>年１回（７月）</div>
-            <h3>賞与</h3>
+            <base-subheading>賞与</base-subheading>
             <div>年２回（６月、１２月）</div>
             <div>※年間平均４.０カ月＋α（平成２９年度実績）</div>
           </v-flex>
         </v-layout>
       </v-container>
-    </v-card-text>
-    <v-card-actions v-if="fullscreen">
-      <v-spacer></v-spacer>
-      <v-btn flat round color="primary" @click="close">BACK</v-btn>
-    </v-card-actions>
-  </v-card>
-</v-dialog>
+    </template>
+  </dialog-wrapper>
 </template>

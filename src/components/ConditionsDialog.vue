@@ -1,54 +1,42 @@
 <script>
-import DialogControllable from '@/mixins/dialog-controllable.js';
+import DialogWrapper from '@/components/DialogWrapper';
 
+// 勤務条件・福利厚生ダイアログ
 export default {
-  mixins: [
-    DialogControllable,
-  ],
+  components: {
+    DialogWrapper,
+  },
+  props: {
+    midCareer: Boolean,
+  },
 };
 </script>
 
 <template>
-<v-dialog v-model="showDialog" max-width="600" :fullscreen="fullscreen">
-  <template slot="activator">
-    <slot></slot>
-  </template>
-  <v-card>
-    <v-layout v-if="fullscreen" justify-start>
-      <v-btn icon @click="close">
-        <v-icon>arrow_back</v-icon>
-      </v-btn>
-    </v-layout>
-    <v-layout v-else justify-end>
-      <v-btn icon @click="close">
-        <v-icon>close</v-icon>
-      </v-btn>
-    </v-layout>
-    <v-card-title primary-title class="layout justify-center py-0">
-      <h2>CONDITIONS & BENEFITS</h2>
-    </v-card-title>
-    <v-card-text>
+  <dialog-wrapper :dialog-key="midCareer ? 'conditions_dialog_mid' : 'conditions_dialog_new'" max-width="600">
+    <template #activator>
+      <slot/>
+    </template>
+    <template #title>
+      <base-headline>CONDITIONS & BENEFITS</base-headline>
+    </template>
+    <template #content>
       <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
         <v-layout row wrap>
           <v-flex xs12>
-            <h3>勤務地</h3>
+            <base-subheading>勤務地</base-subheading>
             <div>東京、東京近郊、札幌、その他プロジェクト拠点</div>
-            <h3>勤務時間</h3>
+            <base-subheading>勤務時間</base-subheading>
             <div>９：００～１７：３０（昼休み１２：００～１３：００）</div>
             <div>実働７.５時間</div>
-            <h3>休日・休暇</h3>
+            <base-subheading>休日・休暇</base-subheading>
             <div>土曜日、日曜日、祝日、夏期休暇、年末年始休暇、他</div>
-            <h3>福利厚生</h3>
+            <base-subheading>福利厚生</base-subheading>
             <div>・各種保険：健康保険、厚生年金保険、雇用保険、労災保険等完備</div>
             <div>・健保組合提携の宿泊・スポーツ施設を利用可</div>
           </v-flex>
         </v-layout>
       </v-container>
-    </v-card-text>
-    <v-card-actions v-if="fullscreen">
-      <v-spacer></v-spacer>
-      <v-btn flat round color="primary" @click="close">BACK</v-btn>
-    </v-card-actions>
-  </v-card>
-</v-dialog>
+    </template>
+  </dialog-wrapper>
 </template>

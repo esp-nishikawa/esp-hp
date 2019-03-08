@@ -10,9 +10,8 @@
 ├ public ... 静的ファイル、index.htmlを配置
 │　├ .htaccess
 │　├ favicon.ico
-│　├ robots.txt
-│　├ sitemap.xml
-│　└ index.html
+│　├ index.html
+│　└ ～
 │
 ├ src ... ソース（この配下を修正）
 │　│
@@ -21,11 +20,8 @@
 │　│　├ ○○.jpg
 │　│　└ ～
 │　│
-│　├ components ... 各ページのコンポーネント
-│　│　├ Corporate.vue
-│　│　├ Home.vue
-│　│　├ Recruit.vue
-│　│　├ Service.vue
+│　├ components ... コンポーネント（ダイアログなど）
+│　│　├ AccessDialog.vue
 │　│　└ ～
 │　│
 │　├ directives ... カスタムディレクティブ
@@ -36,10 +32,18 @@
 │　│　├ dialog-controllable.js
 │　│　└ ～
 │　│
-│　├ router ... ルーティング（各ページのパスやタイトルなど）
+│　├ pages ... ルーティングで切り替えるパス毎のページ
+│　│　├ Corporate.vue
+│　│　└ ～
+│　│
+│　├ plugin ... プラグイン、共通メソッド
+│　│　├ common.js
 │　│　└ index.js
 │　│
-│　├ App.vue ... 共通部分のコンポーネント（ナビゲーションメニューや全体にかかるスタイルなど）
+│　├ router ... ルーティング（各ページのパスやタイトルなどを設定）
+│　│　└ index.js
+│　│
+│　├ App.vue ... 画面の共通部分（ナビゲーションメニューや全体にかかるスタイルなど）
 │　└ main.js ... Vueメイン（外部モジュールのインポートなど）
 │
 ├ babel.config.js

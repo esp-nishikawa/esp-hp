@@ -2,11 +2,26 @@ import TweenLite from 'gsap/TweenLite';
 import ThrottleDebounce from '@/mixins/throttle-debounce.js';
 
 export default {
+  mixins: [
+    ThrottleDebounce,
+  ],
   data () {
     return {
       scrollTop: 0,
       wheelDeltaY: 0,
     };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+    if (this.$browser.ie) {
+      window.addEventListener('wheel', this.onWheel);
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.$browser.ie) {
+      window.removeEventListener('wheel', this.onWheel);
+    }
   },
   methods: {
     getScrollTop() {
@@ -96,19 +111,4 @@ export default {
       }, 100, 'wheel');
     },
   },
-  mounted() {
-    window.addEventListener('scroll', this.onScroll);
-    if (this.$browser.ie) {
-      window.addEventListener('wheel', this.onWheel);
-    }
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.onScroll);
-    if (this.$browser.ie) {
-      window.removeEventListener('wheel', this.onWheel);
-    }
-  },
-  mixins: [
-    ThrottleDebounce,
-  ],
 };

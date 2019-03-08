@@ -1,0 +1,76 @@
+<script>
+// お知らせ情報
+export default {
+  data() {
+    return {
+      informations: [
+        {
+          date: '2018-11-20',
+          headline: 'サイト更新 メールフォームを設置しました。',
+          description: `ページ下部「お問い合わせ」のボタンより、お気軽にお問い合わせください。`,
+        },
+        {
+          date: '2018-9-18',
+          headline: 'サイト更新 オフィス画像を掲載しました。',
+          description: `オフィス環境ページは<a href='http://esoftpowers.com/corporate#office'>こちら</a>`,
+        },
+        {
+          date: '2018-7-12',
+          headline: 'サイトリニューアルしました。',
+          description: `・２０１９年度新卒採用情報を掲載しました。<br>
+                        ・中途採用情報を更新しました。<br>
+                        ・その他、決算状況など更新しました。`,
+        },
+        {
+          date: '2015-10-25',
+          headline: '祝！本社移転。住所や案内など更新しました。',
+          description: `＜新本社＞<div>〒100-0005<br>東京都千代田区丸の内2-2-1<br>岸本ビルヂング６Ｆ</div>`,
+        },
+        {
+          date: '2015-2-1',
+          headline: 'サイト更新 決算状況など変更しました。',
+          description: ``,
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<template>
+  <v-card flat class="transparent">
+    <v-card-title primary-title>
+      <v-icon medium color="blue lighten-2" class="mr-2">thumb_up</v-icon>
+      <div class="information-title">Information</div>
+    </v-card-title>
+    <v-divider/>
+    <v-expansion-panel popout>
+      <v-expansion-panel-content
+        v-for="(information, i) in informations"
+        :key="i"
+        :hide-actions="!information.description"
+      >
+        <div slot="header">
+          <span class="information-date">{{ information.date }}</span>
+          <div>{{ information.headline }}</div>
+        </div>
+        <v-card v-if="information.description">
+          <v-card-text v-html="information.description"></v-card-text>
+        </v-card>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-card>
+</template>
+
+<style scoped>
+.information-title {
+  font-size: 24px;
+  font-weight: 500;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+.information-date {
+  font-size: 14px;
+  color: rgba(0,0,0,.54);
+}
+</style>

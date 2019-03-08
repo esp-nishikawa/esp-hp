@@ -1,18 +1,45 @@
 export default {
   data() {
     return {
-      name: null,
+      historyName: null,
       showDialog: false,
     };
   },
-  computed: {
-    fullscreen() {
-      return this.$vuetify.breakpoint.smAndDown;
+  watch: {
+    showDialog(val) {
+      // スクロール位置をリセット
+      if (!val) {
+        this.$nextTick(() => {
+          this.resetScroll();
+        });
+      }
+
+      // ブラウザ履歴への追加／削除
+      if (val) {
+        if (window.history.state['name'] != this.historyName) {
+          window.history.pushState({ name: this.historyName }, this.historyName);
+        }
+      } else {
+        if (window.history.state['name'] === this.historyName) {
+          window.history.back();
+        }
+      }
     },
+  },
+  created() {
+    if (!this.historyName) {
+      this.historyName = this.$common.getUniqueString();
+    }
+  },
+  mounted() {
+    window.addEventListener('popstate', this.onPopstate);
+  },
+  beforeDestroy() {
+    window.removeEventListener('popstate', this.onPopstate);
   },
   methods: {
     onPopstate(event) {
-      if (event.state['name'] === this.name) {
+      if (event.state['name'] === this.historyName) {
         this.open();
       } else {
         // 最前面のダイアログ以外はクローズしない
@@ -38,37 +65,5 @@ export default {
         }
       }
     },
-  },
-  watch: {
-    showDialog(val) {
-      // スクロール位置をリセット
-      if (!val) {
-        this.$nextTick(() => {
-          this.resetScroll();
-        });
-      }
-
-      // ブラウザ履歴への追加／削除
-      if (val) {
-        if (window.history.state['name'] != this.name) {
-          window.history.pushState({ name: this.name }, this.name);
-        }
-      } else {
-        if (window.history.state['name'] === this.name) {
-          window.history.back();
-        }
-      }
-    },
-  },
-  created() {
-    if (!this.name) {
-      this.name = this.$common.getUniqueString();
-    }
-  },
-  mounted() {
-    window.addEventListener('popstate', this.onPopstate);
-  },
-  beforeDestroy() {
-    window.removeEventListener('popstate', this.onPopstate);
   },
 };

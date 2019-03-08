@@ -16,7 +16,7 @@ export default {
       duration = 2,
       autoAlpha = 0,
       x = 0,
-      y = 200,
+      y = 100,
       transformOrigin = '50% 50%',
       ease = 'Power2.easeOut',
       delay = 0,
