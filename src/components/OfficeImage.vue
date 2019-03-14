@@ -1,11 +1,13 @@
 <script>
 import DialogControllable from '@/mixins/dialog-controllable.js';
 import DelayText from '@/components/DelayText';
+import ViewportShow from '@/components/ViewportShow';
 
 // オフィスのイメージ
 export default {
   components: {
     DelayText,
+    ViewportShow,
   },
   mixins: [
     DialogControllable,
@@ -26,6 +28,8 @@ export default {
   },
   data() {
     return {
+      historyName: 'office_image_' + this.value,
+      isViewport: false,
       createdDialogContent: false,
       carouselValue: 0,
       items: [
@@ -33,29 +37,33 @@ export default {
           value: 'entrance',
           src: require('@/assets/office_entrance.jpg'),
           title: 'エントランス',
+          duration: 1.5,
         },
         {
           value: 'lounge',
           src: require('@/assets/office_lounge.jpg'),
           title: 'ラウンジ',
+          duration: 2.5,
         },
         {
           value: 'workspace',
           src: require('@/assets/office_workspace.jpg'),
           title: 'ワークスペース',
+          duration: 2.0,
         },
         {
           value: 'boardroom',
           src: require('@/assets/office_boardroom.jpg'),
           title: '会議室',
+          duration: 1.5,
         },
         {
           value: 'library',
           src: require('@/assets/office_library.jpg'),
           title: 'ライブラリー',
+          duration: 2.5,
         },
       ],
-      historyName: 'office_image_' + this.value,
     };
   },
   computed: {
@@ -90,43 +98,51 @@ export default {
 </script>
 
 <template>
-  <v-card
-    :hover="clickable"
-    :ripple="clickable"
-    :style="clickable ? {'cursor': 'pointer'} : {'cursor': 'default'}"
-    class="image-card"
-    @click.native.stop="onImageClick"
+  <viewport-show
+    :duration="items[itemIndex].duration"
+    @enter="isViewport=true"
   >
-    <v-img
-      :src="items[itemIndex].src"
-      :class="{'hover-image': clickable}"
-    />
-    <div
-      v-vpshow="{ duration:2.0, y:-50 }"
-      class="image-title white--text mb-1 mr-3"
+    <v-card
+      :hover="clickable"
+      :ripple="clickable"
+      :style="clickable ? {'cursor': 'pointer'} : {'cursor': 'default'}"
+      class="image-card"
+      @click.native.stop="onImageClick"
     >
-      {{ items[itemIndex].title }}
-    </div>
+      <v-img
+        :src="items[itemIndex].src"
+        :class="{'hover-image': clickable}"
+      />
+      <delay-text
+        v-show="isViewport"
+        delay="1000"
+        class="image-title white--text mb-1 mr-3"
+        :value="items[itemIndex].title"
+      />
 
-    <v-dialog v-model="showDialog" ref="container" max-width="960">
-      <v-card v-if="createdDialogContent">
-        <v-layout>
-          <delay-text class="dialog-title ma-3" :value="items[carouselValue].title"/>
-          <v-spacer/>
-          <v-btn icon @click="close">
-            <v-icon>close</v-icon>
-          </v-btn>
-        </v-layout>
-        <v-carousel interval="60000" v-model="carouselValue">
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-          />
-        </v-carousel>
-      </v-card>
-    </v-dialog>
-  </v-card>
+      <v-dialog v-model="showDialog" ref="container" max-width="960">
+        <v-card v-if="createdDialogContent">
+          <v-layout>
+            <delay-text
+              class="dialog-title ma-3"
+              :value="items[carouselValue].title"
+            />
+            <v-spacer/>
+            <v-btn icon @click="close">
+              <v-icon>close</v-icon>
+            </v-btn>
+          </v-layout>
+          <v-carousel interval="60000" v-model="carouselValue">
+            <v-carousel-item
+              v-for="(item, i) in items"
+              :key="i"
+              :src="item.src"
+            />
+          </v-carousel>
+        </v-card>
+      </v-dialog>
+    </v-card>
+  </viewport-show>
 </template>
 
 <style scoped>

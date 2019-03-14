@@ -4,7 +4,7 @@ import BaseHeader from '@/components/BaseHeader';
 import BaseHeadline from '@/components/BaseHeadline';
 import BaseSubheading from '@/components/BaseSubheading';
 import BaseLink from '@/components/BaseLink';
-import Vpshow from '@/directives/vpshow.js';
+import Viewport from '@/directives/viewport.js';
 
 export default {
   // eslint-disable-next-line no-unused-vars
@@ -19,6 +19,6 @@ export default {
     Vue.component('base-subheading', BaseSubheading);
     Vue.component('base-link', BaseLink);
     // カスタムディレクティブ
-    Vue.directive('vpshow', Vpshow);
+    Vue.directive('viewport', Viewport);
   },
 };

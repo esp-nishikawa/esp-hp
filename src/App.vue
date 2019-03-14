@@ -1,14 +1,7 @@
 <script>
-import TweenLite from 'gsap/TweenLite';
 import ScrollControllable from '@/mixins/scroll-controllable.js';
-import ContactDialog from '@/components/ContactDialog';
-import PrivacyDialog from '@/components/PrivacyDialog';
 
 export default {
-  components: {
-    ContactDialog,
-    PrivacyDialog,
-  },
   mixins: [
     ScrollControllable,
   ],
@@ -25,44 +18,13 @@ export default {
           if (anchor) {
             this.goTo(anchor.offsetTop);
           }
-        } else {
-          this.$root.$once('after-enter', () => {
-            const anchor = document.querySelector(to.hash);
-            if (anchor) {
-              this.goTo(anchor.offsetTop);
-            }
-          });
         }
       }
     },
   },
   methods: {
-    onEnter(el, done) {
-      TweenLite.fromTo(el, 0.3, {
-        autoAlpha: 0,
-        //scale: 0.5,
-      }, {
-        autoAlpha: 1,
-        //scale: 1,
-        //transformOrigin: '50% 50%',
-        ease: 'Power2.easeInOut',
-        onComplete: done,
-      });
-    },
-    onLeave(el, done) {
-      TweenLite.fromTo(el, 0.2, {
-        autoAlpha: 1,
-      }, {
-        autoAlpha: 0,
-        ease: 'Power2.easeOut',
-        onComplete: done,
-      });
-    },
     onBeforeEnter() {
       this.$root.$emit('before-enter');
-    },
-    onAfterEnter() {
-      this.$root.$emit('after-enter');
     },
   },
 };
@@ -149,34 +111,12 @@ export default {
     </v-toolbar>
 
     <transition
-      @enter="onEnter"
-      @leave="onLeave"
+      name="routing"
       @before-enter="onBeforeEnter"
-      @after-enter="onAfterEnter"
       mode="out-in"
     >
       <router-view/>
     </transition>
-
-    <v-footer height="auto" class="blue darken-1">
-      <v-container>
-        <v-layout row wrap justify-end>
-          <contact-dialog>
-            <v-btn flat round color="white">
-              <v-icon class="mr-1">email</v-icon>お問い合わせ
-            </v-btn>
-          </contact-dialog>
-          <privacy-dialog>
-            <v-btn flat round color="white">
-              <v-icon class="mr-1">lock</v-icon>プライバシーポリシー
-            </v-btn>
-          </privacy-dialog>
-        </v-layout>
-        <v-layout row wrap justify-center>
-          <div class="white--text ma-3">&copy; 2013-{{ new Date().getFullYear() }} eSoftPowers.Co.,Ltd.</div>
-        </v-layout>
-      </v-container>
-    </v-footer>
 
     <v-fab-transition>
       <v-btn
@@ -194,7 +134,7 @@ export default {
   </v-app>
 </template>
 
-<style>
+<style scoped>
 #app {
   color: rgba(0,0,0,.87);
   font-family: Roboto, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
@@ -202,5 +142,21 @@ export default {
   font-weight: 400;
   line-height: 1.75;
   letter-spacing: .02em;
+}
+
+.routing-leave-active {
+  transition: all .3s ease-in-out;
+}
+
+.routing-leave-to {
+  opacity: 0;
+}
+
+.routing-enter-active {
+  transition: all .7s ease-out;
+}
+
+.routing-enter {
+  opacity: 0;
 }
 </style>

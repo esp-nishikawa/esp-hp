@@ -162,19 +162,19 @@ export default {
               </v-card-text>
               <v-container grid-list-md fluid>
                 <v-layout row wrap>
-                  <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4 offset-xl2>
+                  <v-flex xs12 md6 xl4 offset-xl2>
                     <office-image value="entrance"/>
                   </v-flex>
-                  <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
+                  <v-flex xs12 md6 xl4>
                     <office-image value="lounge"/>
                   </v-flex>
-                  <v-flex v-vpshow="{ duration:2.5 }" xs12 md6 offset-md3 xl4 offset-xl0>
+                  <v-flex xs12 md6 offset-md3 xl4 offset-xl0>
                     <office-image value="workspace"/>
                   </v-flex>
-                  <v-flex v-vpshow="{ duration:2.0 }" xs12 md6 xl4>
+                  <v-flex xs12 md6 xl4>
                     <office-image value="boardroom"/>
                   </v-flex>
-                  <v-flex v-vpshow="{ duration:3.0 }" xs12 md6 xl4>
+                  <v-flex xs12 md6 xl4>
                     <office-image value="library"/>
                   </v-flex>
                 </v-layout>

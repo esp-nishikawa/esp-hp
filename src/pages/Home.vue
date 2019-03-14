@@ -1,6 +1,8 @@
 <script>
+import PageWrapper from '@/components/PageWrapper';
 import DelayText from '@/components/DelayText';
 import TransitionCircle from '@/components/TransitionCircle';
+import ViewportShow from '@/components/ViewportShow';
 import RouteImage from '@/components/RouteImage';
 import ContactDialog from '@/components/ContactDialog';
 import TheInformation from '@/components/TheInformation';
@@ -8,8 +10,10 @@ import TheInformation from '@/components/TheInformation';
 // トップページ
 export default {
   components: {
+    PageWrapper,
     DelayText,
     TransitionCircle,
+    ViewportShow,
     RouteImage,
     ContactDialog,
     TheInformation,
@@ -18,7 +22,7 @@ export default {
 </script>
 
 <template>
-  <v-content>
+  <page-wrapper>
     <section>
       <v-parallax
         :src="require('@/assets/home_parallax1.jpg')"
@@ -62,6 +66,7 @@ export default {
               class="display-4 white--text"
               style="opacity:0.7;"
               value="eSoft"
+              delay="500"
             />
           </v-flex>
           <v-flex class="text-xs-center">
@@ -69,7 +74,7 @@ export default {
               class="display-4 white--text"
               style="opacity:0.7;"
               value="Powers"
-              delay="500"
+              delay="1000"
             />
           </v-flex>
         </v-layout>
@@ -143,24 +148,15 @@ export default {
       <v-parallax :src="require('@/assets/home_parallax2.jpg')" height="400" class="mt-5">
         <v-layout row wrap align-center justify-center>
           <v-flex xs11 sm10 lg9 xl8 text-xs-center>
-            <div
-              v-vpshow="{ duration:2.0 }"
-              class="title white--text my-3"
-            >
+            <viewport-show delay="100" class="title white--text my-3">
               株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
-            </div>
-            <div
-              v-vpshow="{ duration:2.5, delay:0.5 }"
-              class="subheading white--text"
-            >
+            </viewport-show>
+            <viewport-show delay="500" class="subheading white--text">
               Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。
-            </div>
-            <div
-              v-vpshow="{ duration:2.5, delay:1.0 }"
-              class="subheading white--text"
-            >
+            </viewport-show>
+            <viewport-show delay="800" class="subheading white--text">
               我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
-            </div>
+            </viewport-show>
           </v-flex>
         </v-layout>
       </v-parallax>
@@ -173,5 +169,5 @@ export default {
         </v-flex>
       </v-layout>
     </section>
-  </v-content>
+  </page-wrapper>
 </template>

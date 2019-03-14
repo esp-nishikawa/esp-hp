@@ -20,19 +20,19 @@
 │　│　├ ○○.jpg
 │　│　└ ～
 │　│
-│　├ components ... コンポーネント（ダイアログなど）
+│　├ components ... コンポーネント（ダイアログはここ）
 │　│　├ AccessDialog.vue
 │　│　└ ～
 │　│
 │　├ directives ... カスタムディレクティブ
-│　│　├ vpshow.js
+│　│　├ viewport.js
 │　│　└ ～
 │　│
 │　├ mixins ... ミックスイン
 │　│　├ dialog-controllable.js
 │　│　└ ～
 │　│
-│　├ pages ... ルーティングで切り替えるパス毎のページ
+│　├ pages ... 各ページ（ルーティングで切り替えるパス毎）
 │　│　├ Corporate.vue
 │　│　└ ～
 │　│
@@ -43,7 +43,7 @@
 │　├ router ... ルーティング（各ページのパスやタイトルなどを設定）
 │　│　└ index.js
 │　│
-│　├ App.vue ... 画面の共通部分（ナビゲーションメニューや全体にかかるスタイルなど）
+│　├ App.vue ... 画面の共通部分（ナビゲーションメニューなど）
 │　└ main.js ... Vueメイン（外部モジュールのインポートなど）
 │
 ├ babel.config.js

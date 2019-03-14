@@ -1,6 +1,13 @@
 <script>
+import ContactDialog from '@/components/ContactDialog';
+import PrivacyDialog from '@/components/PrivacyDialog';
+
 // 各ページの共通ラッパー
 export default {
+  components: {
+    ContactDialog,
+    PrivacyDialog,
+  },
   props: {
     background: [String, Number],
   },
@@ -24,6 +31,26 @@ export default {
     <div v-if="background2" class="background2-before"/>
     <div v-if="background2" class="background2-after"/>
     <slot/>
+
+    <v-footer height="auto" class="blue darken-1">
+      <v-container>
+        <v-layout row wrap justify-end>
+          <contact-dialog>
+            <v-btn flat round color="white">
+              <v-icon class="mr-1">email</v-icon>お問い合わせ
+            </v-btn>
+          </contact-dialog>
+          <privacy-dialog>
+            <v-btn flat round color="white">
+              <v-icon class="mr-1">lock</v-icon>プライバシーポリシー
+            </v-btn>
+          </privacy-dialog>
+        </v-layout>
+        <v-layout row wrap justify-center>
+          <div class="white--text ma-3">&copy; 2013-{{ new Date().getFullYear() }} eSoftPowers.Co.,Ltd.</div>
+        </v-layout>
+      </v-container>
+    </v-footer>
   </v-content>
 </template>
 

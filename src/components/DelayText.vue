@@ -3,7 +3,7 @@
 export default {
   props: {
     value: String,
-    delay: { type: [String, Number], default: 0 },
+    delay: { type: [String, Number], default: 100 },
   },
   data() {
     return {

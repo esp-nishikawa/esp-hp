@@ -1,4 +1,8 @@
 import TweenLite from 'gsap/TweenLite';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+// without next line, plugins may get dropped by your bundler...
+const plugins = [ ScrollToPlugin ]; // eslint-disable-line no-unused-vars
+
 import ThrottleDebounce from '@/mixins/throttle-debounce.js';
 
 export default {
