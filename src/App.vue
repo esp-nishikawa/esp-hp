@@ -145,7 +145,7 @@ export default {
 }
 
 .routing-leave-active {
-  transition: all .3s ease-in-out;
+  transition: all .3s ease;
 }
 
 .routing-leave-to {

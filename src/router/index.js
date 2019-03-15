@@ -48,22 +48,23 @@ const router = new Router({
     },
   ],
   // eslint-disable-next-line no-unused-vars
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     return new Promise((resolve) => {
       router.app.$root.$once('before-enter', () => {
-        let position = { x: 0, y: 0 };
-        if (to.hash) {
-          const anchor = document.querySelector(to.hash);
-          if (anchor) {
-            position = { x: anchor.offsetLeft, y: anchor.offsetTop };
-          } else {
-            position = { selector: to.hash };
+        router.app.$nextTick(() => {
+          let position = { x: 0, y: 0 };
+          if (savedPosition) {
+            position = savedPosition;
+          } else if (to.hash) {
+            const anchor = document.querySelector(to.hash);
+            if (anchor) {
+              position = { x: anchor.offsetLeft, y: anchor.offsetTop };
+            } else {
+              position = { selector: to.hash };
+            }
           }
-        }
-        //if (savedPosition) {
-        //  position = savedPosition;
-        //}
-        resolve(position);
+          resolve(position);
+        });
       });
     });
   },

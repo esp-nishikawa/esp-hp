@@ -11,56 +11,48 @@ export default {
       ],
       tableItems: [
         {
-          value: false,
           year: '2016年度',
           sales: '16,510万円',
           employees: '13名',
           engineers: '11名',
         },
         {
-          value: false,
           year: '2015年度',
           sales: '15,808万円',
           employees: '13名',
           engineers: '11名',
         },
         {
-          value: false,
           year: '2014年度',
           sales: '15,294万円',
           employees: '13名',
           engineers: '11名',
         },
         {
-          value: false,
           year: '2013年度',
           sales: '13,133万円',
           employees: '12名',
           engineers: '10名',
         },
         {
-          value: false,
           year: '2012年度',
           sales: '11,474万円',
           employees: '10名',
           engineers: '9名',
         },
         {
-          value: false,
           year: '2011年度',
           sales: '10,304万円',
           employees: '10名',
           engineers: '9名',
         },
         {
-          value: false,
           year: '2010年度',
           sales: '8,070万円',
           employees: '9名',
           engineers: '8名',
         },
         {
-          value: false,
           year: '2009年度',
           sales: '8,760万円',
           employees: '9名',
@@ -76,7 +68,9 @@ export default {
   <v-data-table
     :headers="tableHeaders"
     :items="tableItems"
+    item-key="year"
     hide-actions
+    disable-initial-sort
   >
     <template slot="items" slot-scope="props">
       <td class="text-xs-right" style="min-width:80px;">{{ props.item.year }}</td>

@@ -3,7 +3,7 @@
 export default {
   props: {
     delay: { type: [String, Number], default: 100 },
-    duration: { type: [String, Number], default: 1 },
+    duration: { type: [String, Number], default: 1.2 },
     translateY: { type: [String, Number], default: 60 },
   },
   data() {

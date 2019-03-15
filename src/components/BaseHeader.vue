@@ -46,7 +46,7 @@ export default {
   overflow: hidden;
   max-width: 0;
   color: #1976D2;
-  transition: max-width 0.4s;
+  transition: max-width .4s ease-out;
 }
 
 .base-header:hover::before {
@@ -64,7 +64,7 @@ export default {
   display: block;
   transform-origin: right top;
   transform: scale(0, 1);
-  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform .6s cubic-bezier(1, 0, 0, 1);
 }
 
 .base-header:hover::after {

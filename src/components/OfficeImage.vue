@@ -37,31 +37,31 @@ export default {
           value: 'entrance',
           src: require('@/assets/office_entrance.jpg'),
           title: 'エントランス',
-          duration: 1.5,
+          duration: 1.2,
         },
         {
           value: 'lounge',
           src: require('@/assets/office_lounge.jpg'),
           title: 'ラウンジ',
-          duration: 2.5,
+          duration: 2.0,
         },
         {
           value: 'workspace',
           src: require('@/assets/office_workspace.jpg'),
           title: 'ワークスペース',
-          duration: 2.0,
+          duration: 1.6,
         },
         {
           value: 'boardroom',
           src: require('@/assets/office_boardroom.jpg'),
           title: '会議室',
-          duration: 1.5,
+          duration: 1.2,
         },
         {
           value: 'library',
           src: require('@/assets/office_library.jpg'),
           title: 'ライブラリー',
-          duration: 2.5,
+          duration: 2.0,
         },
       ],
     };
@@ -152,10 +152,11 @@ export default {
 }
 
 .image-card .hover-image {
-  transition: transform 0.8s;
+  transition: opacity .3s ease-out, transform .6s ease-out;
 }
 
 .image-card:hover .hover-image {
+  opacity: 0.8;
   transform: scale(1.05);
 }
 

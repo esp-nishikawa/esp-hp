@@ -13,39 +13,32 @@ export default {
     return {
       initialItems: [
         {
-          value: false,
           education: '大学院（修士）卒',
           salary: '214,700円',
         },
         {
-          value: false,
           education: '大学卒',
           salary: '204,300円',
         },
         {
-          value: false,
           education: '専門卒（３年制）',
           salary: '200,900円',
         },
         {
-          value: false,
           education: '高専・短大・専門卒（２年制）',
           salary: '198,000円',
         },
       ],
       annualItems: [
         {
-          value: false,
           age: '２４歳',
           salary: '３８３万',
         },
         {
-          value: false,
           age: '２７歳',
           salary: '４１０万',
         },
         {
-          value: false,
           age: '３１歳',
           salary: '４６１万',
         },
@@ -75,6 +68,7 @@ export default {
             <base-subheading>初任給（平成２９年度実績）</base-subheading>
             <v-data-table
               :items="initialItems"
+              item-key="education"
               hide-actions
               hide-headers
               class="elevation-3"
@@ -92,6 +86,7 @@ export default {
             <base-subheading>年収モデル</base-subheading>
             <v-data-table
               :items="annualItems"
+              item-key="age"
               hide-actions
               hide-headers
               class="elevation-3"

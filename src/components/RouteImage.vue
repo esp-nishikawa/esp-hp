@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .hover-card .hover-img {
-  transition: opacity 0.4s;
+  transition: opacity .3s ease-out;
 }
 
 .hover-card:hover .hover-img {
@@ -104,7 +104,7 @@ export default {
   background: #1976D2;
   opacity: 0;
   transform: translateY(5px);
-  transition: transform 0.4s, opacity 0.4s;
+  transition: opacity .3s ease-out, transform .4s ease-out;
   pointer-events: none;
 }
 
@@ -119,7 +119,7 @@ export default {
   opacity: 0;
   color: #1976D2;
   transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
-  transition: transform 0.3s, opacity 0.3s;
+  transition: opacity .3s ease-out, transform .4s ease-out;
   pointer-events: none;
 }
 

@@ -54,7 +54,7 @@ export default {
 <style scoped>
 .circle-layout {
   border-radius: 50%;
-  transition: all 0.4s ease-in-out;
+  transition: all .4s ease-out;
 }
 
 @media (min-width: 960px) {
@@ -77,7 +77,7 @@ export default {
 }
 
 .v-leave-active {
-  transition: all .3s;
+  transition: all .3s ease;
 }
 
 .v-leave-to {
@@ -86,7 +86,7 @@ export default {
 }
 
 .v-enter-active {
-  transition: all .7s;
+  transition: all .7s ease-out;
 }
 
 .v-enter {
