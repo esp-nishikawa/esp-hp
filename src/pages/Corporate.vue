@@ -160,7 +160,7 @@ export default {
                   </v-layout>
                 </v-container>
               </v-card-text>
-              <v-container grid-list-md fluid>
+              <v-container grid-list-md fluid class="pt-0">
                 <v-layout row wrap>
                   <v-flex xs12 md6 xl4 offset-xl2>
                     <office-image value="entrance"/>

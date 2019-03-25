@@ -4,7 +4,11 @@ export default {
   props: {
     delay: { type: [String, Number], default: 100 },
     duration: { type: [String, Number], default: 1.2 },
-    translateY: { type: [String, Number], default: 60 },
+    translateX: [String, Number],
+    translateY: [String, Number],
+    rotate: [String, Number],
+    scale: [String, Number],
+    boxShadow: String,
   },
   data() {
     return {
@@ -19,9 +23,24 @@ export default {
           opacity: 0,
         };
       case 'enter':
+        // eslint-disable-next-line no-case-declarations
+        let transform = '';
+        if (this.translateX) {
+          transform += isNaN(this.translateX) ? `translateX(${this.translateX}) ` : `translateX(${this.translateX}px) `;
+        }
+        if (this.translateY) {
+          transform += isNaN(this.translateY) ? `translateY(${this.translateY}) ` : `translateY(${this.translateY}px) `;
+        }
+        if (this.rotate) {
+          transform += isNaN(this.rotate) ? `rotate(${this.rotate}) ` : `rotate(${this.rotate}deg) `;
+        }
+        if (this.scale) {
+          transform += `scale(${this.scale}) `;
+        }
         return {
           opacity: 0,
-          transform: isNaN(this.translateY) ? `translateY(${this.translateY})` : `translateY(${this.translateY}px)`,
+          transform,
+          'box-shadow': this.boxShadow,
         };
       case 'after-enter':
         return {

@@ -148,13 +148,13 @@ export default {
       <v-parallax :src="require('@/assets/home_parallax2.jpg')" height="400" class="mt-5">
         <v-layout row wrap align-center justify-center>
           <v-flex xs11 sm10 lg9 xl8 text-xs-center>
-            <viewport-show class="title white--text my-3">
+            <viewport-show translate-y="40" class="title white--text my-3">
               株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
             </viewport-show>
-            <viewport-show delay="400" class="subheading white--text">
+            <viewport-show translate-y="40" delay="400" class="subheading white--text">
               Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。
             </viewport-show>
-            <viewport-show delay="600" class="subheading white--text">
+            <viewport-show translate-y="40" delay="600" class="subheading white--text">
               我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
             </viewport-show>
           </v-flex>

@@ -6,8 +6,12 @@ export default {
       return elements[elements.length - 1];
     }
   },
-  // ユニークな文字列を取得
+
   getUniqueString() {
     return Date.now().toString() + Math.floor(Math.random()*1000).toString();
+  },
+
+  getRandom(min, max) {
+    return Math.random() * (max - min) + min;
   },
 };
