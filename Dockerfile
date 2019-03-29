@@ -1,11 +1,15 @@
-FROM espnishikawa/esp-hp-build:latest
-MAINTAINER espnishikawa t.nishikawa@esoftpowers.com
+FROM node:lts-alpine
 
-COPY . /opt/esp-hp
+RUN apk update && \
+    npm install -g npm && \
+    npm install -g @vue/cli
 
-WORKDIR /opt/esp-hp
-RUN npm install && \
-    npm run build
-CMD npm run serve
+WORKDIR /app
+
+COPY package.json .
+COPY package-lock.json .
+
+RUN npm install
 
 EXPOSE 8080
+CMD ["/bin/sh"]

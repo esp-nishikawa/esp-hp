@@ -48,12 +48,14 @@
 │
 ├ babel.config.js
 ├ vue.config.js
+├ package.json
+├ package-lock.json
 ├ Dockerfile
+├ docker-compose.yml
 └ README.md
 ```
 - マテリアルデザインのFWは[Vuetify.js](https://vuetifyjs.com)を使用
 
 ## ビルド
-- ビルド環境のDockerイメージは[こちら](https://hub.docker.com/r/espnishikawa/esp-hp-build/)に登録
 - ビルド手順は[こちら](https://github.com/esp-nishikawa/esp-hp/wiki/build)を参照
 
