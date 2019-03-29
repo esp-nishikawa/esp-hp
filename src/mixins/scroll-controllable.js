@@ -1,8 +1,3 @@
-import TweenLite from 'gsap/TweenLite';
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
-// without next line, plugins may get dropped by your bundler...
-const plugins = [ ScrollToPlugin ]; // eslint-disable-line no-unused-vars
-
 import ThrottleDebounce from '@/mixins/throttle-debounce.js';
 
 export default {
@@ -28,68 +23,64 @@ export default {
     }
   },
   methods: {
-    getScrollTop() {
-      return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    getScrollElement() {
+      if ('scrollingElement' in document) {
+        return document.scrollingElement;
+      }
+      if (document.compatMode === 'BackCompat') {
+        return document.body;
+      }
+      return document.documentElement;
     },
-    getEase(easing) {
-      if (!easing) {
-        return 'Power2.easeInOut';
+    // 指定した位置にスクロール
+    goTo(targetLocation, options = {}) {
+      const duration = options.duration || 500;
+      const container = options.container || this.getScrollElement();
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      const easing = options.easing || easeInOutCubic;
+
+      const startTime = performance.now();
+      const startLocation = container.scrollTop;
+      if (targetLocation === startLocation) {
+        return Promise.resolve(false);
       }
-      let ease;
-      if (easing.indexOf('easeInOut') != -1) {
-        ease = 'easeInOut';
-      } else if (easing.indexOf('easeIn') != -1) {
-        ease = 'easeIn';
-      } else if (easing.indexOf('easeOut') != -1) {
-        ease = 'easeOut';
-      }
-      let power;
-      if (easing.indexOf('Quad') != -1) {
-        power = 'Power1';
-      } else if (easing.indexOf('Cubic') != -1) {
-        power = 'Power2';
-      } else if (easing.indexOf('Quart') != -1) {
-        power = 'Power3';
-      } else if (easing.indexOf('Quint') != -1) {
-        power = 'Power4';
-      }
-      if (ease && power) {
-        return `${power}.${ease}`;
-      }
+
+      return new Promise(resolve => requestAnimationFrame(function step(currentTime) {
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.abs(duration ? Math.min(timeElapsed / duration, 1) : 1);
+
+        container.scrollTop = Math.floor(startLocation + (targetLocation - startLocation) * easing(progress));
+
+        if (progress === 1 || container.clientHeight + container.scrollTop === container.scrollHeight) {
+          return resolve(true);
+        }
+
+        requestAnimationFrame(step);
+      }));
     },
-    goTo(target, settings = {}) {
-      // IEで`$vuetify.goTo`が動作しない問題があるので代わりの実装
-      if (this.$browser.ie) {
-        const container= settings.container || window;
-        const duration = (settings.duration || 500) / 1000;
-        const ease = this.getEase(settings.easing);
-        TweenLite.to(container, duration, { scrollTo: { y: target }, ease });
-      } else {
-        this.$vuetify.goTo(target, { appOffset: false, ...settings });
-      }
-    },
-    smoothScroll(distance, duration, easing = 'linear') {
+    // 指定した距離だけスクロール
+    smoothScroll(distance, options = {}) {
       if (distance === 0) {
-        return;
+        return Promise.resolve(false);
       }
-      // デフォルトの時間は移動量に合わせて算出
-      if (!duration) {
-        duration = Math.abs(distance);
-      }
-      // ダイアログを表示している場合
-      const dialog = this.$common.getActiveDialog();
-      if (dialog) {
-        this.goTo(dialog.scrollTop + distance, { container: dialog, duration, easing });
-        return;
-      }
-      this.goTo(this.getScrollTop() + distance, { duration, easing });
+      const settings = {
+        // デフォルトの時間は移動量に合わせて算出
+        duration: Math.abs(distance),
+        // ダイアログを表示している場合はターゲットを変更
+        container: this.$common.getActiveDialog() || this.getScrollElement(),
+        // linear
+        easing: (t) => t,
+        ...options,
+      };
+      return this.goTo(settings.container.scrollTop + distance, settings);
     },
+    // 監視されている`scrollTop`の更新頻度を減らす
     onScroll() {
       this.throttle(() => {
-        this.scrollTop = this.getScrollTop();
+        this.scrollTop = this.getScrollElement().scrollTop;
       });
       this.debounce(() => {
-        this.scrollTop = this.getScrollTop();
+        this.scrollTop = this.getScrollElement().scrollTop;
       });
     },
     // IEでホイールが動作しなくなる問題があるので代わりの実装
@@ -99,14 +90,14 @@ export default {
         if (this.wheelDeltaY < 0) {
           this.wheelDeltaY = 0;
         } else {
-          this.wheelDeltaY += 100;
+          this.wheelDeltaY += 120;
         }
       }
       if (event.deltaY < 0) {
         if (this.wheelDeltaY > 0) {
           this.wheelDeltaY = 0;
         } else {
-          this.wheelDeltaY -= 100;
+          this.wheelDeltaY -= 120;
         }
       }
       this.debounce(() => {
