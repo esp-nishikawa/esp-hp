@@ -37,46 +37,46 @@ export default {
           value: 'entrance',
           src: require('@/assets/office_entrance.jpg'),
           title: 'エントランス',
-          duration: 1.2,
+          duration: 1.0,
           rotate: this.$common.getRandom(2, 6),
-          scale: 1.12,
-          boxShadow: '0px 7px 8px -4px rgba(0,0,0,0.2), 0px 12px 17px 2px rgba(0,0,0,0.14), 0px 5px 22px 4px rgba(0,0,0,0.12)',
+          scale: 1.10,
+          styleOptions: { 'box-shadow': '0px 6px 6px -3px rgba(0,0,0,.2), 0px 10px 14px 1px rgba(0,0,0,.14), 0px 4px 18px 3px rgba(0,0,0,.12)' },
         },
         {
           value: 'lounge',
           src: require('@/assets/office_lounge.jpg'),
           title: 'ラウンジ',
-          duration: 1.8,
+          duration: 1.6,
           rotate: this.$common.getRandom(-10, -6),
-          scale: 1.18,
-          boxShadow: '0px 9px 11px -5px rgba(0,0,0,0.2), 0px 18px 28px 2px rgba(0,0,0,0.14), 0px 7px 34px 6px rgba(0,0,0,0.12)',
+          scale: 1.16,
+          styleOptions: { 'box-shadow': '0px 8px 10px -5px rgba(0,0,0,.2), 0px 16px 24px 2px rgba(0,0,0,.14), 0px 6px 30px 5px rgba(0,0,0,.12)' },
         },
         {
           value: 'workspace',
           src: require('@/assets/office_workspace.jpg'),
           title: 'ワークスペース',
-          duration: 1.6,
+          duration: 1.4,
           rotate: this.$common.getRandom(-8, 8),
-          scale: 1.16,
-          boxShadow: '0px 8px 10px -5px rgba(0,0,0,0.2), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12)',
+          scale: 1.14,
+          styleOptions: { 'box-shadow': '0px 7px 9px -4px rgba(0,0,0,.2), 0px 14px 21px 2px rgba(0,0,0,.14), 0px 5px 26px 4px rgba(0,0,0,.12)' },
         },
         {
           value: 'boardroom',
           src: require('@/assets/office_boardroom.jpg'),
           title: '会議室',
-          duration: 1.4,
+          duration: 1.2,
           rotate: this.$common.getRandom(-6, -2),
-          scale: 1.14,
-          boxShadow: '0px 7px 9px -4px rgba(0,0,0,0.2), 0px 14px 21px 2px rgba(0,0,0,0.14), 0px 5px 26px 4px rgba(0,0,0,0.12)',
+          scale: 1.12,
+          styleOptions: { 'box-shadow': '0px 7px 8px -4px rgba(0,0,0,.2), 0px 12px 17px 2px rgba(0,0,0,.14), 0px 5px 22px 4px rgba(0,0,0,.12)' },
         },
         {
           value: 'library',
           src: require('@/assets/office_library.jpg'),
           title: 'ライブラリー',
-          duration: 2.0,
+          duration: 1.8,
           rotate: this.$common.getRandom(6, 10),
-          scale: 1.20,
-          boxShadow: '0px 10px 13px -6px rgba(0,0,0,0.2), 0px 20px 31px 3px rgba(0,0,0,0.14), 0px 8px 38px 7px rgba(0,0,0,0.12)',
+          scale: 1.18,
+          styleOptions: { 'box-shadow': '0px 9px 11px -5px rgba(0,0,0,.2), 0px 18px 28px 2px rgba(0,0,0,.14), 0px 7px 34px 6px rgba(0,0,0,.12)' },
         },
       ],
     };
@@ -117,7 +117,7 @@ export default {
     :duration="items[itemIndex].duration"
     :rotate="items[itemIndex].rotate"
     :scale="items[itemIndex].scale"
-    :box-shadow="items[itemIndex].boxShadow"
+    :style-options="items[itemIndex].styleOptions"
     @enter="isViewport=true"
   >
     <v-card
@@ -134,7 +134,7 @@ export default {
       <delay-text
         v-show="isViewport"
         delay="1000"
-        class="image-title white--text mb-1 mr-3"
+        class="image-title ma-3"
         :value="items[itemIndex].title"
       />
 
@@ -150,7 +150,11 @@ export default {
               <v-icon>close</v-icon>
             </v-btn>
           </v-layout>
-          <v-carousel interval="60000" v-model="carouselValue">
+          <v-carousel
+            interval="60000"
+            :value="carouselValue"
+            @change="carouselValue=$event||0"
+          >
             <v-carousel-item
               v-for="(item, i) in items"
               :key="i"
@@ -184,11 +188,16 @@ export default {
   right: 0;
   font-size: 14px;
   font-weight: 500;
+  line-height: 1;
+  letter-spacing: .03em;
+  color: #fff;
+  text-shadow: 0 0 2px rgba(0,0,0,.5);
 }
 
 .dialog-title {
   font-size: 20px;
   font-weight: 700;
   line-height: 1;
+  letter-spacing: .04em;
 }
 </style>

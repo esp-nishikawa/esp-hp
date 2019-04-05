@@ -150,6 +150,7 @@ export default {
 
 .routing-leave-to {
   opacity: 0;
+  transform: rotateY(30deg);
 }
 
 .routing-enter-active {
@@ -158,5 +159,6 @@ export default {
 
 .routing-enter {
   opacity: 0;
+  transform: rotateY(-70deg);
 }
 </style>

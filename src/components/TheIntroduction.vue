@@ -338,17 +338,19 @@ export default {
 
 .page-info {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
   z-index: 100;
   font-size: 16px;
   font-weight: 700;
+  line-height: 1;
+  letter-spacing: .1em;
   color: rgba(0,0,0,.54);
 }
 
 .v-tabs >>> .v-tabs__bar {
-  background: linear-gradient(to bottom, rgba(30,136,229,0.7), rgba(30,136,229,0.9));
-  text-shadow: 0 -1px 0 rgba(30,136,229,0.9);
+  background: linear-gradient(to bottom, rgba(30,136,229,.7), rgba(30,136,229,.9));
+  text-shadow: 0 -1px 0 rgba(30,136,229,.9);
 }
 
 .v-tabs >>> .v-tabs__div {

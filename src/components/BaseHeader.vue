@@ -32,10 +32,11 @@ export default {
 .base-header {
   position: relative;
   cursor: pointer;
+  font-family: Montserrat, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  line-height: 1.75;
-  letter-spacing: .02em;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
 }
 
 .base-header::before {
@@ -45,7 +46,7 @@ export default {
   left: 0;
   overflow: hidden;
   max-width: 0;
-  color: #1976D2;
+  color: #1976d2;
   transition: max-width .4s ease-out;
 }
 
@@ -60,7 +61,7 @@ export default {
   left: 0px;
   width: calc(100% - 0px);
   height: 2px;
-  background: #1976D2;
+  background: #1976d2;
   display: block;
   transform-origin: right top;
   transform: scale(0, 1);

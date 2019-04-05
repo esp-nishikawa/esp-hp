@@ -62,19 +62,19 @@ export default {
       :height="$vuetify.breakpoint.xs ? 128 : 200"
     />
     <v-card-title primary-title class="layout justify-center">
-      <div class="hover-headline">
+      <div class="hover-text-wrap">
         <div
           class="headline-text hover-text"
           :data-label="items[itemIndex].headline"
         >
           {{ items[itemIndex].headline }}
         </div>
-        <span
+        <div
           class="subheading-text hover-text"
           :data-label="items[itemIndex].subheading"
         >
           {{ items[itemIndex].subheading }}
-        </span>
+        </div>
       </div>
     </v-card-title>
   </v-card>
@@ -89,26 +89,25 @@ export default {
   opacity: 0.8;
 }
 
-.hover-card .hover-headline {
+.hover-card .hover-text-wrap {
   position: relative;
-  font-size: 14px;
 }
 
-.hover-card .hover-headline::before {
+.hover-card .hover-text-wrap::before {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: #1976D2;
+  background: #1976d2;
   opacity: 0;
   transform: translateY(5px);
   transition: opacity .3s ease-out, transform .4s ease-out;
   pointer-events: none;
 }
 
-.hover-card:hover .hover-headline::before {
+.hover-card:hover .hover-text-wrap::before {
   opacity: 1;
   transform: translateY(0px);
 }
@@ -117,26 +116,30 @@ export default {
   content: attr(data-label);
   position: absolute;
   opacity: 0;
-  color: #1976D2;
-  transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+  color: #1976d2;
+  transform: scale(1.1) translate(10px, -10px) rotate(4deg);
   transition: opacity .3s ease-out, transform .4s ease-out;
   pointer-events: none;
 }
 
 .hover-card:hover .hover-text::before {
-  transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+  transform: scale(1) translate(0px, 0px) rotate(0deg);
   opacity: 1;
 }
 
 .headline-text {
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.2;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  line-height: 1;
+  letter-spacing: .1em;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.2);
 }
 
 .subheading-text {
   font-size: 14px;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: .02em;
   color: rgba(0,0,0,.54);
 }
 </style>

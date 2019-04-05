@@ -3,12 +3,13 @@
 export default {
   props: {
     delay: { type: [String, Number], default: 100 },
-    duration: { type: [String, Number], default: 1.2 },
+    duration: { type: [String, Number], default: 1 },
     translateX: [String, Number],
     translateY: [String, Number],
     rotate: [String, Number],
     scale: [String, Number],
-    boxShadow: String,
+    styleOptions: Object,
+    easing: { type: String, default: 'ease-out' },
   },
   data() {
     return {
@@ -40,11 +41,11 @@ export default {
         return {
           opacity: 0,
           transform,
-          'box-shadow': this.boxShadow,
+          ...this.styleOptions,
         };
       case 'after-enter':
         return {
-          transition: `all ${this.duration}s ease-out`,
+          transition: `all ${this.duration}s ${this.easing}`,
         };
       default:
         return {};

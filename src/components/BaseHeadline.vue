@@ -18,10 +18,11 @@ export default {
 
 <style scoped>
 .base-headline {
-  margin: 24px 0 8px 0;
+  margin: 24px 0 16px 0;
+  font-family: Montserrat, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   font-size: 30px;
   font-weight: 700;
-  line-height: 1.75;
+  line-height: 1.5;
   letter-spacing: .2em;
 }
 </style>

@@ -64,13 +64,38 @@ export default {
 
 <style scoped>
 .information-title {
+  position: relative;
+  overflow: hidden;
+  font-family: Montserrat, sans-serif;
   font-size: 24px;
-  font-weight: 500;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  font-weight: 700;
+  letter-spacing: 0em;
+}
+
+.information-title:before {
+  animation: shine 3s ease infinite;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 40px;
+  background: rgba(255,255,255,.5);
+  transform-origin: bottom left;
+  transform: rotate(-45deg) translateY(-40px);
+}
+
+@keyframes shine {
+  0% {transform: rotate(-45deg) translateY(-40px);}
+  80% {transform: rotate(-45deg) translateY(-40px);}
+  100% {transform: rotate(-45deg) translateY(160px);}
 }
 
 .information-date {
+  font-family: Montserrat, sans-serif;
   font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
   color: rgba(0,0,0,.54);
 }
 </style>

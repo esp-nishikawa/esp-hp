@@ -83,13 +83,13 @@ export default {
 
 <style scoped>
 >>> .v-table thead th {
-  color: #FFF!important;
+  color: #fff!important;
   font-size: 15px!important;
   font-weight: 500!important;
   white-space: normal!important;
-  border: 1px solid #DDD;
-  background: linear-gradient(to bottom, rgba(30,136,229,0.7), rgba(30,136,229,0.9));
-  text-shadow: 0 -1px 0 rgba(30,136,229,0.9);
-  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  border: 1px solid #ddd;
+  background: linear-gradient(to bottom, rgba(30,136,229,.7), rgba(30,136,229,.9));
+  text-shadow: 0 -1px 0 rgba(30,136,229,.9);
+  box-shadow: 0px 1px 1px rgba(255,255,255,.3) inset;
 }
 </style>
