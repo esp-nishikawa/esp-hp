@@ -56,49 +56,63 @@ export default {
 </template>
 
 <style scoped>
-.split-enter-active,
-.split-leave-active,
-.split-move {
-  transition: all 1s;
-}
-
 .split-leave-active {
   position: absolute;
+  transition: opacity .3s;
 }
 
-.split-enter,
 .split-leave-to {
+  opacity: 0;
+}
+
+.split-enter-active {
+  transition: opacity 1s, transform 1s;
+}
+
+.split-enter {
   opacity: 0;
   transform: translateY(-30px);
 }
 
-.prev-enter-active,
-.prev-leave-active {
-  transition: all .6s;
+.split-move {
+  transition: opacity .3s, transform 1s;
 }
 
 .prev-leave-active {
   position: absolute;
+  transition: opacity .3s, transform .6s;
 }
 
-.prev-enter,
 .prev-leave-to {
   opacity: 0;
   transform: translateX(-30px);
 }
 
-.next-enter-active,
-.next-leave-active {
-  transition: all .6s;
+.prev-enter-active {
+  transition: opacity .3s, transform .6s;
+}
+
+.prev-enter {
+  opacity: 0;
+  transform: translateX(30px);
 }
 
 .next-leave-active {
   position: absolute;
+  transition: opacity .3s, transform .6s;
 }
 
-.next-enter,
 .next-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.next-enter-active {
+  transition: opacity .3s, transform .6s;
+}
+
+.next-enter {
+  opacity: 0;
+  transform: translateX(-30px);
 }
 </style>

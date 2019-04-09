@@ -48,22 +48,16 @@ export default {
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-group prepend-icon="flag">
+        <v-list-group no-action prepend-icon="flag" group="/corporate">
           <v-list-tile slot="activator">
             <v-list-tile-title>会社案内</v-list-tile-title>
           </v-list-tile>
           <v-list-tile to="/corporate#profile" ripple>
-            <v-list-tile-action>
-              <div/>
-            </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>会社概要</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile to="/corporate#office" ripple>
-            <v-list-tile-action>
-              <div/>
-            </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>オフィス環境</v-list-tile-title>
             </v-list-tile-content>
@@ -79,22 +73,16 @@ export default {
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-group prepend-icon="face">
+        <v-list-group no-action prepend-icon="face" group="/recruit">
           <v-list-tile slot="activator">
             <v-list-tile-title>採用情報</v-list-tile-title>
           </v-list-tile>
           <v-list-tile to="/recruit#new-graduate" ripple>
-            <v-list-tile-action>
-              <div/>
-            </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>新卒採用</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile to="/recruit#mid-career" ripple>
-            <v-list-tile-action>
-              <div/>
-            </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>中途採用</v-list-tile-title>
             </v-list-tile-content>

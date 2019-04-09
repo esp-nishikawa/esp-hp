@@ -279,7 +279,7 @@ export default {
             <div class="page-info">{{ item.page + 1 }} / {{ item.contents.length }}</div>
           </v-flex>
           <v-flex>
-            <v-card light flat>
+            <v-card light flat style="overflow:hidden;">
               <v-card-title primary-title>
                 <transition-text
                   :value="item.contents[item.page].headline"

@@ -55,7 +55,7 @@ export default {
           <div>{{ information.headline }}</div>
         </div>
         <v-card v-if="information.description">
-          <v-card-text v-html="information.description"></v-card-text>
+          <v-card-text class="pl-4" v-html="information.description"></v-card-text>
         </v-card>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -73,7 +73,6 @@ export default {
 }
 
 .information-title:before {
-  animation: shine 3s ease infinite;
   content: '';
   position: absolute;
   top: 0;
@@ -83,12 +82,12 @@ export default {
   background: rgba(255,255,255,.5);
   transform-origin: bottom left;
   transform: rotate(-45deg) translateY(-40px);
+  animation: shine 3s ease infinite;
 }
 
 @keyframes shine {
-  0% {transform: rotate(-45deg) translateY(-40px);}
-  80% {transform: rotate(-45deg) translateY(-40px);}
-  100% {transform: rotate(-45deg) translateY(160px);}
+  80% { transform: rotate(-45deg) translateY(-40px); }
+  100% { transform: rotate(-45deg) translateY(160px); }
 }
 
 .information-date {

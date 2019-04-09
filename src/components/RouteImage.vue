@@ -132,7 +132,7 @@ export default {
   font-weight: 500;
   line-height: 1;
   letter-spacing: .1em;
-  text-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  text-shadow: 2px 2px 3px rgba(0,0,0,.2);
 }
 
 .subheading-text {

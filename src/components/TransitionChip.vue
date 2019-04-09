@@ -25,20 +25,26 @@ export default {
 </template>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active,
-.v-move {
-  transition: all 1s;
-}
-
 .v-leave-active {
   position: absolute;
+  transition: opacity .3s;
 }
 
-.v-enter,
 .v-leave-to {
   opacity: 0;
+}
+
+.v-enter-active {
+  transition: opacity 1s, transform 1s;
+}
+
+.v-enter {
+  opacity: 0;
   transform: translateY(-30px);
+}
+
+.v-move {
+  transition: opacity .3s, transform 1s;
 }
 
 .v-chip:hover {

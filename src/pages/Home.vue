@@ -149,6 +149,6 @@ export default {
 
 .white-text {
   color: #fff;
-  text-shadow: 0 0 2px rgba(0,0,0,.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,.4);
 }
 </style>

@@ -44,9 +44,9 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+  color: #1976d2;
   overflow: hidden;
   max-width: 0;
-  color: #1976d2;
   transition: max-width .4s ease-out;
 }
 
@@ -59,17 +59,17 @@ export default {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  width: calc(100% - 0px);
+  width: 100%;
   height: 2px;
-  background: #1976d2;
   display: block;
-  transform-origin: right top;
+  background: #1976d2;
+  transform-origin: right;
   transform: scale(0, 1);
   transition: transform .6s cubic-bezier(1, 0, 0, 1);
 }
 
 .base-header:hover::after {
-  transform-origin: left top;
+  transform-origin: left;
   transform: scale(1, 1);
 }
 </style>

@@ -20,7 +20,7 @@ export default {
 .base-subheading {
   position: relative;
   margin: 16px 0 4px 0;
-  padding: 0 0 3px 6px;
+  padding: 0 0 3px 7px;
   border-left: 5px solid #42a5f5;
   font-size: 16px;
   font-weight: 700;
