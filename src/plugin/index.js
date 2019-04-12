@@ -1,5 +1,4 @@
 import Common from './common.js';
-import Browser from '@/mixins/browser.js';
 import BaseHeader from '@/components/BaseHeader';
 import BaseHeadline from '@/components/BaseHeadline';
 import BaseSubheading from '@/components/BaseSubheading';
@@ -11,8 +10,6 @@ export default {
   install(Vue, options) {
     // 共通メソッド
     Vue.prototype.$common = Common;
-    // ミックスイン
-    Vue.mixin(Browser);
     // コンポーネント
     Vue.component('base-header', BaseHeader);
     Vue.component('base-headline', BaseHeadline);
