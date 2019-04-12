@@ -283,6 +283,7 @@ export default {
               <v-card-title primary-title>
                 <transition-text
                   :value="item.contents[item.page].headline"
+                  :vertical="verticalTabs"
                   :split="verticalTabs"
                   :page="item.page"
                   :style="headlineStyle"
@@ -292,7 +293,7 @@ export default {
               <v-card-text>
                 <transition-text
                   :value="item.contents[item.page].description"
-                  :split="verticalTabs"
+                  :vertical="verticalTabs"
                   :page="item.page"
                   :style="descriptionStyle"
                 />
@@ -300,6 +301,7 @@ export default {
               <v-subheader>関連技術</v-subheader>
               <transition-chip
                 :values="item.contents[item.page].techs"
+                :page="item.page"
                 :style="techsStyle"
               />
             </v-card>

@@ -3,12 +3,29 @@
 export default {
   props: {
     values: Array,
+    page: { type: [String, Number], default: 0 },
+  },
+  data() {
+    return {
+      transitionName: 'next',
+    };
+  },
+  watch: {
+    page(newVal, oldVal) {
+      this.transitionName = newVal < oldVal ? 'prev' : 'next';
+    },
   },
 };
 </script>
 
 <template>
-  <transition-group tag="div">
+  <transition-group
+    tag="div"
+    :name="transitionName"
+    leave-active-class="v-leave-active"
+    enter-active-class="v-enter-active"
+    move-class="v-move"
+  >
     <a
       v-for="value in values"
       :key="value"
@@ -27,24 +44,33 @@ export default {
 <style scoped>
 .v-leave-active {
   position: absolute;
-  transition: opacity .3s;
-}
-
-.v-leave-to {
-  opacity: 0;
+  transition: opacity .3s, transform 1s;
 }
 
 .v-enter-active {
   transition: opacity 1s, transform 1s;
 }
 
-.v-enter {
-  opacity: 0;
-  transform: translateY(-30px);
-}
-
 .v-move {
   transition: opacity .3s, transform 1s;
+}
+
+.prev-leave-to {
+  opacity: 0;
+}
+
+.prev-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.next-leave-to {
+  opacity: 0;
+}
+
+.next-enter {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 
 .v-chip:hover {

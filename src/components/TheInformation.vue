@@ -51,11 +51,11 @@ export default {
         :hide-actions="!information.description"
       >
         <div slot="header">
-          <span class="information-date">{{ information.date }}</span>
+          <div class="information-date">{{ information.date }}</div>
           <div>{{ information.headline }}</div>
         </div>
         <v-card v-if="information.description">
-          <v-card-text class="pl-4" v-html="information.description"></v-card-text>
+          <v-card-text class="pl-4" v-html="information.description"/>
         </v-card>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -79,7 +79,7 @@ export default {
   left: 0;
   width: 200px;
   height: 40px;
-  background: rgba(255,255,255,.5);
+  background: rgba(250,250,250,.5);
   transform-origin: bottom left;
   transform: rotate(-45deg) translateY(-40px);
   animation: shine 3s ease infinite;
@@ -91,10 +91,9 @@ export default {
 }
 
 .information-date {
-  font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: .04em;
+  letter-spacing: 0em;
   color: rgba(0,0,0,.54);
 }
 </style>

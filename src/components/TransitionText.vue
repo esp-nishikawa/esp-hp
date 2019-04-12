@@ -3,6 +3,7 @@
 export default {
   props: {
     value: String,
+    vertical: Boolean,
     split: Boolean,
     page: { type: [String, Number], default: 0 },
   },
@@ -12,16 +13,31 @@ export default {
       transitionName: null,
     };
   },
+  computed: {
+    leaveActiveClass() {
+      if (!this.transitionName) return null;
+      return this.split ? 'split-leave-active' : 'all-leave-active';
+    },
+    enterActiveClass() {
+      if (!this.transitionName) return null;
+      return this.split ? 'split-enter-active' : 'all-enter-active';
+    },
+    moveClass() {
+      if (!this.transitionName) return null;
+      return this.split ? 'split-move' : 'all-move';
+    },
+  },
   watch: {
     split() {
+      // `characters`は更新するがtransitionしない
       this.transitionName = null;
       this.characters = this.getCharacters();
     },
     page(newVal, oldVal) {
-      if (this.split) {
-        this.transitionName = 'split';
+      if (this.vertical) {
+        this.transitionName = newVal < oldVal ? 'up' : 'down';
       } else {
-        this.transitionName = newVal < oldVal ? 'prev' : 'next';
+        this.transitionName = newVal < oldVal ? 'left' : 'right';
       }
       this.characters = this.getCharacters();
     },
@@ -45,7 +61,13 @@ export default {
 </script>
 
 <template>
-  <transition-group tag="div" :name="transitionName">
+  <transition-group
+    tag="div"
+    :name="transitionName"
+    :leave-active-class="leaveActiveClass"
+    :enter-active-class="enterActiveClass"
+    :move-class="moveClass"
+  >
     <span
       v-for="character in characters"
       :key="character.key"
@@ -56,62 +78,64 @@ export default {
 </template>
 
 <style scoped>
-.split-leave-active {
+.all-leave-active {
   position: absolute;
-  transition: opacity .3s;
+  transition: opacity .3s, transform .6s;
 }
 
-.split-leave-to {
-  opacity: 0;
+.all-enter-active {
+  transition: opacity .3s, transform .6s;
+}
+
+.split-leave-active {
+  position: absolute;
+  transition: opacity .3s, transform 1s;
 }
 
 .split-enter-active {
   transition: opacity 1s, transform 1s;
 }
 
-.split-enter {
-  opacity: 0;
-  transform: translateY(-30px);
-}
-
 .split-move {
   transition: opacity .3s, transform 1s;
 }
 
-.prev-leave-active {
-  position: absolute;
-  transition: opacity .3s, transform .6s;
+.up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 
-.prev-leave-to {
+.up-enter {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.down-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.down-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.left-leave-to {
   opacity: 0;
   transform: translateX(-30px);
 }
 
-.prev-enter-active {
-  transition: opacity .3s, transform .6s;
-}
-
-.prev-enter {
+.left-enter {
   opacity: 0;
   transform: translateX(30px);
 }
 
-.next-leave-active {
-  position: absolute;
-  transition: opacity .3s, transform .6s;
-}
-
-.next-leave-to {
+.right-leave-to {
   opacity: 0;
   transform: translateX(30px);
 }
 
-.next-enter-active {
-  transition: opacity .3s, transform .6s;
-}
-
-.next-enter {
+.right-enter {
   opacity: 0;
   transform: translateX(-30px);
 }
