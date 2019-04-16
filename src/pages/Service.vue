@@ -49,9 +49,9 @@ export default {
                   自動車関係、鉄道関係等々、ビジネスアプリケーションの提案から総合試験まで、ワンストップショッピングとしてユーザにはなくてはならない存在となります。
                 </div>
                 <base-subheading>Key Technology</base-subheading>
-                <div>C/S,Web,制御システム開発</div>
-                <div>OS: Windows</div>
-                <div>言語: VC++, C#, Java, VB, VB.NET</div>
+                <div>C/S、Web、制御システム開発</div>
+                <div>OS: Windows Server, UNIX</div>
+                <div>言語: VC++, C#, Java, JSP, VB.NET</div>
                 <div>DB: Oracle, SQLServer</div>
               </v-card-text>
             </v-card>
@@ -83,8 +83,8 @@ export default {
                 </div>
                 <base-subheading>Key Technology</base-subheading>
                 <div>ECサイト開発、SEO対策、導入コンサル</div>
-                <div>OS: Linux</div>
-                <div>言語: Java, JavaScript, JSP, PHP</div>
+                <div>OS: Linux, AWS, Docker</div>
+                <div>言語: Java, JavaScript, PHP</div>
                 <div>DB: Oracle, PostgreSQL, MySQL</div>
               </v-card-text>
             </v-card>

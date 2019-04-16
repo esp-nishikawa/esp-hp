@@ -40,7 +40,7 @@ export default {
 <template>
   <v-card flat class="transparent">
     <v-card-title primary-title>
-      <v-icon medium color="blue lighten-2" class="mr-2">thumb_up</v-icon>
+      <v-icon medium color="blue lighten-2" class="information-icon mr-2">thumb_up</v-icon>
       <div class="information-title">Information</div>
     </v-card-title>
     <v-divider/>
@@ -63,6 +63,18 @@ export default {
 </template>
 
 <style scoped>
+.information-icon {
+  animation: bounce 3s ease infinite;
+}
+
+@keyframes bounce {
+  60% { transform: translateY(0px); }
+  70% { transform: translateY(-10px); }
+  75% { transform: translateY(0px); }
+  80% { transform: translateY(-5px); }
+  90% { transform: translateY(0px); }
+}
+
 .information-title {
   position: relative;
   overflow: hidden;
