@@ -238,15 +238,18 @@ export default {
 </script>
 
 <template>
-  <v-tabs
-    v-model="activeTab"
-    color="transparent"
-    slider-color="amber lighten-3"
-    dark
-    show-arrows
-  >
-    <v-tab v-for="(item, i) in items" :key="i" ripple>{{ item.type }}</v-tab>
+  <v-sheet style="overflow:hidden;">
+    <v-tabs
+      v-model="activeTab"
+      color="transparent"
+      slider-color="amber lighten-3"
+      dark
+      show-arrows
+    >
+      <v-tab v-for="(item, i) in items" :key="i" ripple>{{ item.type }}</v-tab>
+    </v-tabs>
     <v-tabs-items
+      v-model="activeTab"
       :touch="{
         left: () => nextPage(false),
         right: () => prevPage(false),
@@ -318,7 +321,7 @@ export default {
         </v-layout>
       </v-tab-item>
     </v-tabs-items>
-  </v-tabs>
+  </v-sheet>
 </template>
 
 <style scoped>
