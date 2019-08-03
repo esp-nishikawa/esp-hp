@@ -4,8 +4,9 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
-  # RewriteCond %{HTTP_HOST} ^www\.esoftpowers\.com
-  # RewriteRule ^(.*)$ http://esoftpowers.com/$1 [R=301,L]
+  # RewriteCond %{HTTP_HOST} ^www\.esoftpowers\.com [OR]
+  RewriteCond %{HTTP_HOST} ^150\.60\.213\.48
+  RewriteRule ^(.*)$ http://esoftpowers.com/$1 [R=301,L]
   RewriteCond %{THE_REQUEST} ^.*/index.html
   RewriteRule ^(.*)index.html$ http://esoftpowers.com/$1 [R=301,L]
 </IfModule>
