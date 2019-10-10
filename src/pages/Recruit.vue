@@ -36,7 +36,7 @@ export default {
                   <v-layout row wrap>
                     <v-flex xs12 sm6>
                       <base-subheading>応募資格</base-subheading>
-                      <div>２０１９年３月に卒業予定の方</div>
+                      <div>２０２０年３月に卒業予定の方</div>
                       <div>※既に卒業されている方も応募可能</div>
                     </v-flex>
                     <v-flex xs12 sm6>

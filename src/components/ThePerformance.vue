@@ -11,6 +11,18 @@ export default {
       ],
       tableItems: [
         {
+          year: '2018年度',
+          sales: '19,644万円',
+          employees: '14名',
+          engineers: '12名',
+        },
+        {
+          year: '2017年度',
+          sales: '17,167万円',
+          employees: '13名',
+          engineers: '11名',
+        },
+        {
           year: '2016年度',
           sales: '16,510万円',
           employees: '13名',
