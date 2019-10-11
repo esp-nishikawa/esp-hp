@@ -1,0 +1,41 @@
+@keyframes fade-jump {
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader > div {
+  font-family: sans-serif;
+  font-size: 20px;
+  letter-spacing: .1em;
+  color: #ffc107;
+  opacity: 0.5;
+}
+
+.loader > div:nth-child(5n+1) {
+  animation: fade-jump 1s .1s infinite ease-in-out;
+}
+.loader > div:nth-child(5n+2) {
+  animation: fade-jump 1s .3s infinite ease-in-out;
+}
+.loader > div:nth-child(5n+3) {
+  animation: fade-jump 1s .5s infinite ease-in-out;
+}
+.loader > div:nth-child(5n+4) {
+  animation: fade-jump 1s .7s infinite ease-in-out;
+}
+.loader > div:nth-child(5n+5) {
+  animation: fade-jump 1s .9s infinite ease-in-out;
+}

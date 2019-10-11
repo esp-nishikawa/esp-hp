@@ -1,49 +1,69 @@
 export default {
-  data () {
+  data() {
     return {
-      name: 'dialog',
+      historyName: null,
       showDialog: false,
+    };
+  },
+  watch: {
+    showDialog(val) {
+      // スクロール位置をリセット
+      if (!val) {
+        this.$nextTick(() => {
+          this.resetScroll();
+        });
+      }
+
+      // ブラウザ履歴への追加／削除
+      if (val) {
+        if (window.history.state['name'] != this.historyName) {
+          window.history.pushState({ name: this.historyName }, this.historyName);
+        }
+      } else {
+        if (window.history.state['name'] === this.historyName) {
+          window.history.back();
+        }
+      }
+    },
+  },
+  created() {
+    if (!this.historyName) {
+      this.historyName = this.$common.getUniqueString();
     }
   },
+  mounted() {
+    window.addEventListener('popstate', this.onPopstate);
+  },
+  beforeDestroy() {
+    window.removeEventListener('popstate', this.onPopstate);
+  },
   methods: {
-    onPopstate(el) {
-      // 最前面のダイアログ以外はクローズしない
-      const dialog = this.$refs['dialog'];
-      if (dialog && dialog.activeZIndex != dialog.getMaxZIndex()) {
-        return;
+    onPopstate(event) {
+      if (event.state['name'] === this.historyName) {
+        this.open();
+      } else {
+        // 最前面のダイアログ以外はクローズしない
+        const container = this.$refs['container'] || this.$children[0];
+        if (container && container.activeZIndex != container.getMaxZIndex()) {
+          return;
+        }
+        this.close();
       }
-      // 履歴上で表示状態ならクローズしない
-      if (el.state['name'] === this.name) {
-        return;
-      }
-      this.close();
+    },
+    open() {
+      this.showDialog = true;
     },
     close() {
       this.showDialog = false;
     },
     resetScroll() {
-      const elements = document.getElementsByClassName('v-dialog v-dialog--active');
-      if (elements && elements.length > 0) {
-        elements[elements.length - 1].scrollTop = 0;
-      }
-    },
-  },
-  watch: {
-    showDialog(val) {
-      if (!val) {
-        this.resetScroll();
-      }
-
-      // ブラウザの「戻る」ボタンでダイアログを閉じる
-      if (val) {
-        window.history.pushState({name: this.name}, this.name);
-        window.addEventListener('popstate', this.onPopstate);
-      } else {
-        if (window.history.state['name'] === this.name) {
-          window.history.back();
+      const container = this.$refs['container'] || this.$children[0];
+      if (container) {
+        const dialog = container.$refs['dialog'];
+        if (dialog) {
+          dialog.scrollTop = 0;
         }
-        window.removeEventListener('popstate', this.onPopstate);
       }
     },
   },
-}
+};

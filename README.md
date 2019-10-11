@@ -10,9 +10,8 @@
 ├ public ... 静的ファイル、index.htmlを配置
 │　├ .htaccess
 │　├ favicon.ico
-│　├ robots.txt
-│　├ sitemap.xml
-│　└ index.html
+│　├ index.html
+│　└ ～
 │
 ├ src ... ソース（この配下を修正）
 │　│
@@ -21,35 +20,42 @@
 │　│　├ ○○.jpg
 │　│　└ ～
 │　│
-│　├ components ... 各ページのコンポーネント
-│　│　├ Corporate.vue
-│　│　├ Home.vue
-│　│　├ Recruit.vue
-│　│　├ Service.vue
+│　├ components ... コンポーネント（ダイアログはここ）
+│　│　├ AccessDialog.vue
 │　│　└ ～
 │　│
 │　├ directives ... カスタムディレクティブ
-│　│　├ vpshow.js
+│　│　├ viewport.js
 │　│　└ ～
 │　│
 │　├ mixins ... ミックスイン
 │　│　├ dialog-controllable.js
 │　│　└ ～
 │　│
-│　├ router ... ルーティング（各ページのパスやタイトルなど）
+│　├ pages ... 各ページ（ルーティングで切り替えるパス毎）
+│　│　├ Corporate.vue
+│　│　└ ～
+│　│
+│　├ plugin ... プラグイン、共通メソッド
+│　│　├ common.js
 │　│　└ index.js
 │　│
-│　├ App.vue ... 共通部分のコンポーネント（ナビゲーションメニューや全体にかかるスタイルなど）
+│　├ router ... ルーティング（各ページのパスやタイトルなどを設定）
+│　│　└ index.js
+│　│
+│　├ App.vue ... 画面の共通部分（ナビゲーションメニューなど）
 │　└ main.js ... Vueメイン（外部モジュールのインポートなど）
 │
 ├ babel.config.js
 ├ vue.config.js
+├ package.json
+├ package-lock.json
 ├ Dockerfile
+├ docker-compose.yml
 └ README.md
 ```
 - マテリアルデザインのFWは[Vuetify.js](https://vuetifyjs.com)を使用
 
 ## ビルド
-- ビルド環境のDockerイメージは[こちら](https://hub.docker.com/r/espnishikawa/esp-hp-build/)に登録
 - ビルド手順は[こちら](https://github.com/esp-nishikawa/esp-hp/wiki/build)を参照
 
