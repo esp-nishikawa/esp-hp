@@ -24,32 +24,41 @@ export default {
 </script>
 
 <template>
-  <v-dialog v-model="showDialog" :max-width="maxWidth" :fullscreen="fullscreen">
-    <template slot="activator">
-      <slot name="activator"/>
+  <v-dialog
+    v-model="showDialog"
+    :max-width="maxWidth"
+    :fullscreen="fullscreen"
+    scrollable
+    eager
+  >
+    <template v-slot:activator="{ on }">
+      <div v-on="on" class="d-inline-block">
+        <slot name="activator"/>
+      </div>
     </template>
     <v-card>
-      <v-layout v-if="fullscreen" justify-start>
-        <v-btn icon @click="close">
-          <v-icon>arrow_back</v-icon>
-        </v-btn>
-      </v-layout>
-      <v-layout v-else justify-end>
-        <v-btn icon @click="close">
-          <v-icon>close</v-icon>
-        </v-btn>
-      </v-layout>
-      <v-card-title primary-title class="layout justify-center py-0">
-        <slot name="title"/>
+      <v-card-title class="d-block pt-2 px-2 pb-6 elevation-2" style="z-index:1;">
+        <div v-if="fullscreen" class="d-flex justify-start">
+          <v-btn icon @click="close">
+            <v-icon>arrow_back</v-icon>
+          </v-btn>
+        </div>
+        <div v-else class="d-flex justify-end">
+          <v-btn icon @click="close">
+            <v-icon>close</v-icon>
+          </v-btn>
+        </div>
+        <div class="d-flex justify-center">
+          <slot name="title"/>
+        </div>
       </v-card-title>
       <slot name="body">
-        <v-card-text>
+        <v-card-text class="scroll-target">
           <slot name="content"/>
+          <div v-if="fullscreen" class="d-flex justify-end">
+            <base-link @click="close">BACK</base-link>
+          </div>
         </v-card-text>
-        <v-card-actions v-if="fullscreen">
-          <v-spacer/>
-          <v-btn flat round color="primary" @click="close">BACK</v-btn>
-        </v-card-actions>
       </slot>
     </v-card>
   </v-dialog>

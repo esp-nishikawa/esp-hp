@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/pages/Home';
-import Corporate from '@/pages/Corporate';
-import Service from '@/pages/Service';
-import Recruit from '@/pages/Recruit';
+import Home from './Home.vue';
+import Corporate from './Corporate.vue';
+import Service from './Service.vue';
+import Recruit from './Recruit.vue';
 
 Vue.use(Router);
 

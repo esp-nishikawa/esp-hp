@@ -26,18 +26,27 @@ export default {
     enter-active-class="v-enter-active"
     move-class="v-move"
   >
-    <a
+    <div
       v-for="value in values"
       :key="value"
-      :href="'https://www.google.co.jp/search?q=' + encodeURIComponent(value)"
-      target="_blank"
-      class="d-inline-block"
+      class="d-inline-block ma-1"
     >
       <v-tooltip bottom>
-        <v-chip slot="activator" color="blue lighten-1" text-color="white">{{ value }}</v-chip>
+        <template v-slot:activator="{ on }">
+          <v-chip
+            v-on="on"
+            color="blue lighten-1"
+            text-color="white"
+            link
+            :href="'https://www.google.co.jp/search?q=' + encodeURIComponent(value)"
+            target="_blank"
+          >
+            {{ value }}
+          </v-chip>
+        </template>
         <span>{{ value }}を検索</span>
       </v-tooltip>
-    </a>
+    </div>
   </transition-group>
 </template>
 
@@ -75,10 +84,5 @@ export default {
 
 .v-chip:hover {
   text-decoration: underline;
-}
-
-.v-chip >>> .v-chip__content {
-  cursor: inherit!important;
-  user-select: none!important;
 }
 </style>

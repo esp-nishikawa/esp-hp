@@ -11,6 +11,10 @@ export default {
   },
   data() {
     return {
+      initialHeaders: [
+        { text: '学歴', value: 'education' },
+        { text: '初任給', value: 'salary' },
+      ],
       initialItems: [
         {
           education: '大学院（修士）卒',
@@ -28,6 +32,10 @@ export default {
           education: '高専・短大・専門卒（２年制）',
           salary: '198,000円',
         },
+      ],
+      annualHeaders: [
+        { text: '年齢', value: 'age' },
+        { text: '年収', value: 'salary' },
       ],
       annualItems: [
         {
@@ -57,55 +65,57 @@ export default {
       <base-headline>COMPENSATION</base-headline>
     </template>
     <template #content>
-      <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
-        <v-layout v-if="midCareer" row wrap class="py-3">
-          <v-flex xs12>
-            <div>経験に応じて、当社規定により優遇。</div>
-          </v-flex>
-        </v-layout>
-        <v-layout v-else row wrap>
-          <v-flex xs12>
+      <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+        <v-row v-if="midCareer" class="mt-2">
+          <v-col>
+            <base-text>経験に応じて、当社規定により優遇。</base-text>
+          </v-col>
+        </v-row>
+        <v-row v-else>
+          <v-col>
             <base-subheading>初任給（平成２９年度実績）</base-subheading>
             <v-data-table
+              :headers="initialHeaders"
               :items="initialItems"
               item-key="education"
-              hide-actions
-              hide-headers
-              class="elevation-3"
-            >
-              <template slot="items" slot-scope="props">
-                <td class="text-xs-left">{{ props.item.education }}</td>
-                <td class="text-xs-left">{{ props.item.salary }}</td>
-              </template>
-            </v-data-table>
-            <div>※この表の金額は基準給で独身者の場合</div>
-          </v-flex>
-        </v-layout>
-        <v-layout row wrap>
-          <v-flex xs12>
+              :mobile-breakpoint="260"
+              hide-default-header
+              hide-default-footer
+              class="elevation-2"
+            />
+            <base-text>※この表の金額は基準給で独身者の場合</base-text>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
             <base-subheading>年収モデル</base-subheading>
             <v-data-table
+              :headers="annualHeaders"
               :items="annualItems"
               item-key="age"
-              hide-actions
-              hide-headers
-              class="elevation-3"
-            >
-              <template slot="items" slot-scope="props">
-                <td class="text-xs-left">{{ props.item.age }}</td>
-                <td class="text-xs-left">{{ props.item.salary }}</td>
-              </template>
-            </v-data-table>
-            <div>※年間賞与4ヶ月、1ヶ月の残業20Hとした場合。</div>
+              :mobile-breakpoint="260"
+              hide-default-header
+              hide-default-footer
+              class="elevation-2"
+            />
+            <base-text>※年間賞与4ヶ月、1ヶ月の残業20Hとした場合。</base-text>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
             <base-subheading>諸手当</base-subheading>
-            <div>通勤手当（全額）、家族手当、時間外手当、役職手当</div>
+            <base-text>通勤手当（全額）、家族手当、時間外手当、役職手当</base-text>
+          </v-col>
+          <v-col cols="12">
             <base-subheading>昇給</base-subheading>
-            <div>年１回（７月）</div>
+            <base-text>年１回（７月）</base-text>
+          </v-col>
+          <v-col cols="12">
             <base-subheading>賞与</base-subheading>
-            <div>年２回（６月、１２月）</div>
-            <div>※年間平均４.０カ月＋α（平成２９年度実績）</div>
-          </v-flex>
-        </v-layout>
+            <base-text>年２回（６月、１２月）</base-text>
+            <base-text>※年間平均４.０カ月＋α（平成２９年度実績）</base-text>
+          </v-col>
+        </v-row>
       </v-container>
     </template>
   </dialog-wrapper>

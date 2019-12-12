@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <v-layout>
+  <div class="d-flex">
     <span
       v-for="(character, c) in characters"
       :key="c"
@@ -31,7 +31,7 @@ export default {
       class="delay-character"
       :style="{ animationDelay: Number(delay) + c*100 + 'ms' }"
     />
-  </v-layout>
+  </div>
 </template>
 
 <style scoped>

@@ -166,51 +166,55 @@ export default {
       return this.items[this.activeTab].contents;
     },
     headlineStyle() {
+      const defaultStyle = {
+        height: '20px',
+        color: 'rgba(0,0,0,0.87)',
+        'font-size': '20px',
+        'font-weight': '500',
+        'line-height': '1',
+        'letter-spacing': '0.02em',
+      };
       switch (this.$vuetify.breakpoint.name) {
       case 'xs':
       case 'sm':
         return {
+          ...defaultStyle,
           height: '36px',
           'font-size': '18px',
-          'font-weight': '500',
-          'line-height': '1',
-          'letter-spacing': '0.02em',
         };
       default:
-        return {
-          height: '20px',
-          'font-size': '20px',
-          'font-weight': '500',
-          'line-height': '1',
-          'letter-spacing': '0.02em',
-        };
+        return defaultStyle;
       }
     },
     descriptionStyle() {
+      const defaultStyle = {
+        height: '120px',
+        color: 'rgba(0,0,0,0.87)',
+        'font-size': '14px',
+        'font-weight': '400',
+        'line-height': '1.75',
+        'letter-spacing': '0.02em',
+      };
       switch (this.$vuetify.breakpoint.name) {
       case 'xs':
         return {
+          ...defaultStyle,
           height: '200px',
           'font-size': '13px',
-          'font-weight': '400',
         };
       case 'sm':
         return {
+          ...defaultStyle,
           height: '132px',
           'font-size': '13px',
-          'font-weight': '400',
         };
       default:
-        return {
-          height: '120px',
-          'font-size': '14px',
-          'font-weight': '400',
-        };
+        return defaultStyle;
       }
     },
     techsStyle() {
       return this.verticalTabs
-        ? { height: '120px' }
+        ? { height: '100px' }
         : { height: '80px' };
     },
   },
@@ -238,15 +242,15 @@ export default {
 </script>
 
 <template>
-  <v-sheet style="overflow:hidden;">
+  <v-sheet class="overflow-hidden">
     <v-tabs
       v-model="activeTab"
-      color="transparent"
+      background-color="transparent"
       slider-color="amber lighten-3"
       dark
       show-arrows
     >
-      <v-tab v-for="(item, i) in items" :key="i" ripple>{{ item.type }}</v-tab>
+      <v-tab v-for="(item, i) in items" :key="i">{{ item.type }}</v-tab>
     </v-tabs>
     <v-tabs-items
       v-model="activeTab"
@@ -256,34 +260,35 @@ export default {
       }"
     >
       <v-tab-item v-for="(item, i) in items" :key="i">
-        <v-layout row align-center>
-          <v-flex v-if="verticalTabs" xs1>
+        <v-row align="center">
+          <v-col v-if="verticalTabs" cols="1">
             <v-btn icon class="prev-btn" @click="prevPage(true)">
               <v-icon x-large>keyboard_arrow_up</v-icon>
             </v-btn>
             <v-item-group
               v-model="item.page"
               mandatory
-              style="width:60px;"
+              class="d-flex flex-column align-center"
+              style="width:60px; max-width:60px;"
             >
-              <v-layout column align-center>
-                <v-item v-for="c in item.contents.length" :key="c">
-                  <div slot-scope="{ active, toggle }">
-                    <v-btn icon :input-value="active" @click="toggle">
-                      <v-icon>fiber_manual_record</v-icon>
-                    </v-btn>
-                  </div>
-                </v-item>
-              </v-layout>
+              <v-item
+                v-for="c in item.contents.length"
+                :key="c"
+                v-slot:default="{ active, toggle }"
+              >
+                <v-btn icon :input-value="active" @click="toggle">
+                  <v-icon>fiber_manual_record</v-icon>
+                </v-btn>
+              </v-item>
             </v-item-group>
             <v-btn icon class="next-btn" @click="nextPage(true)">
               <v-icon x-large>keyboard_arrow_down</v-icon>
             </v-btn>
             <div class="page-info">{{ item.page + 1 }} / {{ item.contents.length }}</div>
-          </v-flex>
-          <v-flex>
-            <v-card light flat style="overflow:hidden;">
-              <v-card-title primary-title>
+          </v-col>
+          <v-col>
+            <v-card light flat class="overflow-hidden">
+              <v-card-title>
                 <transition-text
                   :value="item.contents[item.page].headline"
                   :vertical="verticalTabs"
@@ -308,17 +313,17 @@ export default {
                 :style="techsStyle"
               />
             </v-card>
-          </v-flex>
-        </v-layout>
-        <v-layout v-if="!verticalTabs" row justify-center class="pb-2">
-          <v-pagination
-            :value="item.page+1"
-            @input="item.page=$event-1"
-            :length="item.contents.length"
-            :total-visible="5"
-            circle
-          />
-        </v-layout>
+          </v-col>
+        </v-row>
+        <v-pagination
+          v-if="!verticalTabs"
+          :value="item.page + 1"
+          @input="item.page = $event - 1"
+          :length="item.contents.length"
+          :total-visible="5"
+          circle
+          class="text-center pb-4"
+        />
       </v-tab-item>
     </v-tabs-items>
   </v-sheet>
@@ -328,7 +333,7 @@ export default {
 .prev-btn {
   position: absolute;
   top: 16px;
-  left: 4px;
+  left: 12px;
   z-index: 100;
   color: rgba(0,0,0,.54);
 }
@@ -336,7 +341,7 @@ export default {
 .next-btn {
   position: absolute;
   bottom: 16px;
-  left: 4px;
+  left: 12px;
   z-index: 100;
   color: rgba(0,0,0,.54);
 }
@@ -353,14 +358,14 @@ export default {
   color: rgba(0,0,0,.54);
 }
 
-.v-tabs >>> .v-tabs__bar {
+>>> .v-tabs-bar {
   background: linear-gradient(to bottom, rgba(30,136,229,.7), rgba(30,136,229,.9));
   text-shadow: 0 -1px 0 rgba(30,136,229,.9);
 }
 
-.v-tabs >>> .v-tabs__div {
+>>> .v-tab {
+  color: #fff!important;
   font-size: 15px!important;
   font-weight: 500!important;
-  max-width: 160px!important;
 }
 </style>

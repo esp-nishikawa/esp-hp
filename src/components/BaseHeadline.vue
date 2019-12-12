@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .base-headline {
-  margin: 24px 0 16px 0;
+  color: rgba(0,0,0,.87);
   font-family: Montserrat, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   font-size: 30px;
   font-weight: 700;

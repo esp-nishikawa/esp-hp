@@ -10,22 +10,18 @@ export default {
 </script>
 
 <template>
-  <v-layout column align-center justify-center class="hover-shadow ma-auto">
-    <v-flex class="text-xs-center">
-      <delay-text
-        class="logo-text"
-        value="eSoft"
-        delay="500"
-      />
-    </v-flex>
-    <v-flex class="text-xs-center">
-      <delay-text
-        class="logo-text"
-        value="Powers"
-        delay="1000"
-      />
-    </v-flex>
-  </v-layout>
+  <div class="d-flex flex-column align-center justify-center hover-shadow ma-auto">
+    <delay-text
+      value="eSoft"
+      delay="500"
+      class="logo-text"
+    />
+    <delay-text
+      value="Powers"
+      delay="1000"
+      class="logo-text"
+    />
+  </div>
 </template>
 
 <style scoped>

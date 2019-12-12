@@ -19,9 +19,11 @@ export default {
 <style scoped>
 .base-subheading {
   position: relative;
-  margin: 16px 0 4px 0;
+  margin: 4px 0 4px 0;
   padding: 0 0 3px 7px;
   border-left: 5px solid #42a5f5;
+  color: rgba(0,0,0,.87);
+  font-family: Roboto, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.75;

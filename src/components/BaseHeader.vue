@@ -20,8 +20,8 @@ export default {
 <template>
   <component
     :is="tag"
-    class="base-header"
     :data-label="getLabel()"
+    class="base-header"
     @click.stop="$router.push(routePath)"
   >
     <slot/>
@@ -32,6 +32,7 @@ export default {
 .base-header {
   position: relative;
   cursor: pointer;
+  color: rgba(0,0,0,.87);
   font-family: Montserrat, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   font-size: 20px;
   font-weight: 700;

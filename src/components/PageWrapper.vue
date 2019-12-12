@@ -32,23 +32,23 @@ export default {
     <div v-if="background2" class="background2-after"/>
     <slot/>
 
-    <v-footer height="auto" class="blue darken-1">
+    <v-footer dark color="blue darken-1">
       <v-container>
-        <v-layout row wrap justify-end>
+        <v-row justify="end">
           <contact-dialog>
-            <v-btn flat round color="white">
+            <v-btn text rounded color="white">
               <v-icon class="mr-1">email</v-icon>お問い合わせ
             </v-btn>
           </contact-dialog>
           <privacy-dialog>
-            <v-btn flat round color="white">
+            <v-btn text rounded color="white">
               <v-icon class="mr-1">lock</v-icon>プライバシーポリシー
             </v-btn>
           </privacy-dialog>
-        </v-layout>
-        <v-layout row wrap justify-center>
-          <div class="white--text ma-3">&copy; 2013-{{ new Date().getFullYear() }} eSoftPowers.Co.,Ltd.</div>
-        </v-layout>
+        </v-row>
+        <v-row justify="center">
+          <div class="ma-4">&copy; 2013-{{ new Date().getFullYear() }} eSoftPowers.Co.,Ltd.</div>
+        </v-row>
       </v-container>
     </v-footer>
   </v-content>
