@@ -9,10 +9,11 @@ export default {
 
 <template>
   <v-btn
-    flat
-    round
+    text
+    rounded
     :color="color"
     class="base-link"
+    @click="$emit('click')"
   >
     <slot/>
   </v-btn>

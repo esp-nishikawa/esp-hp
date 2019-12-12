@@ -99,52 +99,54 @@ export default {
       <base-headline>CONTACT</base-headline>
     </template>
     <template #body>
-      <v-stepper v-model="step">
-        <v-stepper-header>
+      <v-stepper v-model="step" class="d-flex flex-column">
+        <v-stepper-header class="flex-shrink-0">
           <v-stepper-step step="1" editable :complete="step > 1">Input</v-stepper-step>
           <v-divider/>
           <v-stepper-step step="2" :complete="step > 2">Confirm</v-stepper-step>
           <v-divider/>
           <v-stepper-step step="3" :rules="[() => status < 300]">Send</v-stepper-step>
         </v-stepper-header>
-        <v-stepper-items>
+        <v-stepper-items class="scroll-target overflow-y-auto">
           <v-stepper-content step="1">
-            <v-layout column class="mb-3">
-              <div>下記フォームに必要事項をご入力いただき、「確認」ボタンを押してください。</div>
-            </v-layout>
-            <v-layout column class="mb-3" style="font-size:14px;">
+            <base-text class="mb-3">下記フォームに必要事項をご入力いただき、「確認」ボタンを押してください。</base-text>
+            <base-text style="font-size:14px;">
               <div>【お問い合わせいただく前の注意事項】</div>
               <ul>
                 <li>ご回答までに数日要する場合や、ご質問によってはお応えできかねる場合もございます。あらかじめご了承ください。</li>
                 <li>お急ぎの方はお電話(03-6273-4837)にてお問い合わせください。</li>
                 <li>お客様からいただく個人情報は、お問い合わせ・ご質問への回答、情報提供のために使用させていただきます。</li>
                 <li>
-                  <span>プライバシーポリシーについては</span>
-                  <privacy-dialog>
-                    <base-link class="pa-0" style="height:24px;">こちら</base-link>
-                  </privacy-dialog>
-                  <span>をご確認ください。</span>
+                  <div class="d-inline-flex align-center" style="height:24px;">
+                    <span>プライバシーポリシーについては</span>
+                    <privacy-dialog>
+                      <base-link class="pa-0">こちら</base-link>
+                    </privacy-dialog>
+                    <span>をご確認ください。</span>
+                  </div>
                 </li>
               </ul>
-            </v-layout>
+            </base-text>
             <v-form ref="form" v-model="valid">
               <v-checkbox
                 color="primary"
                 v-model="registration.privacy"
                 :rules="[rules.privacy]"
-                class="ml-3"
+                class="ml-2 mb-2"
               >
-                <div slot="label" style="color:rgba(0,0,0,.87);">個人情報の取り扱いについて同意する</div>
+                <template #label>
+                  <base-text>個人情報の取り扱いについて同意する</base-text>
+                </template>
               </v-checkbox>
               <v-select
                 label="お問い合わせ種類"
                 :items="types"
-                item-value="value"
-                item-text="text"
                 v-model="registration.type"
                 :rules="[rules.required]"
               >
-                <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+                <template #prepend>
+                  <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
+                </template>
               </v-select>
               <v-text-field
                 label="お名前"
@@ -152,7 +154,9 @@ export default {
                 :rules="[rules.required, rules.max60]"
                 clearable
               >
-                <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+                <template #prepend>
+                  <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
+                </template>
               </v-text-field>
               <v-text-field
                 label="ご所属（会社名等）"
@@ -160,7 +164,9 @@ export default {
                 :rules="[rules.max60]"
                 clearable
               >
-                <v-chip slot="prepend" small color="blue lighten-2" text-color="white">任意</v-chip>
+                <template #prepend>
+                  <v-chip small color="blue lighten-2" text-color="white" class="ma-0">任意</v-chip>
+                </template>
               </v-text-field>
               <v-text-field
                 label="メールアドレス"
@@ -170,7 +176,9 @@ export default {
                 validate-on-blur
                 clearable
               >
-                <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+                <template #prepend>
+                  <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
+                </template>
               </v-text-field>
               <v-text-field
                 label="電話番号"
@@ -178,7 +186,9 @@ export default {
                 :rules="[rules.phone, rules.max25]"
                 clearable
               >
-                <v-chip slot="prepend" small color="blue lighten-2" text-color="white">任意</v-chip>
+                <template #prepend>
+                  <v-chip small color="blue lighten-2" text-color="white" class="ma-0">任意</v-chip>
+                </template>
               </v-text-field>
               <v-textarea
                 label="お問い合わせ内容"
@@ -186,29 +196,27 @@ export default {
                 :rules="[rules.required, rules.max2000]"
                 clearable
               >
-                <v-chip slot="prepend" small color="blue darken-3" text-color="white">必須</v-chip>
+                <template #prepend>
+                  <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
+                </template>
               </v-textarea>
             </v-form>
-            <v-layout justify-end>
-              <v-btn outline round color="primary" @click="close">CANCEL</v-btn>
-              <v-btn round color="primary" @click="confirm">確認</v-btn>
-            </v-layout>
+            <div class="d-flex justify-end">
+              <v-btn outlined rounded color="primary" class="mr-4" @click="close">CANCEL</v-btn>
+              <v-btn rounded color="primary" min-width="100" @click="confirm">確認</v-btn>
+            </div>
           </v-stepper-content>
           <v-stepper-content step="2">
-            <v-layout column class="mb-3">
-              <div>入力内容をご確認いただき、よろしければ「送信」ボタンを押してください。</div>
-              <div>修正する場合は、「入力に戻る」ボタンを押してください。</div>
-              <div>※ブラウザの「戻る」ボタンは使用しないでください。</div>
-            </v-layout>
+            <base-text>入力内容をご確認いただき、よろしければ「送信」ボタンを押してください。</base-text>
+            <base-text>修正する場合は、「入力に戻る」ボタンを押してください。</base-text>
+            <base-text class="mb-8">※ブラウザの「戻る」ボタンは使用しないでください。</base-text>
             <v-form>
               <v-select
                 label="お問い合わせ種類"
                 :items="types"
-                item-value="value"
-                item-text="text"
                 :value="registration.type"
                 color="black"
-                outline
+                outlined
                 readonly
               />
               <v-text-field
@@ -216,7 +224,7 @@ export default {
                 :value="registration.name"
                 placeholder="未入力"
                 color="black"
-                outline
+                outlined
                 readonly
               />
               <v-text-field
@@ -224,7 +232,7 @@ export default {
                 :value="registration.affiliation"
                 placeholder="未入力"
                 color="black"
-                outline
+                outlined
                 readonly
               />
               <v-text-field
@@ -232,7 +240,7 @@ export default {
                 :value="registration.email"
                 placeholder="未入力"
                 color="black"
-                outline
+                outlined
                 readonly
               />
               <v-text-field
@@ -240,7 +248,7 @@ export default {
                 :value="registration.phone"
                 placeholder="未入力"
                 color="black"
-                outline
+                outlined
                 readonly
               />
               <v-textarea
@@ -248,35 +256,45 @@ export default {
                 :value="registration.contents"
                 placeholder="未入力"
                 color="black"
-                outline
+                outlined
                 readonly
               />
             </v-form>
-            <v-layout justify-end>
-              <v-btn outline round color="primary" @click="changeStep(1)">入力に戻る</v-btn>
-              <v-btn round color="primary" :loading="loading" @click.prevent="send">送信</v-btn>
-            </v-layout>
+            <div class="d-flex justify-end">
+              <v-btn outlined rounded color="primary" class="mr-4" @click="changeStep(1)">入力に戻る</v-btn>
+              <v-btn rounded color="primary" min-width="100" :loading="loading" @click.prevent="send">送信</v-btn>
+            </div>
           </v-stepper-content>
           <v-stepper-content step="3">
-            <v-layout v-if="validateStatus" column class="mb-3">
-              <div>お問い合わせありがとうございます。</div>
-              <div>お送りいただきました内容を確認の上、ご連絡させていただきますので、少々お待ちください。</div>
-              <div class="mt-3">なお、ご入力いただいたメールアドレス宛てに自動返信メールをお送りしております。</div>
-              <div>しばらく経っても自動返信メールが届かない場合にはお問い合わせが受け付けられていない可能性がございます。</div>
-              <div>ご入力いただいたメールアドレスに誤りがあることも考えられますので、数日中に弊社からの連絡がない場合、</div>
-              <div>大変お手数ですが再度お問い合わせいただくか、お電話(03-6273-4837)にてご連絡ください。</div>
-            </v-layout>
-            <v-layout v-else column class="mb-3">
-              <div>メッセージの送信に失敗しました。</div>
-              <div>申し訳ありませんが、しばらく時間を置いてからもう一度お試しください。</div>
-              <div>お急ぎの場合はお電話(03-6273-4837)にてご連絡ください。</div>
-            </v-layout>
-            <v-layout justify-end>
-              <v-btn outline round color="primary" @click="close">CLOSE</v-btn>
-            </v-layout>
+            <template v-if="validateStatus">
+              <base-text>お問い合わせありがとうございます。</base-text>
+              <base-text class="mb-3">お送りいただきました内容を確認の上、ご連絡させていただきますので、少々お待ちください。</base-text>
+              <base-text>なお、ご入力いただいたメールアドレス宛てに自動返信メールをお送りしております。</base-text>
+              <base-text>しばらく経っても自動返信メールが届かない場合にはお問い合わせが受け付けられていない可能性がございます。</base-text>
+              <base-text>ご入力いただいたメールアドレスに誤りがあることも考えられますので、数日中に弊社からの連絡がない場合、</base-text>
+              <base-text class="mb-4">大変お手数ですが再度お問い合わせいただくか、お電話(03-6273-4837)にてご連絡ください。</base-text>
+            </template>
+            <template v-else>
+              <base-text>メッセージの送信に失敗しました。</base-text>
+              <base-text>申し訳ありませんが、しばらく時間を置いてからもう一度お試しください。</base-text>
+              <base-text class="mb-4">お急ぎの場合はお電話(03-6273-4837)にてご連絡ください。</base-text>
+            </template>
+            <div class="d-flex justify-end">
+              <v-btn outlined rounded color="primary" @click="close">CLOSE</v-btn>
+            </div>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
     </template>
   </dialog-wrapper>
 </template>
+
+<style scoped>
+>>> .v-messages__message {
+  line-height: 1.2;
+}
+
+>>> .v-label--active {
+  background-color: #fff;
+}
+</style>

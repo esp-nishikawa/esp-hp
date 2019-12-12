@@ -9,9 +9,9 @@ export default {
     showDialog(val) {
       // スクロール位置をリセット
       if (!val) {
-        this.$nextTick(() => {
+        setTimeout(() => {
           this.resetScroll();
-        });
+        }, 200);
       }
 
       // ブラウザ履歴への追加／削除
@@ -24,6 +24,15 @@ export default {
           window.history.back();
         }
       }
+
+      // html要素のスクロールを止める
+      this.$nextTick(() => {
+        if (this.isActiveDialog()) {
+          document.documentElement.style.overflowY = 'hidden';
+        } else {
+          document.documentElement.style.overflowY = 'scroll';
+        }
+      });
     },
   },
   created() {
@@ -62,8 +71,19 @@ export default {
         const dialog = container.$refs['dialog'];
         if (dialog) {
           dialog.scrollTop = 0;
+          const scrollTargets = dialog.getElementsByClassName('scroll-target');
+          Array.from(scrollTargets).forEach(scrollTarget => {
+            scrollTarget.scrollTop = 0;
+          });
         }
       }
+    },
+    isActiveDialog() {
+      const elements = document.getElementsByClassName('v-dialog v-dialog--active');
+      if (elements && elements.length > 0) {
+        return true;
+      }
+      return false;
     },
   },
 };

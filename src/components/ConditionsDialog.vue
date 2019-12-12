@@ -21,21 +21,27 @@ export default {
       <base-headline>CONDITIONS & BENEFITS</base-headline>
     </template>
     <template #content>
-      <v-container grid-list-xs :class="$vuetify.breakpoint.xs ? 'pa-0' : 'pt-0'">
-        <v-layout row wrap>
-          <v-flex xs12>
+      <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+        <v-row>
+          <v-col cols="12">
             <base-subheading>勤務地</base-subheading>
-            <div>東京、東京近郊、札幌、その他プロジェクト拠点</div>
+            <base-text>東京、東京近郊、札幌、その他プロジェクト拠点</base-text>
+          </v-col>
+          <v-col cols="12">
             <base-subheading>勤務時間</base-subheading>
-            <div>９：００～１７：３０（昼休み１２：００～１３：００）</div>
-            <div>実働７.５時間</div>
+            <base-text>９：００～１７：３０（昼休み１２：００～１３：００）</base-text>
+            <base-text>実働７.５時間</base-text>
+          </v-col>
+          <v-col cols="12">
             <base-subheading>休日・休暇</base-subheading>
-            <div>土曜日、日曜日、祝日、夏期休暇、年末年始休暇、他</div>
+            <base-text>土曜日、日曜日、祝日、夏期休暇、年末年始休暇、他</base-text>
+          </v-col>
+          <v-col cols="12">
             <base-subheading>福利厚生</base-subheading>
-            <div>・各種保険：健康保険、厚生年金保険、雇用保険、労災保険等完備</div>
-            <div>・健保組合提携の宿泊・スポーツ施設を利用可</div>
-          </v-flex>
-        </v-layout>
+            <base-text>・各種保険：健康保険、厚生年金保険、雇用保険、労災保険等完備</base-text>
+            <base-text>・健保組合提携の宿泊・スポーツ施設を利用可</base-text>
+          </v-col>
+        </v-row>
       </v-container>
     </template>
   </dialog-wrapper>

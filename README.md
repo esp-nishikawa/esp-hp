@@ -32,16 +32,15 @@
 │　│　├ dialog-controllable.js
 │　│　└ ～
 │　│
-│　├ pages ... 各ページ（ルーティングで切り替えるパス毎）
-│　│　├ Corporate.vue
-│　│　└ ～
-│　│
 │　├ plugin ... プラグイン、共通メソッド
 │　│　├ common.js
-│　│　└ index.js
+│　│　├ index.js
+│　│　└ ～
 │　│
-│　├ router ... ルーティング（各ページのパスやタイトルなどを設定）
-│　│　└ index.js
+│　├ router ... ルーティング（各ページのメインはここ）
+│　│　├ Corporate.vue
+│　│　├ index.js
+│　│　└ ～
 │　│
 │　├ App.vue ... 画面の共通部分（ナビゲーションメニューなど）
 │　└ main.js ... Vueメイン（外部モジュールのインポートなど）
@@ -49,7 +48,7 @@
 ├ babel.config.js
 ├ vue.config.js
 ├ package.json
-├ package-lock.json
+├ yarn.lock
 ├ Dockerfile
 ├ docker-compose.yml
 └ README.md

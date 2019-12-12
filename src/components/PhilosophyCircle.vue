@@ -25,12 +25,12 @@ export default {
     @mouseleave="hover=false"
   >
     <transition mode="out-in" name="hover">
-      <v-layout v-if="hover" key="hover-on" align-center justify-center class="circle-layout">
+      <div v-if="hover" key="hover-on" class="circle-layout">
         <div class="philosophy-text">
           <slot name="before"/>
         </div>
-      </v-layout>
-      <v-layout v-else key="hover-off" align-center justify-center class="circle-layout">
+      </div>
+      <div v-else key="hover-off" class="circle-layout">
         <transition mode="out-in" name="timeout">
           <div v-if="timeout" key="timeout-on" class="philosophy-text">
             <slot name="after"/>
@@ -39,13 +39,14 @@ export default {
             <slot name="before"/>
           </div>
         </transition>
-      </v-layout>
+      </div>
     </transition>
   </div>
 </template>
 
 <style scoped>
 .philosophy-text {
+  text-align: center;
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
@@ -54,6 +55,9 @@ export default {
 }
 
 .circle-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 128px;
   height: 128px;
   border-radius: 50%;

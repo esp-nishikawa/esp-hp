@@ -8,6 +8,48 @@ export default {
   data () {
     return {
       isNavigation: false,
+      navigationItems: [
+        {
+          path: '/',
+          icon: 'home',
+          title: 'ホーム',
+        },
+        {
+          path: '/corporate',
+          icon: 'flag',
+          title: '会社案内',
+          subItems: [
+            {
+              path: '/corporate#profile',
+              title: '会社概要',
+            },
+            {
+              path: '/corporate#office',
+              title: 'オフィス環境',
+            },
+          ],
+        },
+        {
+          path: '/service',
+          icon: 'work',
+          title: '事業分野',
+        },
+        {
+          path: '/recruit',
+          icon: 'face',
+          title: '採用情報',
+          subItems: [
+            {
+              path: '/recruit#new-graduate',
+              title: '新卒採用',
+            },
+            {
+              path: '/recruit#mid-career',
+              title: '中途採用',
+            },
+          ],
+        },
+      ],
     };
   },
   watch: {
@@ -31,7 +73,7 @@ export default {
 </script>
 
 <template>
-  <v-app light>
+  <v-app>
     <v-navigation-drawer
       app
       fixed
@@ -39,64 +81,56 @@ export default {
       v-model="isNavigation"
     >
       <v-list>
-        <v-list-tile to="/" ripple>
-          <v-list-tile-action>
-            <v-icon light>home</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>ホーム</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-group no-action prepend-icon="flag" group="/corporate">
-          <v-list-tile slot="activator">
-            <v-list-tile-title>会社案内</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile to="/corporate#profile" ripple>
-            <v-list-tile-content>
-              <v-list-tile-title>会社概要</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile to="/corporate#office" ripple>
-            <v-list-tile-content>
-              <v-list-tile-title>オフィス環境</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list-group>
-
-        <v-list-tile to="/service" ripple>
-          <v-list-tile-action>
-            <v-icon light>work</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>事業分野</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-group no-action prepend-icon="face" group="/recruit">
-          <v-list-tile slot="activator">
-            <v-list-tile-title>採用情報</v-list-tile-title>
-          </v-list-tile>
-          <v-list-tile to="/recruit#new-graduate" ripple>
-            <v-list-tile-content>
-              <v-list-tile-title>新卒採用</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-          <v-list-tile to="/recruit#mid-career" ripple>
-            <v-list-tile-content>
-              <v-list-tile-title>中途採用</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list-group>
+        <template v-for="(navigationItem, n) in navigationItems">
+          <v-list-item
+            v-if="!navigationItem.subItems"
+            :key="n"
+            :to="navigationItem.path"
+            ripple
+            active-class="blue--text text--darken-2"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ navigationItem.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ navigationItem.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-group
+            v-else
+            :key="n"
+            no-action
+            eager
+            :prepend-icon="navigationItem.icon"
+            :group="navigationItem.path"
+          >
+            <template #activator>
+              <v-list-item-content>
+                <v-list-item-title>{{ navigationItem.title }}</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item
+              v-for="(subItem, s) in navigationItem.subItems"
+              :key="s"
+              :to="subItem.path"
+              ripple
+              active-class="blue--text text--darken-2"
+            >
+              <v-list-item-content>
+                <v-list-item-title>{{ subItem.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+        </template>
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar fixed app clipped-left class="white">
-      <v-toolbar-side-icon @click.native.stop="isNavigation = !isNavigation"/>
+    <v-app-bar app fixed clipped-left class="white">
+      <v-app-bar-nav-icon @click.native.stop="isNavigation = !isNavigation"/>
       <v-toolbar-title>
         <base-header>eSoftPowers</base-header>
       </v-toolbar-title>
-    </v-toolbar>
+    </v-app-bar>
 
     <transition
       name="routing"
@@ -110,7 +144,7 @@ export default {
       <v-btn
         fab dark
         fixed bottom right
-        class="mb-3"
+        class="mb-1 mr-1"
         style="opacity:0.8;"
         color="purple"
         v-show="scrollTop > 60"

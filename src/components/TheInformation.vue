@@ -44,27 +44,27 @@ export default {
 </script>
 
 <template>
-  <v-card flat class="transparent">
-    <v-card-title primary-title>
+  <v-card flat color="transparent">
+    <v-card-title>
       <v-icon medium color="blue lighten-2" class="information-icon mr-2">thumb_up</v-icon>
       <div class="information-title">Information</div>
     </v-card-title>
-    <v-divider/>
-    <v-expansion-panel popout>
-      <v-expansion-panel-content
+    <v-expansion-panels popout>
+      <v-expansion-panel
         v-for="(information, i) in informations"
         :key="i"
-        :hide-actions="!information.description"
       >
-        <div slot="header">
-          <div class="information-date">{{ information.date }}</div>
-          <div>{{ information.headline }}</div>
-        </div>
-        <v-card v-if="information.description">
-          <v-card-text class="pl-4" v-html="information.description"/>
-        </v-card>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+        <v-expansion-panel-header :hide-actions="!information.description">
+          <div>
+            <div class="information-date">{{ information.date }}</div>
+            <div>{{ information.headline }}</div>
+          </div>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <div v-html="information.description"/>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </v-card>
 </template>
 
@@ -111,6 +111,7 @@ export default {
 .information-date {
   font-size: 14px;
   font-weight: 700;
+  line-height: 2;
   letter-spacing: 0em;
   color: rgba(0,0,0,.54);
 }

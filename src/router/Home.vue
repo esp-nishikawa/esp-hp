@@ -28,105 +28,99 @@ export default {
         :src="require('@/assets/home_parallax1.jpg')"
         :height="$vuetify.breakpoint.xs ? 540 : 600"
       >
-        <v-layout fill-heigh align-start justify-space-around>
-          <v-flex class="text-xs-center mt-5">
-            <philosophy-circle auto-timer="2000">
+        <div class="d-flex flex-column justify-space-between">
+          <div class="d-flex align-start justify-space-around">
+            <philosophy-circle auto-timer="2000" class="mt-12">
               <template #before>Environment</template>
               <template #after>Globalでの<br>活動を</template>
             </philosophy-circle>
-          </v-flex>
-          <v-flex class="text-xs-center mt-2">
-            <philosophy-circle auto-timer="2200">
+            <philosophy-circle auto-timer="2200" class="mt-2">
               <template #before>Customer<br>Satisfaction</template>
               <template #after>お客様の夢<br>を現実に</template>
             </philosophy-circle>
-          </v-flex>
-          <v-flex class="text-xs-center mt-5">
-            <philosophy-circle auto-timer="2400">
+            <philosophy-circle auto-timer="2400" class="mt-12">
               <template #before>Employee<br>Satisfaction</template>
               <template #after>社員主役で</template>
             </philosophy-circle>
-          </v-flex>
-        </v-layout>
-        <esp-logo/>
-        <v-layout fill-heigh align-end justify-space-around>
-          <v-flex class="text-xs-center mb-5">
-            <philosophy-circle auto-timer="2600">
+          </div>
+          <esp-logo/>
+          <div class="d-flex align-end justify-space-around">
+            <philosophy-circle auto-timer="2600" class="mb-12">
               <template #before>Quality</template>
               <template #after>信頼獲得に<br>向け</template>
             </philosophy-circle>
-          </v-flex>
-          <v-flex class="text-xs-center mb-2">
-            <philosophy-circle auto-timer="2800">
+            <philosophy-circle auto-timer="2800" class="mb-2">>
               <template #before>Innovation</template>
               <template #after>常に前を<br>見て</template>
             </philosophy-circle>
-          </v-flex>
-          <v-flex class="text-xs-center mb-5">
-            <philosophy-circle auto-timer="3000">
+            <philosophy-circle auto-timer="3000" class="mb-12">>
               <template #before>Partner<br>Satisfaction</template>
               <template #after>仲間と共に</template>
             </philosophy-circle>
-          </v-flex>
-        </v-layout>
+          </div>
+        </div>
       </v-parallax>
     </section>
 
     <section>
       <v-container>
-        <v-layout justify-center align-center class="headline-text text-xs-center mt-5">
+        <div class="headline-text text-center mt-12">
           <span>株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</span>
-        </v-layout>
-        <v-layout justify-center align-center class="title-text text-xs-center mt-1">
+        </div>
+        <div class="title-text d-flex justify-center align-center mt-1">
           <span>ご用命は</span>
           <contact-dialog>
             <base-link class="title-text pa-0">こちら</base-link>
           </contact-dialog>
           <span>まで！</span>
-        </v-layout>
+        </div>
       </v-container>
     </section>
 
     <section>
-      <v-container grid-list-xl>
-        <v-layout row wrap justify-space-around class="mt-3">
-          <v-flex xs12 sm4 xl3>
+      <v-container>
+        <v-row justify="space-around" class="mt-4">
+          <v-col cols="12" sm="4" xl="3">
             <route-image value="corporate"/>
-          </v-flex>
-          <v-flex xs12 sm4 xl3>
+          </v-col>
+          <v-col cols="12" sm="4" xl="3">
             <route-image value="service"/>
-          </v-flex>
-          <v-flex xs12 sm4 xl3>
+          </v-col>
+          <v-col cols="12" sm="4" xl="3">
             <route-image value="recruit"/>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </section>
 
     <section>
-      <v-parallax :src="require('@/assets/home_parallax2.jpg')" height="400" class="mt-5">
-        <v-layout row wrap align-center justify-center>
-          <v-flex xs11 sm10 lg9 xl8 text-xs-center>
-            <viewport-show translate-x="80" :style-options="{ 'letter-spacing': '.5em' }" class="title-text white-text my-3">
-              株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
-            </viewport-show>
-            <viewport-show translate-y="40" delay="400" class="white-text" style="font-size:16px;">
-              Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。
-            </viewport-show>
-            <viewport-show translate-y="40" delay="600" class="white-text" style="font-size:16px;">
-              我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
-            </viewport-show>
-          </v-flex>
-        </v-layout>
+      <v-parallax :src="require('@/assets/home_parallax2.jpg')" height="400" class="mt-12">
+        <v-container>
+          <v-row align="center" justify="center">
+            <v-col cols="11" sm="10" lg="9" xl="8" class="text-center">
+              <viewport-show translate-x="80" :style-options="{ 'letter-spacing': '.5em' }" class="title-text white-text my-4">
+                株式会社イーソフトパワーズ<br>（ｅＳｏｆｔＰｏｗｅｒｓ）
+              </viewport-show>
+              <viewport-show translate-y="40" delay="400" class="white-text" style="font-size:16px;">
+                Soft Powerの元々の意味はHard Power（武力、軍事力）の対語で、文明の力、人類の知恵という、より広い意味を持ちます。
+              </viewport-show>
+              <viewport-show translate-y="40" delay="600" class="white-text" style="font-size:16px;">
+                我々が持つ知識、知恵、精神力を注ぎ、よりよいソフトを作ろうという意味を込めており、それに、embedded、engineering、electronics,等に加えenvironment（環境）と意味深く、冗長的でsoftに通じるeを付加した社名となっています。
+              </viewport-show>
+            </v-col>
+          </v-row>
+        </v-container>
       </v-parallax>
     </section>
 
     <section>
-      <v-layout row wrap class="my-5" align-right>
-        <v-flex xs12 sm10 offset-sm1>
-          <the-information/>
-        </v-flex>
-      </v-layout>
+      <v-container>
+        <v-row justify="start" class="my-12">
+          <v-col cols="12" sm="11" md="10" lg="9" xl="8">
+            <the-information/>
+          </v-col>
+        </v-row>
+      </v-container>
     </section>
   </page-wrapper>
 </template>

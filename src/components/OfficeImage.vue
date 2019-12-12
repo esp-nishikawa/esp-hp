@@ -128,32 +128,33 @@ export default {
       @click.native.stop="onImageClick"
     >
       <v-img
+        eager
+        aspect-ratio="1.5"
         :src="items[itemIndex].src"
         :class="{'hover-image': clickable}"
       />
       <delay-text
-        v-show="isViewport"
+        v-if="isViewport"
         delay="1000"
-        class="image-title ma-3"
         :value="items[itemIndex].title"
+        class="image-title ma-4"
       />
 
       <v-dialog v-model="showDialog" ref="container" max-width="960">
         <v-card v-if="createdDialogContent">
-          <v-layout>
+          <v-card-title class="pa-2">
             <delay-text
-              class="dialog-title ma-3"
               :value="items[carouselValue].title"
+              class="dialog-title ma-2"
             />
             <v-spacer/>
             <v-btn icon @click="close">
               <v-icon>close</v-icon>
             </v-btn>
-          </v-layout>
+          </v-card-title>
           <v-carousel
-            interval="60000"
             :value="carouselValue"
-            @change="carouselValue=$event||0"
+            @change="carouselValue = $event || 0"
           >
             <v-carousel-item
               v-for="(item, i) in items"
@@ -170,16 +171,14 @@ export default {
 <style scoped>
 .image-card {
   position:relative;
-  overflow: hidden;
 }
 
 .image-card .hover-image {
-  transition: opacity .3s ease-out, transform .6s ease-out;
+  transition: opacity .3s ease-out;
 }
 
 .image-card:hover .hover-image {
   opacity: 0.8;
-  transform: scale(1.05);
 }
 
 .image-title {

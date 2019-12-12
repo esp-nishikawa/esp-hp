@@ -57,21 +57,22 @@ export default {
     @click.native="$router.push(items[itemIndex].route)"
   >
     <v-img
-      class="hover-img"
+      eager
       :src="items[itemIndex].src"
       :height="$vuetify.breakpoint.xs ? 128 : 200"
+      class="hover-img"
     />
-    <v-card-title primary-title class="layout justify-center">
+    <v-card-title class="justify-center">
       <div class="hover-text-wrap">
         <div
-          class="headline-text hover-text"
           :data-label="items[itemIndex].headline"
+          class="headline-text hover-text"
         >
           {{ items[itemIndex].headline }}
         </div>
         <div
-          class="subheading-text hover-text"
           :data-label="items[itemIndex].subheading"
+          class="subheading-text hover-text"
         >
           {{ items[itemIndex].subheading }}
         </div>
