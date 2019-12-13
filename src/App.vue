@@ -1,7 +1,11 @@
 <script>
 import ScrollControllable from '@/mixins/scroll-controllable.js';
+import AnimationPetal from '@/components/AnimationPetal';
 
 export default {
+  components: {
+    AnimationPetal,
+  },
   mixins: [
     ScrollControllable,
   ],
@@ -123,6 +127,12 @@ export default {
           </v-list-group>
         </template>
       </v-list>
+      <animation-petal
+        v-for="n in 8"
+        :key="n"
+        :value="isNavigation"
+        :start-offset="n * -100"
+      />
     </v-navigation-drawer>
 
     <v-app-bar app fixed clipped-left class="white">
