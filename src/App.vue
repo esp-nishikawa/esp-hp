@@ -56,6 +56,11 @@ export default {
       ],
     };
   },
+  computed: {
+    petalNum() {
+      return Math.ceil(this.$vuetify.breakpoint.height / 80);
+    },
+  },
   watch: {
     '$route'(to, from) {
       if (to.hash) {
@@ -128,14 +133,14 @@ export default {
         </template>
       </v-list>
       <animation-petal
-        v-for="n in 8"
+        v-for="n in petalNum"
         :key="n"
         :value="isNavigation"
         :start-offset="n * -100"
       />
     </v-navigation-drawer>
 
-    <v-app-bar app fixed clipped-left class="white">
+    <v-app-bar app fixed clipped-left>
       <v-app-bar-nav-icon @click.native.stop="isNavigation = !isNavigation"/>
       <v-toolbar-title>
         <base-header>eSoftPowers</base-header>

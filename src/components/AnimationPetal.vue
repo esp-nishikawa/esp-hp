@@ -57,7 +57,7 @@ export default {
       this.speed = this.$common.getRandom(0.5, 1.5);
       this.fluctuation = this.$common.getRandom(50, 150);
       this.count = 0;
-      this.opacity = this.$common.getRandom(0.4, 0.7);
+      this.opacity = this.$common.getRandom(0.4, 0.6);
       this.classes = [
         'petal',
         'color' + this.$common.getRandom(1, 6, true),

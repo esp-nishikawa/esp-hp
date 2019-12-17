@@ -260,61 +260,64 @@ export default {
       }"
     >
       <v-tab-item v-for="(item, i) in items" :key="i">
-        <v-row align="center">
-          <v-col v-if="verticalTabs" cols="1">
-            <v-btn icon class="prev-btn" @click="prevPage(true)">
-              <v-icon x-large>keyboard_arrow_up</v-icon>
-            </v-btn>
-            <v-item-group
-              v-model="item.page"
-              mandatory
-              class="d-flex flex-column align-center"
-              style="width:60px; max-width:60px;"
-            >
-              <v-item
-                v-for="c in item.contents.length"
-                :key="c"
-                v-slot:default="{ active, toggle }"
+        <div class="d-flex">
+          <div
+            v-if="verticalTabs"
+            class="align-self-stretch pa-3"
+            style="flex: 0 0 64px; max-width: 64px;"
+          >
+            <div class="d-flex flex-column align-center justify-space-between fill-height">
+              <v-btn icon @click="prevPage(true)">
+                <v-icon x-large>keyboard_arrow_up</v-icon>
+              </v-btn>
+              <v-item-group
+                v-model="item.page"
+                mandatory
+                class="d-flex flex-column align-center"
               >
-                <v-btn icon :input-value="active" @click="toggle">
-                  <v-icon>fiber_manual_record</v-icon>
-                </v-btn>
-              </v-item>
-            </v-item-group>
-            <v-btn icon class="next-btn" @click="nextPage(true)">
-              <v-icon x-large>keyboard_arrow_down</v-icon>
-            </v-btn>
+                <v-item
+                  v-for="c in item.contents.length"
+                  :key="c"
+                  v-slot:default="{ active, toggle }"
+                >
+                  <v-btn icon :input-value="active" @click="toggle">
+                    <v-icon>fiber_manual_record</v-icon>
+                  </v-btn>
+                </v-item>
+              </v-item-group>
+              <v-btn icon @click="nextPage(true)">
+                <v-icon x-large>keyboard_arrow_down</v-icon>
+              </v-btn>
+            </div>
             <div class="page-info">{{ item.page + 1 }} / {{ item.contents.length }}</div>
-          </v-col>
-          <v-col>
-            <v-card light flat class="overflow-hidden">
-              <v-card-title>
-                <transition-text
-                  :value="item.contents[item.page].headline"
-                  :vertical="verticalTabs"
-                  :split="verticalTabs"
-                  :page="item.page"
-                  :style="headlineStyle"
-                />
-              </v-card-title>
-              <v-divider/>
-              <v-card-text>
-                <transition-text
-                  :value="item.contents[item.page].description"
-                  :vertical="verticalTabs"
-                  :page="item.page"
-                  :style="descriptionStyle"
-                />
-              </v-card-text>
-              <v-subheader>関連技術</v-subheader>
-              <transition-chip
-                :values="item.contents[item.page].techs"
+          </div>
+          <v-card light flat class="overflow-hidden">
+            <v-card-title>
+              <transition-text
+                :value="item.contents[item.page].headline"
+                :vertical="verticalTabs"
+                :split="verticalTabs"
                 :page="item.page"
-                :style="techsStyle"
+                :style="headlineStyle"
               />
-            </v-card>
-          </v-col>
-        </v-row>
+            </v-card-title>
+            <v-divider/>
+            <v-card-text>
+              <transition-text
+                :value="item.contents[item.page].description"
+                :vertical="verticalTabs"
+                :page="item.page"
+                :style="descriptionStyle"
+              />
+            </v-card-text>
+            <v-subheader>関連技術</v-subheader>
+            <transition-chip
+              :values="item.contents[item.page].techs"
+              :page="item.page"
+              :style="techsStyle"
+            />
+          </v-card>
+        </div>
         <v-pagination
           v-if="!verticalTabs"
           :value="item.page + 1"
@@ -330,22 +333,6 @@ export default {
 </template>
 
 <style scoped>
-.prev-btn {
-  position: absolute;
-  top: 16px;
-  left: 12px;
-  z-index: 100;
-  color: rgba(0,0,0,.54);
-}
-
-.next-btn {
-  position: absolute;
-  bottom: 16px;
-  left: 12px;
-  z-index: 100;
-  color: rgba(0,0,0,.54);
-}
-
 .page-info {
   position: absolute;
   bottom: 20px;
