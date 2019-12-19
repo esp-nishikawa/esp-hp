@@ -18,7 +18,7 @@ export default {
       <base-headline>PRIVACY POLICY</base-headline>
     </template>
     <template #content>
-      <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+      <v-container class="px-0 px-sm-3">
         <v-row>
           <v-col cols="12">
             <base-subheading>個人情報保護方針</base-subheading>

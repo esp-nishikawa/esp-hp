@@ -65,7 +65,7 @@ export default {
       <base-headline>COMPENSATION</base-headline>
     </template>
     <template #content>
-      <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+      <v-container class="px-0 px-sm-3">
         <v-row v-if="midCareer" class="mt-2">
           <v-col>
             <base-text>経験に応じて、当社規定により優遇。</base-text>

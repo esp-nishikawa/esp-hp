@@ -56,6 +56,9 @@ export default {
     confirm() {
       if (this.$refs.form.validate()) {
         this.changeStep(2);
+      } else {
+        const dialog = this.$refs.dialog.getDialogElement();
+        this.$common.scrollTo(dialog.getElementsByClassName('scroll-target')[0], 0, 200);
       }
     },
     send() {
@@ -77,8 +80,8 @@ export default {
       this.step = step;
       this.$refs.dialog.resetScroll();
     },
-    close() {
-      if (this.validateStatus) {
+    close(reset) {
+      if (reset) {
         this.$refs.form.reset();
       }
       this.$refs.dialog.close();
@@ -153,6 +156,7 @@ export default {
                 v-model="registration.name"
                 :rules="[rules.required, rules.max60]"
                 clearable
+                clear-icon="cancel"
               >
                 <template #prepend>
                   <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
@@ -163,6 +167,7 @@ export default {
                 v-model="registration.affiliation"
                 :rules="[rules.max60]"
                 clearable
+                clear-icon="cancel"
               >
                 <template #prepend>
                   <v-chip small color="blue lighten-2" text-color="white" class="ma-0">任意</v-chip>
@@ -175,6 +180,7 @@ export default {
                 hint="ご連絡先として使用いただけるメールアドレスの記入をお願いいたします。"
                 validate-on-blur
                 clearable
+                clear-icon="cancel"
               >
                 <template #prepend>
                   <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
@@ -185,6 +191,7 @@ export default {
                 v-model="registration.phone"
                 :rules="[rules.phone, rules.max25]"
                 clearable
+                clear-icon="cancel"
               >
                 <template #prepend>
                   <v-chip small color="blue lighten-2" text-color="white" class="ma-0">任意</v-chip>
@@ -194,7 +201,11 @@ export default {
                 label="お問い合わせ内容"
                 v-model="registration.contents"
                 :rules="[rules.required, rules.max2000]"
+                rows="8"
                 clearable
+                clear-icon="cancel"
+                counter="2000"
+                class="mb-4"
               >
                 <template #prepend>
                   <v-chip small color="blue darken-3" text-color="white" class="ma-0">必須</v-chip>
@@ -202,7 +213,7 @@ export default {
               </v-textarea>
             </v-form>
             <div class="d-flex justify-end">
-              <v-btn outlined rounded color="primary" class="mr-4" @click="close">CANCEL</v-btn>
+              <v-btn outlined rounded color="primary" class="mr-4" @click="close(true)">CANCEL</v-btn>
               <v-btn rounded color="primary" min-width="100" @click="confirm">確認</v-btn>
             </div>
           </v-stepper-content>
@@ -255,6 +266,7 @@ export default {
                 label="お問い合わせ内容"
                 :value="registration.contents"
                 placeholder="未入力"
+                rows="8"
                 color="black"
                 outlined
                 readonly
@@ -280,7 +292,7 @@ export default {
               <base-text class="mb-4">お急ぎの場合はお電話(03-6273-4837)にてご連絡ください。</base-text>
             </template>
             <div class="d-flex justify-end">
-              <v-btn outlined rounded color="primary" @click="close">CLOSE</v-btn>
+              <v-btn outlined rounded color="primary" @click="close(validateStatus)">CLOSE</v-btn>
             </div>
           </v-stepper-content>
         </v-stepper-items>

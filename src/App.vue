@@ -157,12 +157,11 @@ export default {
 
     <v-fab-transition>
       <v-btn
+        v-show="scrollTop > 100"
         fab dark
         fixed bottom right
-        class="mb-1 mr-1"
-        style="opacity:0.8;"
         color="purple"
-        v-show="scrollTop > 60"
+        style="opacity:0.8;"
         @click.native.stop="goTo(0)"
       >
         <v-icon>keyboard_arrow_up</v-icon>
