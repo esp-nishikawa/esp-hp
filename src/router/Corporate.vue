@@ -46,7 +46,7 @@ export default {
                 <base-headline class="pt-10 pb-2">PROFILE</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+                <v-container class="px-0 px-sm-3">
                   <v-row>
                     <v-col cols="6">
                       <base-subheading>創立</base-subheading>
@@ -90,7 +90,7 @@ export default {
                 <base-headline class="pt-10 pb-2">LOCATIONS</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+                <v-container class="px-0 px-sm-3">
                   <v-row>
                     <v-col>
                       <base-subheading>本社</base-subheading>
@@ -125,7 +125,7 @@ export default {
                 <base-headline class="pt-10 pb-2">HISTORY</base-headline>
               </v-card-title>
               <v-card-text class="pb-0">
-                <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+                <v-container class="px-0 px-sm-3">
                   <v-row>
                     <v-col>
                       <base-subheading>業績ハイライト</base-subheading>
@@ -149,7 +149,7 @@ export default {
                 <base-headline class="pt-10 pb-2">OFFICE</base-headline>
               </v-card-title>
               <v-card-text class="pb-0">
-                <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+                <v-container class="px-0 px-sm-3">
                   <v-row class="mt-2">
                     <v-col>
                       <base-text>当社は、ビジネスの中心地にある「ビジネスエアポート丸の内」のレンタルオフィスを拠点としてます。</base-text>

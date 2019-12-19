@@ -21,7 +21,7 @@ export default {
       <base-headline>CONDITIONS & BENEFITS</base-headline>
     </template>
     <template #content>
-      <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+      <v-container class="px-0 px-sm-3">
         <v-row>
           <v-col cols="12">
             <base-subheading>勤務地</base-subheading>
@@ -38,8 +38,12 @@ export default {
           </v-col>
           <v-col cols="12">
             <base-subheading>福利厚生</base-subheading>
-            <base-text>・各種保険：健康保険、厚生年金保険、雇用保険、労災保険等完備</base-text>
-            <base-text>・健保組合提携の宿泊・スポーツ施設を利用可</base-text>
+            <base-text>
+              <ul>
+                <li>各種保険：健康保険、厚生年金保険、雇用保険、労災保険等完備</li>
+                <li>健保組合提携の宿泊・スポーツ施設を利用可</li>
+              </ul>
+            </base-text>
           </v-col>
         </v-row>
       </v-container>

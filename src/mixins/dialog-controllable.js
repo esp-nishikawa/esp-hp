@@ -27,7 +27,7 @@ export default {
 
       // html要素のスクロールを止める
       this.$nextTick(() => {
-        if (this.isActiveDialog()) {
+        if (this.isActiveAnyDialog()) {
           document.documentElement.style.overflowY = 'hidden';
         } else {
           document.documentElement.style.overflowY = 'scroll';
@@ -52,7 +52,7 @@ export default {
         this.open();
       } else {
         // 最前面のダイアログ以外はクローズしない
-        const container = this.$refs['container'] || this.$children[0];
+        const container = this.getDialogContainer();
         if (container && container.activeZIndex != container.getMaxZIndex()) {
           return;
         }
@@ -66,19 +66,26 @@ export default {
       this.showDialog = false;
     },
     resetScroll() {
-      const container = this.$refs['container'] || this.$children[0];
-      if (container) {
-        const dialog = container.$refs['dialog'];
-        if (dialog) {
-          dialog.scrollTop = 0;
-          const scrollTargets = dialog.getElementsByClassName('scroll-target');
-          Array.from(scrollTargets).forEach(scrollTarget => {
-            scrollTarget.scrollTop = 0;
-          });
-        }
+      const dialog = this.getDialogElement();
+      if (dialog) {
+        dialog.scrollTop = 0;
+        const scrollTargets = dialog.getElementsByClassName('scroll-target');
+        Array.from(scrollTargets).forEach(scrollTarget => {
+          scrollTarget.scrollTop = 0;
+        });
       }
     },
-    isActiveDialog() {
+    getDialogContainer() {
+      // コンポーネントのルート要素が`v-dialog`以外の場合は、`v-dialog`のrefに`container`を設定する
+      return this.$refs['container'] || this.$children[0];
+    },
+    getDialogElement() {
+      const container = this.getDialogContainer();
+      if (container) {
+        return container.$refs['dialog'];
+      }
+    },
+    isActiveAnyDialog() {
       const elements = document.getElementsByClassName('v-dialog v-dialog--active');
       if (elements && elements.length > 0) {
         return true;

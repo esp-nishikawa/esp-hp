@@ -26,7 +26,7 @@ export default {
                 <base-headline class="pt-10 pb-2">新卒採用</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+                <v-container class="px-0 px-sm-3">
                   <v-row>
                     <v-col cols="12">
                       <base-subheading>職種</base-subheading>
@@ -43,8 +43,12 @@ export default {
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>応募書類</base-subheading>
-                      <base-text>1.履歴書(写真貼付)</base-text>
-                      <base-text>2.成績証明書</base-text>
+                      <base-text>
+                        <ol>
+                          <li>履歴書(写真貼付)</li>
+                          <li>成績証明書</li>
+                        </ol>
+                      </base-text>
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>選考方法</base-subheading>
@@ -94,7 +98,7 @@ export default {
                 <base-headline class="pt-10 pb-2">中途採用</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container :class="{'pa-0': $vuetify.breakpoint.xs}">
+                <v-container class="px-0 px-sm-3">
                   <v-row>
                     <v-col cols="12" sm="6">
                       <base-subheading>職種</base-subheading>
@@ -106,8 +110,12 @@ export default {
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>応募書類</base-subheading>
-                      <base-text>1.履歴書(写真貼付)</base-text>
-                      <base-text>2.職務経歴書</base-text>
+                      <base-text>
+                        <ol>
+                          <li>履歴書(写真貼付)</li>
+                          <li>職務経歴書</li>
+                        </ol>
+                      </base-text>
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>選考方法</base-subheading>
