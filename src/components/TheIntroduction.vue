@@ -13,7 +13,7 @@ export default {
       activeTab: 0,
       items: [
         {
-          type: '社会インフラ1',
+          type: '社会インフラ',
           page: 0,
           contents: [
             {
@@ -24,39 +24,12 @@ export default {
               techs: ['C++', 'C#', 'Java', 'directX', 'XNA', 'dwm'],
             },
             {
-              headline: '地方空港の駐機状況管理ソフトウェアの運用、保守',
-              description: '運用中に発生したエラーや開発中の不具合残件の改修が主な作業です。'
-                + 'エラーの調査、報告書作成、対策／運用対処の提案を行います。'
-                + 'プログラムの改修作業は小さなものがほとんどです。',
-              techs: ['Java', 'C++', 'C#', 'JSP', 'PL/SQL', 'Oracle', 'Struts'],
-            },
-            {
               headline: '地方空港の飛行情報管理処理システムの新システムへの移行作業',
               description: '現行のソフトウェアを次期システムに搭載するための改修を行います。'
                 + '基本は現行からの流用ですが、一部新規機能があります。'
                 + '他システムとの通信部分の設計製造を主に担当しています。',
-              techs: ['Java', 'Bash', 'PowerShell', 'C++', 'C#', 'Oracle', 'Spring'],
+              techs: ['Java', 'Bash', 'PowerShell', 'C++', 'C#', 'JSP', 'Oracle', 'Spring'],
             },
-            {
-              headline: 'Web明細システムの開発',
-              description: 'Web上で通話の明細を確認したりダウンロードを行うシステムの開発を行います。'
-                + '要件定義、不具合の改修、機能追加など複数のチームに分かれて開発しています。'
-                + '開発担当者は基本プログラミングだけに集中できる環境で、短期間で効率的に品質を上げることを優先します。',
-              techs: ['Java', 'JavaScript', 'jQuery', 'Bootstrap', 'Liferay', 'PostgreSQL', 'MyBatis'],
-            },
-            {
-              headline: 'Ether over Etherに対応したルータの開発',
-              description: 'Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています。'
-                + 'EoEはまだ一般的に普及しているものでは無く、参考文献が限られているため、'
-                + 'trial and errorで作業しています。',
-              techs: ['linux kernel', 'VLAN', 'Ether over Ether', 'C'],
-            },
-          ],
-        },
-        {
-          type: '社会インフラ2',
-          page: 0,
-          contents: [
             {
               headline: 'IC出改札システムの開発、運用保守',
               description: '携帯、スマートフォンを利用したIC出改札システムの開発、運用保守を行っています。'
@@ -82,13 +55,7 @@ export default {
                 + 'UI変更や新規機能追加などを行っています。'
                 + '数千万人が利用する交通インフラの一翼を担うシステムのため、品質に関しては厳しいですが、'
                 + '反面、無理のないスケジュールが組まれているため、マイペースで仕事が出来る環境です。',
-              techs: ['C++', 'C#', 'SQL Server'],
-            },
-            {
-              headline: '新規の交通カードシステムの開発作業',
-              description: '新しい交通カードのシステムを運用する為の各種サーバを設計・製造しています。'
-                + '既に開発作業は完了しており、現在は製造したサーバ機能の動作検証を行っています。',
-              techs: ['C++', 'SQL Server'],
+              techs: ['C++', 'C#', 'ASP.NET', 'SQL Server', 'VBA'],
             },
           ],
         },
@@ -107,9 +74,10 @@ export default {
             {
               headline: '大手ECサイトWebサービスの開発',
               description: 'エンタメ系の大手ECサイトの開発を行います。'
-                + 'スマホアプリの改修や他社サービスとの連携など大きな機能追加を予定しているため、'
-                + 'それに向けた開発を進めています。',
-              techs: ['Java', 'JavaScript', 'PHP', 'MySQL', 'Redis', 'MyBatis', 'Spring Boot'],
+                + 'スマホアプリの開発や他社サービスとの連携など長期に渡って様々な機能追加を予定しているため、'
+                + 'それに向けた開発を進めています。'
+                + '開発規模は大きいですが、その分チームや人の数も多く個々の作業量はあまり多くありません。',
+              techs: ['Java', 'JavaScript', 'Kotlin', 'Swift', 'PHP', 'MySQL', 'MyBatis', 'Spring Boot'],
             },
           ],
         },
@@ -119,10 +87,10 @@ export default {
           contents: [
             {
               headline: 'ECサイトの保守・開発',
-              description: '運用中に発生した不具合の対応・DBへのデータパッチ・客先問合せの調査をしつつ案件の開発を行う。'
-                + '保守のリリースは緊急度の高いものは対応後即リリース'
-                + '緊急度の高くないものに関しては案件に混ぜ込んでリリースするのが一般的。'
-                + 'プロジェクト内で中心的な人物になれば案件の見積もり、客先との打ち合わせに参加し、自分の意見を発言することができる。',
+              description: '運用中に発生した不具合の対応・DBへのデータパッチ・客先問合せの調査をしつつ案件の開発を行います。'
+                + '保守のリリースは緊急度の高いものは対応後即リリース、'
+                + '緊急度の高くないものに関しては案件に混ぜ込んでリリースするのが一般的です。'
+                + 'プロジェクト内で中心的な人物になれば案件の見積もり、客先との打ち合わせに参加し、自分の意見を発言することができます。',
               techs: ['Java', 'BATOOL', 'Oracle', 'JavaScript', 'NeoSarf', 'PostgreSQL'],
             },
             {
@@ -132,18 +100,38 @@ export default {
               techs: ['Java', 'SQL Server', 'NeoSarf', 'sde for batch'],
             },
             {
+              headline: '製薬業向け管理会計システム',
+              description: 'Web画面を利用した会計システムの画面構成及びDB取込み作業を担当しています。'
+                + 'スケジュールはある程度組まれているが、無理なスケジュールではないため、'
+                + 'マイペースで仕事が出来る環境です。',
+              techs: ['Oracle', 'PL/SQL', 'BIEE'],
+            },
+          ],
+        },
+        {
+          type: '広告/通信システム',
+          page: 0,
+          contents: [
+            {
+              headline: 'Web明細システムの開発',
+              description: 'Web上で通話の明細を確認したりダウンロードを行うシステムの開発を行います。'
+                + '要件定義、不具合の改修、機能追加など複数のチームに分かれて開発しています。'
+                + '開発担当者は基本プログラミングだけに集中できる環境で、短期間で効率的に品質を上げることを優先します。',
+              techs: ['Java', 'JavaScript', 'jQuery', 'Bootstrap', 'Liferay', 'PostgreSQL', 'MyBatis'],
+            },
+            {
               headline: '広告管理システムの開発',
               description: 'Web広告を管理するシステムを開発しており、画面およびサーバ処理の製造を幅広く担当しています。'
                 + '無駄なドキュメントはなるべく作らず、できるだけわかりやすいソースコードでモデルを表現しようとするため、'
                 + '効率よく高品質なシステムの開発を行うことができる環境です。',
-              techs: ['Java', 'TypeScript', 'Vue.js', 'Almin.js', 'Pug', 'MySQL', 'Redis', 'Spring Boot'],
+              techs: ['Java', 'TypeScript', 'Vue.js', 'Almin.js', 'Pug', 'Stylus', 'MySQL', 'Spring Boot'],
             },
             {
-              headline: '製薬業向け管理会計システム',
-              description: 'Web画面を利用した会計システムの画面構成及びDB取込み作業を担当。'
-                + 'スケジュールはある程度組まれているが、無理なスケジュールではないため、'
-                + 'マイペースで仕事が出来る環境です。',
-              techs: ['Oracle', 'PL/SQL', 'BIEE'],
+              headline: 'Ether over Etherに対応したルータの開発',
+              description: 'Virtual LAN技術の一種であるEther over Etherに対応したルータを開発しています。'
+                + 'EoEはまだ一般的に普及しているものでは無く、参考文献が限られているため、'
+                + 'trial and errorで作業しています。',
+              techs: ['linux kernel', 'VLAN', 'Ether over Ether', 'C'],
             },
           ],
         },

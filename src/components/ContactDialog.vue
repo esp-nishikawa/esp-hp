@@ -305,8 +305,4 @@ export default {
 >>> .v-messages__message {
   line-height: 1.2;
 }
-
->>> .v-label--active {
-  background-color: #fff;
-}
 </style>
