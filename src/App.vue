@@ -140,7 +140,7 @@ export default {
       />
     </v-navigation-drawer>
 
-    <v-app-bar app fixed clipped-left>
+    <v-app-bar app fixed clipped-left color="white">
       <v-app-bar-nav-icon @click.native.stop="isNavigation = !isNavigation"/>
       <v-toolbar-title>
         <base-header>eSoftPowers</base-header>

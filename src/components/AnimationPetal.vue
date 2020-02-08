@@ -54,10 +54,10 @@ export default {
     init(offset = -100) {
       this.top = offset;
       this.left = this.$common.getRandom(0, this.parentWidth() - 40);
-      this.speed = this.$common.getRandom(0.5, 1.5);
-      this.fluctuation = this.$common.getRandom(50, 150);
+      this.speed = this.$common.getRandom(0.4, 1.2);
+      this.fluctuation = this.$common.getRandom(80, 160);
       this.count = 0;
-      this.opacity = this.$common.getRandom(0.4, 0.6);
+      this.opacity = this.$common.getRandom(0.3, 0.6);
       this.classes = [
         'petal',
         'color' + this.$common.getRandom(1, 6, true),
