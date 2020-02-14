@@ -10,6 +10,11 @@ export default {
       transitionName: 'next',
     };
   },
+  computed: {
+    searchable() {
+      return this.$vuetify.breakpoint.mdAndUp;
+    },
+  },
   watch: {
     page(newVal, oldVal) {
       this.transitionName = newVal < oldVal ? 'prev' : 'next';
@@ -26,27 +31,41 @@ export default {
     enter-active-class="v-enter-active"
     move-class="v-move"
   >
-    <div
-      v-for="value in values"
-      :key="value"
-      class="d-inline-block ma-1"
-    >
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-chip
-            v-on="on"
-            color="blue lighten-1"
-            text-color="white"
-            link
-            :href="'https://www.google.co.jp/search?q=' + encodeURIComponent(value)"
-            target="_blank"
-          >
-            {{ value }}
-          </v-chip>
-        </template>
-        <span>{{ value }}を検索</span>
-      </v-tooltip>
-    </div>
+    <template v-if="searchable">
+      <div
+        v-for="value in values"
+        :key="value"
+        class="d-inline-block ma-1"
+      >
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-chip
+              v-on="on"
+              color="blue lighten-1"
+              text-color="white"
+              link
+              :href="'https://www.google.co.jp/search?q=' + encodeURIComponent(value)"
+              target="_blank"
+              class="hover-chip-link"
+            >
+              {{ value }}
+            </v-chip>
+          </template>
+          <span>{{ value }}を検索</span>
+        </v-tooltip>
+      </div>
+    </template>
+    <template v-else>
+      <v-chip
+        v-for="value in values"
+        :key="value"
+        color="blue lighten-1"
+        text-color="white"
+        class="d-inline-block ma-1"
+       >
+        {{ value }}
+      </v-chip>
+    </template>
   </transition-group>
 </template>
 
@@ -82,7 +101,7 @@ export default {
   transform: translateY(-30px);
 }
 
-.v-chip:hover {
+.hover-chip-link:hover {
   text-decoration: underline;
 }
 </style>
