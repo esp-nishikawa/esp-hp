@@ -63,3 +63,9 @@ export default {
     </v-card>
   </v-dialog>
 </template>
+
+<style scoped>
+>>> .v-dialog {
+  overflow-x: hidden;
+}
+</style>

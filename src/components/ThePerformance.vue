@@ -4,10 +4,10 @@ export default {
   data() {
     return {
       tableHeaders: [
-        { text: '年度', value: 'year', align: 'end', sortable: true, width: '70px' },
-        { text: '売上高', value: 'sales', align: 'end', sortable: true, width: '80px' },
-        { text: '社員数', value: 'employees', align: 'end', sortable: true, width: '80px' },
-        { text: '内技術者数', value: 'engineers', align: 'end', sortable: true, width: '90px' },
+        { text: '年度', value: 'year', align: 'end', sortable: true, sort: this.sortNumber, width: '70px' },
+        { text: '売上高', value: 'sales', align: 'end', sortable: true, sort: this.sortNumber, width: '80px' },
+        { text: '社員数', value: 'employees', align: 'end', sortable: true, sort: this.sortNumber, width: '80px' },
+        { text: '内技術者数', value: 'engineers', align: 'end', sortable: true, sort: this.sortNumber, width: '90px' },
       ],
       tableItems: [
         {
@@ -75,6 +75,11 @@ export default {
       pageCount: 0,
       itemsPerPage: 5,
     };
+  },
+  methods: {
+    sortNumber(a, b) {
+      return a.match(/\d+/) - b.match(/\d+/);
+    },
   },
 };
 </script>

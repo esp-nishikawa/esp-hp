@@ -120,10 +120,10 @@ export default {
                 <li>お急ぎの方はお電話(03-6273-4837)にてお問い合わせください。</li>
                 <li>お客様からいただく個人情報は、お問い合わせ・ご質問への回答、情報提供のために使用させていただきます。</li>
                 <li>
-                  <div class="d-inline-flex align-center" style="height:24px;">
+                  <div class="d-inline-flex flex-wrap align-center">
                     <span>プライバシーポリシーについては</span>
                     <privacy-dialog>
-                      <base-link class="pa-0">こちら</base-link>
+                      <base-link class="pa-0" style="height: 24px;">こちら</base-link>
                     </privacy-dialog>
                     <span>をご確認ください。</span>
                   </div>
@@ -304,5 +304,9 @@ export default {
 <style scoped>
 >>> .v-messages__message {
   line-height: 1.2;
+}
+
+>>> .v-label--active {
+  background-color: #fff;
 }
 </style>
