@@ -3,13 +3,7 @@
 export default {
   data() {
     return {
-      tableHeaders: [
-        { text: '年度', value: 'year', align: 'end', sortable: true, sort: this.sortNumber, width: '70px' },
-        { text: '売上高', value: 'sales', align: 'end', sortable: true, sort: this.sortNumber, width: '80px' },
-        { text: '社員数', value: 'employees', align: 'end', sortable: true, sort: this.sortNumber, width: '80px' },
-        { text: '内技術者数', value: 'engineers', align: 'end', sortable: true, sort: this.sortNumber, width: '90px' },
-      ],
-      tableItems: [
+      items: [
         {
           year: '2018年度',
           sales: '19,644万円',
@@ -72,13 +66,15 @@ export default {
         },
       ],
       page: 1,
-      pageCount: 0,
       itemsPerPage: 5,
     };
   },
-  methods: {
-    sortNumber(a, b) {
-      return a.match(/\d+/) - b.match(/\d+/);
+  computed: {
+    pageCount() {
+      return Math.ceil(this.items.length / this.itemsPerPage);
+    },
+    activeItems() {
+      return this.items.slice(this.itemsPerPage * (this.page - 1), this.itemsPerPage * this.page);
     },
   },
 };
@@ -86,29 +82,37 @@ export default {
 
 <template>
   <v-sheet>
-    <v-data-table
-      :headers="tableHeaders"
-      :items="tableItems"
-      item-key="year"
-      :page.sync="page"
-      :items-per-page="itemsPerPage"
-      :mobile-breakpoint="360"
-      hide-default-footer
-      must-sort
-      @page-count="pageCount = $event"
-    />
-    <v-divider/>
+    <v-simple-table height="300">
+      <template>
+        <thead>
+          <tr>
+            <th class="table-th column-year">年度</th>
+            <th class="table-th column-sales">売上高</th>
+            <th class="table-th column-employees">社員数</th>
+            <th class="table-th column-engineers">内技術者数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in activeItems" :key="item.year">
+            <td class="column-year">{{ item.year }}</td>
+            <td class="column-sales">{{ item.sales }}</td>
+            <td class="column-employees">{{ item.employees }}</td>
+            <td class="column-engineers">{{ item.engineers }}</td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
     <v-pagination
       v-model="page"
       :length="pageCount"
       circle
-      class="text-center py-4"
+      class="text-center pb-7"
     />
   </v-sheet>
 </template>
 
 <style scoped>
->>> .v-data-table thead th {
+.table-th {
   color: #fff!important;
   font-size: 15px!important;
   font-weight: 500!important;
@@ -117,7 +121,27 @@ export default {
   text-shadow: 0 -1px 0 rgba(30,136,229,.9);
 }
 
->>> .v-data-table-header__icon {
-  color: rgba(255,255,255,.9)!important;
+.column-year {
+  width: 70px;
+  text-align: right!important;
+}
+
+.column-sales {
+  width: 80px;
+  text-align: right!important;
+}
+
+.column-employees {
+  width: 80px;
+  text-align: right!important;
+}
+
+.column-engineers {
+  width: 90px;
+  text-align: right!important;
+}
+
+>>> table {
+  border-bottom: thin solid rgba(0,0,0,.12);
 }
 </style>
