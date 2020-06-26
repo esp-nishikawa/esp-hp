@@ -11,10 +11,6 @@ export default {
   },
   data() {
     return {
-      initialHeaders: [
-        { text: '学歴', value: 'education' },
-        { text: '初任給', value: 'salary' },
-      ],
       initialItems: [
         {
           education: '大学院（修士）卒',
@@ -32,10 +28,6 @@ export default {
           education: '高専・短大・専門卒（２年制）',
           salary: '198,000円',
         },
-      ],
-      annualHeaders: [
-        { text: '年齢', value: 'age' },
-        { text: '年収', value: 'salary' },
       ],
       annualItems: [
         {
@@ -74,30 +66,32 @@ export default {
         <v-row v-else>
           <v-col>
             <base-subheading>初任給（平成２９年度実績）</base-subheading>
-            <v-data-table
-              :headers="initialHeaders"
-              :items="initialItems"
-              item-key="education"
-              :mobile-breakpoint="260"
-              hide-default-header
-              hide-default-footer
-              class="elevation-2"
-            />
+            <v-simple-table class="elevation-2">
+              <template>
+                <tbody>
+                  <tr v-for="item in initialItems" :key="item.education">
+                    <td>{{ item.education }}</td>
+                    <td>{{ item.salary }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
             <base-text>※この表の金額は基準給で独身者の場合</base-text>
           </v-col>
         </v-row>
         <v-row>
           <v-col>
             <base-subheading>年収モデル</base-subheading>
-            <v-data-table
-              :headers="annualHeaders"
-              :items="annualItems"
-              item-key="age"
-              :mobile-breakpoint="260"
-              hide-default-header
-              hide-default-footer
-              class="elevation-2"
-            />
+            <v-simple-table class="elevation-2">
+              <template>
+                <tbody>
+                  <tr v-for="item in annualItems" :key="item.age">
+                    <td>{{ item.age }}</td>
+                    <td>{{ item.salary }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
             <base-text>※年間賞与4ヶ月、1ヶ月の残業20Hとした場合。</base-text>
           </v-col>
         </v-row>

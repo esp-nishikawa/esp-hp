@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <v-content class="page-wrapper">
+  <v-main class="page-wrapper">
     <div v-if="background1" class="background1-before"/>
     <div v-if="background1" class="background1-after"/>
     <div v-if="background2" class="background2-before"/>
@@ -51,7 +51,7 @@ export default {
         </v-row>
       </v-container>
     </v-footer>
-  </v-content>
+  </v-main>
 </template>
 
 <style scoped>
