@@ -35,9 +35,9 @@ export default {
     },
     page(newVal, oldVal) {
       if (this.vertical) {
-        this.transitionName = newVal < oldVal ? 'up' : 'down';
+        this.transitionName = newVal < oldVal ? 'down' : 'up';
       } else {
-        this.transitionName = newVal < oldVal ? 'left' : 'right';
+        this.transitionName = newVal < oldVal ? 'right' : 'left';
       }
       this.characters = this.getCharacters();
     },

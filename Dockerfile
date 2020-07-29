@@ -5,6 +5,8 @@ RUN apk update && \
 
 WORKDIR /app
 
+ENV CHOKIDAR_USEPOLLING=true
+
 COPY package.json yarn.lock* ./
 
 RUN yarn install

@@ -7,7 +7,7 @@ export default {
   },
   data() {
     return {
-      transitionName: 'next',
+      transitionName: 'up',
     };
   },
   computed: {
@@ -17,7 +17,7 @@ export default {
   },
   watch: {
     page(newVal, oldVal) {
-      this.transitionName = newVal < oldVal ? 'prev' : 'next';
+      this.transitionName = newVal < oldVal ? 'down' : 'up';
     },
   },
 };
@@ -72,7 +72,7 @@ export default {
 <style scoped>
 .v-leave-active {
   position: absolute;
-  transition: opacity .3s, transform 1s;
+  transition: opacity .3s;
 }
 
 .v-enter-active {
@@ -83,20 +83,20 @@ export default {
   transition: opacity .3s, transform 1s;
 }
 
-.prev-leave-to {
+.up-leave-to {
   opacity: 0;
 }
 
-.prev-enter {
+.up-enter {
   opacity: 0;
   transform: translateY(30px);
 }
 
-.next-leave-to {
+.down-leave-to {
   opacity: 0;
 }
 
-.next-enter {
+.down-enter {
   opacity: 0;
   transform: translateY(-30px);
 }
