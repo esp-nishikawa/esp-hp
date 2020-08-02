@@ -50,9 +50,8 @@ export default {
             },
             {
               headline: 'IC乗車カードシステムの開発',
-              description: '携帯電話を利用したIC乗車カードシステム内の、サーバ内通信と上位サーバ間通信部分を担当しています。'
-                + 'その他に、業務の一部も担当しており、ユーザからの要望に応え、利便性の向上を図るため、'
-                + 'UI変更や新規機能追加などを行っています。'
+              description: 'IC乗車カードシステム内の、サーバ内通信と上位サーバ間通信部分の開発を担当しています。'
+                + 'その他に、ユーザからの要望に応え、利便性の向上を図るため、UI変更や新規機能追加などを行っています。'
                 + '数千万人が利用する交通インフラの一翼を担うシステムのため、品質に関しては厳しいですが、'
                 + '反面、無理のないスケジュールが組まれているため、マイペースで仕事が出来る環境です。',
               techs: ['C++', 'C#', 'ASP.NET', 'SQL Server', 'VBA'],
@@ -164,6 +163,11 @@ export default {
       };
       switch (this.$vuetify.breakpoint.name) {
       case 'xs':
+        return {
+          ...defaultStyle,
+          height: '32px',
+          'font-size': '16px',
+        };
       case 'sm':
         return {
           ...defaultStyle,
@@ -187,8 +191,9 @@ export default {
       case 'xs':
         return {
           ...defaultStyle,
-          height: '200px',
+          height: '152px',
           'font-size': '13px',
+          'line-height': '1.5',
         };
       case 'sm':
         return {
@@ -203,7 +208,7 @@ export default {
     techsStyle() {
       return this.verticalTabs
         ? { height: '100px' }
-        : { height: '80px' };
+        : { height: '88px' };
     },
   },
   methods: {
@@ -286,6 +291,7 @@ export default {
                 :vertical="verticalTabs"
                 :split="verticalTabs"
                 :page="item.page"
+                class="d-flex align-center"
                 :style="headlineStyle"
               />
             </v-card-title>
