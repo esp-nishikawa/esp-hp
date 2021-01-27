@@ -73,7 +73,7 @@ export default {
                 <v-container class="px-0 px-sm-3">
                   <v-row class="mt-2" :style="$vuetify.breakpoint.mdAndUp ? {'min-height': '128px'} : {}">
                     <v-col>
-                      <base-text>リアルタイム処理、携帯電話、デジタル家電、事務機器の心臓部開発により、現実となりつつあるユビキタス時代に挑戦していきます。</base-text>
+                      <base-text>リアルタイム処理、携帯電話、デジタル家電、事務機器の心臓部開発により、現実となりつつあるIoT時代に挑戦していきます。</base-text>
                     </v-col>
                   </v-row>
                   <v-row>

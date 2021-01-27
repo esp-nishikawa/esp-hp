@@ -5,6 +5,12 @@ export default {
     return {
       informations: [
         {
+          date: '2021-1-27',
+          headline: 'サイト更新 決算状況、採用情報など更新しました。',
+          description: `・２０２１、２０２２年度新卒採用情報を掲載しました。<br>
+                        ・その他、決算状況など更新しました。`,
+        },
+        {
           date: '2019-10-10',
           headline: 'サイト更新 決算状況、採用情報など更新しました。',
           description: `・２０２０年度新卒採用情報を掲載しました。<br>

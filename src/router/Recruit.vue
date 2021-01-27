@@ -34,7 +34,8 @@ export default {
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>応募資格</base-subheading>
-                      <base-text>２０２０年３月に卒業予定の方</base-text>
+                      <base-text>２０２１年３月に卒業予定の方</base-text>
+                      <base-text>２０２２年３月に卒業予定の方</base-text>
                       <base-text>※既に卒業されている方も応募可能</base-text>
                     </v-col>
                     <v-col cols="12" sm="6">
