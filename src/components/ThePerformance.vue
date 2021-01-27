@@ -5,6 +5,12 @@ export default {
     return {
       items: [
         {
+          year: '2019年度',
+          sales: '21,868万円',
+          employees: '13名',
+          engineers: '11名',
+        },
+        {
           year: '2018年度',
           sales: '19,644万円',
           employees: '14名',
