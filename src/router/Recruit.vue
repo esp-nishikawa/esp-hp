@@ -18,15 +18,15 @@ export default {
 <template>
   <page-wrapper background="1">
     <section id="new-graduate">
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="11" md="10" lg="9" xl="8">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">新卒採用</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col cols="12">
                       <base-subheading>職種</base-subheading>
@@ -91,15 +91,15 @@ export default {
     </section>
 
     <section id="mid-career">
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="11" md="10" lg="9" xl="8">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">中途採用</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col cols="12" sm="6">
                       <base-subheading>職種</base-subheading>

@@ -63,8 +63,8 @@ export default {
     </section>
 
     <section>
-      <v-container>
-        <div class="headline-text text-center mt-12">
+      <v-container class="mt-12">
+        <div class="headline-text text-center">
           <span>株式会社イーソフトパワーズ（ｅＳｏｆｔＰｏｗｅｒｓ）は、<br>お客様のご要望をICTで叶える会社です。</span>
         </div>
         <div class="title-text d-flex justify-center align-center mt-1">
@@ -78,8 +78,8 @@ export default {
     </section>
 
     <section>
-      <v-container>
-        <v-row justify="space-around" class="mt-4">
+      <v-container class="mt-8 mb-16">
+        <v-row justify="space-around">
           <v-col cols="12" sm="4" xl="3">
             <route-image value="corporate"/>
           </v-col>
@@ -114,8 +114,8 @@ export default {
     </section>
 
     <section>
-      <v-container>
-        <v-row justify="start" class="my-12">
+      <v-container class="my-16">
+        <v-row justify="start">
           <v-col cols="12" sm="11" md="10" lg="9" xl="8">
             <the-information/>
           </v-col>

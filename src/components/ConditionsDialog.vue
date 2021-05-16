@@ -21,7 +21,7 @@ export default {
       <base-headline>CONDITIONS & BENEFITS</base-headline>
     </template>
     <template #content>
-      <v-container class="px-0 px-sm-3">
+      <v-container class="my-3 px-0 px-sm-3">
         <v-row>
           <v-col cols="12">
             <base-subheading>勤務地</base-subheading>
