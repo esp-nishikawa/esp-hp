@@ -18,15 +18,15 @@ export default {
 <template>
   <page-wrapper background="1">
     <section id="new-graduate">
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="11" md="10" lg="9" xl="8">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">新卒採用</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col cols="12">
                       <base-subheading>職種</base-subheading>
@@ -34,7 +34,6 @@ export default {
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>応募資格</base-subheading>
-                      <base-text>２０２１年３月に卒業予定の方</base-text>
                       <base-text>２０２２年３月に卒業予定の方</base-text>
                       <base-text>※既に卒業されている方も応募可能</base-text>
                     </v-col>
@@ -80,6 +79,11 @@ export default {
                           <v-icon color="blue lighten-2" class="mr-1">email</v-icon>メールフォーム
                         </base-link>
                       </contact-dialog>
+                      <div>
+                        <base-link href="https://levtech-direct.jp/company/524" target="_blank" class="pl-0">
+                          <v-icon color="blue lighten-2" class="mr-1">open_in_new</v-icon>レバテックダイレクトの求人ページはこちら
+                        </base-link>
+                      </div>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -91,15 +95,15 @@ export default {
     </section>
 
     <section id="mid-career">
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="11" md="10" lg="9" xl="8">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">中途採用</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col cols="12" sm="6">
                       <base-subheading>職種</base-subheading>
@@ -147,6 +151,11 @@ export default {
                           <v-icon color="blue lighten-2" class="mr-1">email</v-icon>メールフォーム
                         </base-link>
                       </contact-dialog>
+                      <div>
+                        <base-link href="https://levtech-direct.jp/company/524" target="_blank" class="pl-0">
+                          <v-icon color="blue lighten-2" class="mr-1">open_in_new</v-icon>レバテックダイレクトの求人ページはこちら
+                        </base-link>
+                      </div>
                     </v-col>
                   </v-row>
                 </v-container>

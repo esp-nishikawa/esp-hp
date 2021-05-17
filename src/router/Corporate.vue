@@ -39,15 +39,15 @@ export default {
 <template>
   <page-wrapper background="1">
     <section id="profile">
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="11" md="10" lg="9" xl="8">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">PROFILE</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col cols="6">
                       <base-subheading>創立</base-subheading>
@@ -83,15 +83,15 @@ export default {
         </v-row>
       </v-container>
 
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="7" md="6" lg="5" xl="4">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">LOCATIONS</base-headline>
               </v-card-title>
               <v-card-text>
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col>
                       <base-subheading>本社</base-subheading>
@@ -118,15 +118,15 @@ export default {
         </v-row>
       </v-container>
 
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12" sm="10" md="9" lg="8" xl="7">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">HISTORY</base-headline>
               </v-card-title>
               <v-card-text class="pb-0">
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row>
                     <v-col>
                       <base-subheading>業績ハイライト</base-subheading>
@@ -142,15 +142,15 @@ export default {
     </section>
 
     <section id="office">
-      <v-container>
-        <v-row justify="center" class="mt-4">
+      <v-container class="my-10">
+        <v-row justify="center">
           <v-col cols="12">
             <v-card raised>
               <v-card-title class="justify-center">
                 <base-headline class="pt-10 pb-2">OFFICE</base-headline>
               </v-card-title>
               <v-card-text class="pb-0">
-                <v-container class="px-0 px-sm-3">
+                <v-container class="my-3 px-0 px-sm-3">
                   <v-row class="mt-2">
                     <v-col>
                       <base-text>当社は、ビジネスの中心地にある「ビジネスエアポート丸の内」のレンタルオフィスを拠点としてます。</base-text>

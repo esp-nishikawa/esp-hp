@@ -3,6 +3,8 @@
 export default {
   props: {
     color: { type: String, default: 'blue darken-2' },
+    href: { type: String },
+    target: { type: String }
   },
 };
 </script>
@@ -12,6 +14,8 @@ export default {
     text
     rounded
     :color="color"
+    :href="href"
+    :target="target"
     class="base-link"
     @click="$emit('click')"
   >

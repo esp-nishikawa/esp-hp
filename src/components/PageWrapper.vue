@@ -33,7 +33,7 @@ export default {
     <slot/>
 
     <v-footer dark color="blue darken-1">
-      <v-container>
+      <v-container class="my-3">
         <v-row justify="end">
           <contact-dialog>
             <v-btn text rounded color="white">

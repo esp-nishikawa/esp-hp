@@ -5,6 +5,11 @@ export default {
     return {
       informations: [
         {
+          date: '2021-5-17',
+          headline: '求人サイトの「レバテックダイレクト」に掲載しました。',
+          description: `レバテックダイレクトの求人ページは<a href='https://levtech-direct.jp/company/524' target="_blank">こちら</a>`,
+        },
+        {
           date: '2021-1-27',
           headline: 'サイト更新 決算状況、採用情報など更新しました。',
           description: `・２０２１、２０２２年度新卒採用情報を掲載しました。<br>
