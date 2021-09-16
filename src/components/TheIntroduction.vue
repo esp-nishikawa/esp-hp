@@ -85,11 +85,11 @@ export default {
           page: 0,
           contents: [
             {
-              headline: 'ショッピングサイトWebサービスの開発',
-              description: '某ショッピングサイトのサービス機能の開発を行っています。'
-                + 'サービス追加をいくつか予定しており、優先度の高い企画から順番に進めています。'
-                + 'スピード感を重視しており、スクラム開発を行っています。',
-              techs: ['Java', 'JavaScript', 'MySQL', 'Spring Boot', 'Screwdriver', 'PlantUML', 'OpenAPI'],
+              headline: 'QRコード決済アプリの開発',
+              description: 'QRコード決済アプリの追加機能の開発を行っています。'
+                + '段階的なリリースを予定しており、余裕を持ったスケジュールになっています。'
+                + 'フルリモートのため、様々な拠点のメンバーで開発をしています。',
+              techs: ['Java', 'TypeScript', 'Vue.js', 'Sass', 'Spring Boot', 'OpenAPI'],
             },
             {
               headline: '量販店様向け本部・店舗統合パッケージ',
@@ -104,6 +104,13 @@ export default {
                 + '緊急度の高くないものに関しては案件に混ぜ込んでリリースするのが一般的です。'
                 + 'プロジェクト内で中心的な人物になれば案件の見積もり、客先との打ち合わせに参加し、自分の意見を発言することができます。',
               techs: ['Java', 'BATOOL', 'Oracle', 'JavaScript', 'NeoSarf', 'PostgreSQL'],
+            },
+            {
+              headline: 'ショッピングサイトWebサービスの開発',
+              description: '某ショッピングサイトのサービス機能の開発を行っています。'
+                + 'サービス追加をいくつか予定しており、優先度の高い企画から順番に進めています。'
+                + 'スピード感を重視しており、スクラム開発を行っています。',
+              techs: ['Java', 'JavaScript', 'MySQL', 'Spring Boot', 'PlantUML', 'OpenAPI'],
             },
             {
               headline: '製薬業向け管理会計システム',
