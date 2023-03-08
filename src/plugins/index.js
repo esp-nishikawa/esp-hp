@@ -7,17 +7,16 @@ import BaseLink from '@/components/BaseLink.vue';
 import Viewport from '@/directives/viewport.js';
 
 export default {
-  // eslint-disable-next-line no-unused-vars
-  install(Vue, options) {
+  install(app) {
     // 共通メソッド
-    Vue.prototype.$common = Common;
+    app.config.globalProperties.$common = Common;
     // コンポーネント
-    Vue.component('base-header', BaseHeader);
-    Vue.component('base-headline', BaseHeadline);
-    Vue.component('base-subheading', BaseSubheading);
-    Vue.component('base-text', BaseText);
-    Vue.component('base-link', BaseLink);
+    app.component('base-header', BaseHeader);
+    app.component('base-headline', BaseHeadline);
+    app.component('base-subheading', BaseSubheading);
+    app.component('base-text', BaseText);
+    app.component('base-link', BaseLink);
     // カスタムディレクティブ
-    Vue.directive('viewport', Viewport);
+    app.directive('viewport', Viewport);
   },
 };

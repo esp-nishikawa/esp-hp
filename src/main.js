@@ -1,15 +1,17 @@
-import Vue from 'vue';
+import App from './App.vue';
+import { createApp } from 'vue';
+import { loadFonts } from './plugins/webfontloader';
 import vuetify from './plugins/vuetify';
 import plugins from './plugins';
 import router from './router';
-import App from './App.vue';
 
-Vue.use(plugins);
+const app = createApp(App);
 
-Vue.config.productionTip = false;
+loadFonts();
 
-new Vue({
-  vuetify,
-  router,
-  render: h => h(App),
-}).$mount('#app');
+app
+  .use(vuetify)
+  .use(plugins)
+  .use(router);
+
+app.mount('#app');

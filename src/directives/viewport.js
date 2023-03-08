@@ -1,5 +1,5 @@
 export default {
-  bind(el, binding) {
+  beforeMount(el, binding) {
     const callback = binding.value;
 
     // `IntersectionObserver`が使用できない場合は代わりの実装
@@ -27,8 +27,7 @@ export default {
     }
   },
 
-  // eslint-disable-next-line no-unused-vars
-  inserted(el, binding) {
+  mounted(el) {
     if (el.$onScroll) {
       el.$onScroll();
     }
@@ -37,8 +36,7 @@ export default {
     }
   },
 
-  // eslint-disable-next-line no-unused-vars
-  unbind(el, binding) {
+  unmounted(el) {
     delete el.$onScroll;
     delete el.$observer;
   },
