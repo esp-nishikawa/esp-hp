@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 RUN apk update && \
-    npm install -g @vue/cli
+    yarn global add @vue/cli
 
 WORKDIR /app
 
