@@ -25,17 +25,17 @@ export default {
     @mouseleave="hover=false"
   >
     <transition mode="out-in" name="hover">
-      <div v-if="hover" key="hover-on" class="circle-layout">
+      <div v-if="hover" class="circle-layout">
         <div class="philosophy-text">
           <slot name="before"/>
         </div>
       </div>
-      <div v-else key="hover-off" class="circle-layout">
+      <div v-else class="circle-layout">
         <transition mode="out-in" name="timeout">
-          <div v-if="timeout" key="timeout-on" class="philosophy-text">
+          <div v-if="timeout" class="philosophy-text">
             <slot name="after"/>
           </div>
-          <div v-else key="timeout-off" class="philosophy-text">
+          <div v-else class="philosophy-text">
             <slot name="before"/>
           </div>
         </transition>

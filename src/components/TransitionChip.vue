@@ -12,7 +12,7 @@ export default {
   },
   computed: {
     searchable() {
-      return this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.display.mdAndUp;
     },
   },
   watch: {

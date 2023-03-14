@@ -25,8 +25,8 @@ export default {
   <page-wrapper>
     <section>
       <v-parallax
-        :src="require('@/assets/home_parallax1.jpg')"
-        :height="$vuetify.breakpoint.xs ? 540 : 600"
+        src="@/assets/home_parallax1.jpg"
+        :height="$vuetify.display.xs ? 540 : 600"
       >
         <div class="d-flex flex-column justify-space-between">
           <div class="d-flex align-start justify-space-around">
@@ -94,7 +94,7 @@ export default {
     </section>
 
     <section>
-      <v-parallax :src="require('@/assets/home_parallax2.jpg')" height="400" class="mt-12">
+      <v-parallax src="@/assets/home_parallax2.jpg" height="400" class="mt-12">
         <v-container>
           <v-row align="center" justify="center">
             <v-col cols="11" sm="10" lg="9" xl="8" class="text-center">

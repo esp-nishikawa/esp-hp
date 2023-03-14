@@ -18,21 +18,21 @@ export default {
       items: [
         {
           value: 'corporate',
-          src: require('@/assets/route_corporate.jpg'),
+          src: new URL('@/assets/route_corporate.jpg', import.meta.url).href,
           route: '/corporate',
           headline: '会社案内',
           subheading: 'About Us',
         },
         {
           value: 'service',
-          src: require('@/assets/route_service.jpg'),
+          src: new URL('@/assets/route_service.jpg', import.meta.url).href,
           route: '/service',
           headline: '事業分野',
           subheading: 'Our Business',
         },
         {
           value: 'recruit',
-          src: require('@/assets/route_recruit.jpg'),
+          src: new URL('@/assets/route_recruit.jpg', import.meta.url).href,
           route: '/recruit',
           headline: '採用情報',
           subheading: 'Recruit',
@@ -59,7 +59,7 @@ export default {
     <v-img
       eager
       :src="items[itemIndex].src"
-      :height="$vuetify.breakpoint.xs ? 128 : 200"
+      :height="$vuetify.display.xs ? 128 : 200"
       class="hover-img"
     />
     <v-card-title class="justify-center">

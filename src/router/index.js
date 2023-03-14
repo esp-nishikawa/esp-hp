@@ -55,8 +55,8 @@ const routes = [
 
 const scrollBehavior = (to, from, savedPosition) => {
   return new Promise((resolve) => {
-    router.app.$root.$once('before-enter', () => {
-      router.app.$nextTick(() => {
+    //router.app.$root.$once('before-enter', () => {
+      //router.app.$nextTick(() => {
         let position = { x: 0, y: 0 };
         if (savedPosition) {
           position = savedPosition;
@@ -69,8 +69,8 @@ const scrollBehavior = (to, from, savedPosition) => {
           }
         }
         resolve(position);
-      });
-    });
+      //});
+    //});
   });
 };
 

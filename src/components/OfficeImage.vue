@@ -35,7 +35,7 @@ export default {
       items: [
         {
           value: 'entrance',
-          src: require('@/assets/office_entrance.jpg'),
+          src: new URL('@/assets/office_entrance.jpg', import.meta.url).href,
           title: 'エントランス',
           duration: 1.0,
           rotate: this.$common.getRandom(2, 6),
@@ -44,7 +44,7 @@ export default {
         },
         {
           value: 'lounge',
-          src: require('@/assets/office_lounge.jpg'),
+          src: new URL('@/assets/office_lounge.jpg', import.meta.url).href,
           title: 'ラウンジ',
           duration: 1.6,
           rotate: this.$common.getRandom(-10, -6),
@@ -53,7 +53,7 @@ export default {
         },
         {
           value: 'workspace',
-          src: require('@/assets/office_workspace.jpg'),
+          src: new URL('@/assets/office_workspace.jpg', import.meta.url).href,
           title: 'ワークスペース',
           duration: 1.4,
           rotate: this.$common.getRandom(-8, 8),
@@ -62,7 +62,7 @@ export default {
         },
         {
           value: 'boardroom',
-          src: require('@/assets/office_boardroom.jpg'),
+          src: new URL('@/assets/office_boardroom.jpg', import.meta.url).href,
           title: '会議室',
           duration: 1.2,
           rotate: this.$common.getRandom(-6, -2),
@@ -71,7 +71,7 @@ export default {
         },
         {
           value: 'library',
-          src: require('@/assets/office_library.jpg'),
+          src: new URL('@/assets/office_library.jpg', import.meta.url).href,
           title: 'ライブラリー',
           duration: 1.8,
           rotate: this.$common.getRandom(6, 10),
@@ -86,7 +86,7 @@ export default {
       return this.items.findIndex(item => item.value === this.value);
     },
     clickable() {
-      return this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.display.mdAndUp;
     },
   },
   watch: {

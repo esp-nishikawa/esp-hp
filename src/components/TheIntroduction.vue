@@ -153,7 +153,7 @@ export default {
   },
   computed: {
     verticalTabs() {
-      return this.$vuetify.breakpoint.mdAndUp;
+      return this.$vuetify.display.mdAndUp;
     },
     activePage: {
       get() {
@@ -175,7 +175,7 @@ export default {
         'line-height': '1',
         'letter-spacing': '0.02em',
       };
-      switch (this.$vuetify.breakpoint.name) {
+      switch (this.$vuetify.display.name) {
       case 'xs':
         return {
           ...defaultStyle,
@@ -201,7 +201,7 @@ export default {
         'line-height': '1.75',
         'letter-spacing': '0.02em',
       };
-      switch (this.$vuetify.breakpoint.name) {
+      switch (this.$vuetify.display.name) {
       case 'xs':
         return {
           ...defaultStyle,

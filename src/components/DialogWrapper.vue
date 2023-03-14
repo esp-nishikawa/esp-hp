@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     fullscreen() {
-      return this.$vuetify.breakpoint.smAndDown;
+      return this.$vuetify.display.smAndDown;
     },
   },
 };

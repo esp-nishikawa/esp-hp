@@ -46,7 +46,7 @@ export default {
               </v-card-title>
               <v-card-text>
                 <v-container class="my-3 px-0 px-sm-3">
-                  <v-row class="mt-2" :style="$vuetify.breakpoint.mdAndUp ? {'min-height': '128px'} : {}">
+                  <v-row class="mt-2" :style="$vuetify.display.mdAndUp ? {'min-height': '128px'} : {}">
                     <v-col>
                       <base-text>自動車関係、鉄道関係等々、ビジネスアプリケーションの提案から総合試験まで、ワンストップショッピングとしてユーザにはなくてはならない存在となります。</base-text>
                     </v-col>
@@ -71,7 +71,7 @@ export default {
               </v-card-title>
               <v-card-text>
                 <v-container class="my-3 px-0 px-sm-3">
-                  <v-row class="mt-2" :style="$vuetify.breakpoint.mdAndUp ? {'min-height': '128px'} : {}">
+                  <v-row class="mt-2" :style="$vuetify.display.mdAndUp ? {'min-height': '128px'} : {}">
                     <v-col>
                       <base-text>リアルタイム処理、携帯電話、デジタル家電、事務機器の心臓部開発により、現実となりつつあるIoT時代に挑戦していきます。</base-text>
                     </v-col>
@@ -95,7 +95,7 @@ export default {
               </v-card-title>
               <v-card-text>
                 <v-container class="my-3 px-0 px-sm-3">
-                  <v-row class="mt-2" :style="$vuetify.breakpoint.mdAndUp ? {'min-height': '128px'} : {}">
+                  <v-row class="mt-2" :style="$vuetify.display.mdAndUp ? {'min-height': '128px'} : {}">
                     <v-col>
                       <base-text>導入のご相談からコンサルティング。継続的な貴社の広告戦略をサポートします。</base-text>
                     </v-col>

@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     petalNum() {
-      return Math.ceil(this.$vuetify.breakpoint.height / 80);
+      return Math.ceil(this.$vuetify.display.height / 80);
     },
   },
   watch: {
@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     onBeforeEnter() {
-      this.$root.$emit('before-enter');
+      //this.$root.$emit('before-enter');
     },
   },
 };
@@ -93,7 +93,6 @@ export default {
         <template v-for="(navigationItem, n) in navigationItems">
           <v-list-item
             v-if="!navigationItem.subItems"
-            :key="n"
             :to="navigationItem.path"
             ripple
             active-class="blue--text text--darken-2"
@@ -107,7 +106,6 @@ export default {
           </v-list-item>
           <v-list-group
             v-else
-            :key="n"
             no-action
             eager
             :prepend-icon="navigationItem.icon"
@@ -147,13 +145,15 @@ export default {
       </v-toolbar-title>
     </v-app-bar>
 
-    <transition
-      name="routing"
-      @before-enter="onBeforeEnter"
-      mode="out-in"
-    >
-      <router-view/>
-    </transition>
+    <router-view v-slot="{ Component, route }">
+      <transition
+        name="routing"
+        mode="out-in"
+        @before-enter="onBeforeEnter"
+      >
+        <component :is="Component" :key="route.path"/>
+      </transition>
+    </router-view>
 
     <v-fab-transition>
       <v-btn
