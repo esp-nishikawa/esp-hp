@@ -3,7 +3,7 @@
 
 ## 構成
 
-- [Vue CLI 3](https://cli.vuejs.org/)を使った`SPA（シングルページアプリケーション）`の構成
+- [Vue CLI](https://cli.vuejs.org/)を使った`SPA（シングルページアプリケーション）`の構成
 ```
 リポジトリTOP
 │
@@ -46,6 +46,7 @@
 │　└ main.js ... Vueメイン（外部モジュールのインポートなど）
 │
 ├ babel.config.js
+├ jsconfig.json
 ├ vue.config.js
 ├ package.json
 ├ yarn.lock
