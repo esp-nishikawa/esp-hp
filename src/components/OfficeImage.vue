@@ -199,8 +199,4 @@ export default {
   line-height: 1;
   letter-spacing: .04em;
 }
-
->>> .v-dialog {
-  overflow-x: hidden;
-}
 </style>
