@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import rules from '@/utils/rules.js';
 import DialogWrapper from '@/components/DialogWrapper';
 import PrivacyDialog from '@/components/PrivacyDialog';
 
@@ -27,24 +28,13 @@ export default {
         contents: '',
         privacy: false,
       },
-      rules: {
-        /* eslint-disable no-useless-escape */
-        required: v => !!v || 'この項目は必須です。',
-        email:  v => !v || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || 'メールアドレスの形式が正しくないようです。',
-        phone:  v => !v || /^[0-9０-９\-‐－―ー\(\)（）]+$/.test(v) || '電話番号の形式が正しくないようです。',
-        max25: v => !v || v.length <= 25 || '25文字以内で入力してください。',
-        max60: v => !v || v.length <= 60 || '60文字以内で入力してください。',
-        max256: v => !v || v.length <= 256 || '256文字以内で入力してください。',
-        max2000: v => !v || v.length <= 2000 || '2000文字以内で入力してください。',
-        privacy: v => v || '個人情報の取り扱いについて同意をお願いします。',
-        /* eslint-enable no-useless-escape */
-      },
       types: [
         { value: 1, text: '採用についてのお問い合わせ' },
         { value: 2, text: 'お仕事のご依頼やご相談' },
         { value: 3, text: 'パートナーシップに関するお問い合わせ' },
         { value: 4, text: 'その他' },
       ],
+      rules,
     };
   },
   computed: {
@@ -58,7 +48,7 @@ export default {
         this.changeStep(2);
       } else {
         const dialog = this.$refs.dialog.getDialogElement();
-        this.$common.scrollTo(dialog.getElementsByClassName('scroll-target')[0], 0, 200);
+        this.$helpers.scrollTo(dialog.getElementsByClassName('scroll-target')[0], 0, 200);
       }
     },
     send() {
@@ -154,7 +144,7 @@ export default {
               <v-text-field
                 label="お名前"
                 v-model="registration.name"
-                :rules="[rules.required, rules.max60]"
+                :rules="[rules.required, rules.max(60)]"
                 clearable
                 clear-icon="cancel"
               >
@@ -165,7 +155,7 @@ export default {
               <v-text-field
                 label="ご所属（会社名等）"
                 v-model="registration.affiliation"
-                :rules="[rules.max60]"
+                :rules="[rules.max(60)]"
                 clearable
                 clear-icon="cancel"
               >
@@ -176,7 +166,7 @@ export default {
               <v-text-field
                 label="メールアドレス"
                 v-model="registration.email"
-                :rules="[rules.required, rules.email, rules.max256]"
+                :rules="[rules.required, rules.email, rules.max(256)]"
                 hint="ご連絡先として使用いただけるメールアドレスの記入をお願いいたします。"
                 validate-on-blur
                 clearable
@@ -189,7 +179,7 @@ export default {
               <v-text-field
                 label="電話番号"
                 v-model="registration.phone"
-                :rules="[rules.phone, rules.max25]"
+                :rules="[rules.phone, rules.max(25)]"
                 clearable
                 clear-icon="cancel"
               >
@@ -200,7 +190,7 @@ export default {
               <v-textarea
                 label="お問い合わせ内容"
                 v-model="registration.contents"
-                :rules="[rules.required, rules.max2000]"
+                :rules="[rules.required, rules.max(2000)]"
                 rows="8"
                 clearable
                 clear-icon="cancel"

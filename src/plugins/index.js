@@ -1,4 +1,4 @@
-import Common from './common.js';
+import helpers from '@/utils/helpers.js';
 import BaseHeader from '@/components/BaseHeader.vue';
 import BaseHeadline from '@/components/BaseHeadline.vue';
 import BaseSubheading from '@/components/BaseSubheading.vue';
@@ -10,7 +10,7 @@ export default {
   // eslint-disable-next-line no-unused-vars
   install(Vue, options) {
     // 共通メソッド
-    Vue.prototype.$common = Common;
+    Vue.prototype.$helpers = helpers;
     // コンポーネント
     Vue.component('base-header', BaseHeader);
     Vue.component('base-headline', BaseHeadline);

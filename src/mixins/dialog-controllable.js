@@ -37,7 +37,7 @@ export default {
   },
   created() {
     if (!this.historyName) {
-      this.historyName = this.$common.getUniqueString();
+      this.historyName = this.$helpers.getUniqueString();
     }
   },
   mounted() {

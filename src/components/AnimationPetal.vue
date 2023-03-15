@@ -53,24 +53,24 @@ export default {
     },
     init(offset = -100) {
       this.top = offset;
-      this.left = this.$common.getRandom(0, this.parentWidth() - 40);
-      this.speed = this.$common.getRandom(0.4, 1.2);
-      this.fluctuation = this.$common.getRandom(80, 160);
+      this.left = this.$helpers.getRandom(0, this.parentWidth() - 40);
+      this.speed = this.$helpers.getRandom(0.4, 1.2);
+      this.fluctuation = this.$helpers.getRandom(80, 160);
       this.count = 0;
-      this.opacity = this.$common.getRandom(0.3, 0.6);
+      this.opacity = this.$helpers.getRandom(0.3, 0.6);
       this.classes = [
         'petal',
-        'color' + this.$common.getRandom(1, 6, true),
-        'animation' + this.$common.getRandom(1, 6, true),
+        'color' + this.$helpers.getRandom(1, 6, true),
+        'animation' + this.$helpers.getRandom(1, 6, true),
       ];
     },
     animation() {
       if (this.top <= this.parentHeight()) {
         this.top = this.top + this.speed;
         if (this.count <= this.fluctuation) {
-          this.left = this.left + this.$common.getRandom(0.1, 0.3);
+          this.left = this.left + this.$helpers.getRandom(0.1, 0.3);
         } else {
-          this.left = this.left - this.$common.getRandom(0.1, 0.3);
+          this.left = this.left - this.$helpers.getRandom(0.1, 0.3);
         }
         if (this.count <= (this.fluctuation * 2)) {
           this.count++;
