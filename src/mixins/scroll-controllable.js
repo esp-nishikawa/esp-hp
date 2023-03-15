@@ -31,7 +31,7 @@ export default {
       const duration = options.duration || 500;
       const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
       const easing = options.easing || easeInOutCubic;
-      return this.$common.scrollTo(scrollElement, targetLocation, duration, easing);
+      return this.$helpers.scrollTo(scrollElement, targetLocation, duration, easing);
     },
     // 監視されている`scrollTop`の更新頻度を減らす
     onScroll() {

@@ -47,6 +47,7 @@
 │
 ├ babel.config.js
 ├ jsconfig.json
+├ jest.config.js
 ├ vue.config.js
 ├ package.json
 ├ yarn.lock
