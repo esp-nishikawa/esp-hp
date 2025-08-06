@@ -5,6 +5,12 @@ export default {
     return {
       informations: [
         {
+          date: '2025-8-7',
+          headline: 'サイト更新 決算状況、採用情報など更新しました。',
+          description: `・初任給、年収モデルを更新しました。採用情報ページは<a href='http://esoftpowers.com/recruit'>こちら</a><br>
+                        ・その他、決算状況など更新しました。`,
+        },
+        {
           date: '2021-5-17',
           headline: '求人サイトの「レバテックダイレクト」に掲載しました。',
           description: `レバテックダイレクトの求人ページは<a href='https://levtech-direct.jp/company/524' target="_blank">こちら</a>`,

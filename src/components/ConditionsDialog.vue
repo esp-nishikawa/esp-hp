@@ -29,8 +29,8 @@ export default {
           </v-col>
           <v-col cols="12">
             <base-subheading>勤務時間</base-subheading>
-            <base-text>９：００～１７：３０（昼休み１２：００～１３：００）</base-text>
-            <base-text>実働７.５時間</base-text>
+            <base-text>9:00～17:30（昼休み12:00～13:00）</base-text>
+            <base-text>実働7.5時間</base-text>
           </v-col>
           <v-col cols="12">
             <base-subheading>休日・休暇</base-subheading>

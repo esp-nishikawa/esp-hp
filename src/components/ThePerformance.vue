@@ -5,6 +5,36 @@ export default {
     return {
       items: [
         {
+          year: '2024年度',
+          sales: '17,541万円',
+          employees: '11名',
+          engineers: '10名',
+        },
+        {
+          year: '2023年度',
+          sales: '15,718万円',
+          employees: '11名',
+          engineers: '10名',
+        },
+        {
+          year: '2022年度',
+          sales: '16,186万円',
+          employees: '11名',
+          engineers: '10名',
+        },
+        {
+          year: '2021年度',
+          sales: '16,005万円',
+          employees: '11名',
+          engineers: '10名',
+        },
+        {
+          year: '2020年度',
+          sales: '18,480万円',
+          employees: '11名',
+          engineers: '10名',
+        },
+        {
           year: '2019年度',
           sales: '21,868万円',
           employees: '13名',
