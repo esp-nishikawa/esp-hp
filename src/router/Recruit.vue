@@ -12,6 +12,12 @@ export default {
     ConditionsDialog,
     ContactDialog,
   },
+  computed: {
+    graduationYear() {
+      const now = new Date();
+      return now.getMonth() < 4 ? now.getFullYear() : now.getFullYear() + 1;
+    },
+  },
 };
 </script>
 
@@ -34,7 +40,7 @@ export default {
                     </v-col>
                     <v-col cols="12" sm="6">
                       <base-subheading>応募資格</base-subheading>
-                      <base-text>２０２２年３月に卒業予定の方</base-text>
+                      <base-text>{{ graduationYear }}年3月、{{ graduationYear + 1 }}年3月に卒業予定の方</base-text>
                       <base-text>※既に卒業されている方も応募可能</base-text>
                     </v-col>
                     <v-col cols="12" sm="6">

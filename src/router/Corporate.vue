@@ -19,7 +19,7 @@ export default {
         capital: '９７０万円',
         ceo: '水野正規',
         directors: [ '中村一明' ],
-        banks: [ 'みずほ銀行 中目黒支店', '城南信用金庫 目黒支店' ],
+        banks: [ 'みずほ銀行 中目黒支店' ],
         customers: [
           '株式会社大阪エヌデーエス',
           '株式会社コア',

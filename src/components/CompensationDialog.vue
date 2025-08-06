@@ -14,33 +14,45 @@ export default {
       initialItems: [
         {
           education: '大学院（修士）卒',
-          salary: '214,700円',
+          salary: '217,700円',
         },
         {
           education: '大学卒',
-          salary: '204,300円',
+          salary: '207,300円',
         },
         {
           education: '専門卒（３年制）',
-          salary: '200,900円',
+          salary: '203,900円',
         },
         {
           education: '高専・短大・専門卒（２年制）',
-          salary: '198,000円',
+          salary: '201,000円',
         },
       ],
       annualItems: [
         {
           age: '２４歳',
-          salary: '３８３万',
+          salary: '４００万',
         },
         {
           age: '２７歳',
-          salary: '４１０万',
+          salary: '４２７万',
         },
         {
           age: '３１歳',
-          salary: '４６１万',
+          salary: '４７９万',
+        },
+        {
+          age: '３５歳',
+          salary: '５２７万',
+        },
+        {
+          age: '４０歳',
+          salary: '５７８万',
+        },
+        {
+          age: '４１歳以上',
+          salary: '５８３万～８００万',
         },
       ],
     };
@@ -65,7 +77,7 @@ export default {
         </v-row>
         <v-row v-else>
           <v-col>
-            <base-subheading>初任給（平成２９年度実績）</base-subheading>
+            <base-subheading>初任給</base-subheading>
             <v-simple-table class="elevation-2">
               <template>
                 <tbody>
@@ -92,7 +104,7 @@ export default {
                 </tbody>
               </template>
             </v-simple-table>
-            <base-text>※年間賞与4ヶ月、1ヶ月の残業20Hとした場合。</base-text>
+            <base-text>※年間賞与4.5ヶ月、1ヶ月の残業20Hとした場合。</base-text>
           </v-col>
         </v-row>
         <v-row>
@@ -102,12 +114,12 @@ export default {
           </v-col>
           <v-col cols="12">
             <base-subheading>昇給</base-subheading>
-            <base-text>年１回（７月）</base-text>
+            <base-text>年1回（7月）</base-text>
           </v-col>
           <v-col cols="12">
             <base-subheading>賞与</base-subheading>
-            <base-text>年２回（６月、１２月）</base-text>
-            <base-text>※年間平均４.０カ月＋α（平成２９年度実績）</base-text>
+            <base-text>年2回（6月、12月）</base-text>
+            <base-text>※年間平均4.5カ月＋α（2023、2024年度実績）</base-text>
           </v-col>
         </v-row>
       </v-container>
