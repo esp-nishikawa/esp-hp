@@ -119,7 +119,7 @@ export default {
           <v-col cols="12">
             <base-subheading>賞与</base-subheading>
             <base-text>年2回（6月、12月）</base-text>
-            <base-text>※年間平均4.5カ月＋α（2023、2024年度実績）</base-text>
+            <base-text>※年間平均4.5カ月（2023、2024年度実績）</base-text>
           </v-col>
         </v-row>
       </v-container>
